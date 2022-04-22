@@ -34,6 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(max_length=12, verbose_name='Phone Number', null=True)
     email = models.EmailField(unique=True, verbose_name='Email', null=True)
     password = models.CharField(max_length=100, verbose_name='Password', null=True)
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -55,4 +56,3 @@ class User(AbstractBaseUser, PermissionsMixin):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
-

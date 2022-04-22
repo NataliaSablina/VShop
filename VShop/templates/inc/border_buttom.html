@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load static %}
+<div class="border-buttom">
+    <a href="#">
+        <img src="{% static 'images/logo.png' %}" width="80px">
+    </a>
+    <a href="#" style="margin-top: 10px; margin-left: 20px; display: flex; flex-direction: row;">
+        <img src="{% static 'images/i.webp' %}" width="45px" height="45px">
+        <div style="display: flex; flex-direction: column; margin-top: 10px; margin-left: 10px;">
+            <a style="font-size: 90%; color: grey;">Select location</a>
+            <a style="font-size: 110%">###</a>
+        </div>
+    </a>
+        <a href="#" style="position:absolute;
+    top: 9px;
+    right: 340px;
+    z-index: 100;">
+            <div class="button" ><img src="{% static 'images/reg_log.png' %}" width="25px" height="25px" ></div></a>
+        <a href="#" style="position:absolute;
+    top: 9px;
+    right: 270px;
+    z-index: 100;"><div class="button"><img src="{% static 'images/bell3.webp' %}" width="25px" height="25px"></div></a>
+        <a href="#" style="position:absolute;
+    top: 9px;
+    right: 200px;
+    z-index: 100;"><div class="button" ><img src="{% static 'images/cart.png' %}" width="25px" height="25px"></div></a>
+</div>

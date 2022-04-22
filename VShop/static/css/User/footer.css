@@ -1,0 +1,97 @@
+.footer{
+    position: absolute;
+	bottom: 0;
+	width: 99.9%;
+    background-color: white;
+    left: 0;
+    right: 0;
+    border: 0.1px solid #eee;
+}
+
+.footer-inner{
+    border: 0.1px solid #eee;
+    height: auto;
+    padding-right: 200px;
+    padding-left: 200px;
+    display: flex;
+    flex-direction: row;
+}
+
+.innerref{
+    text-decoration: none;
+    color: black;
+}
+
+.f1{
+    color: grey;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.f2{
+    color: grey;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.autor::before {
+    font-style: normal;
+    box-sizing: border-box;
+    content: "\00A9";
+}
+
+.innerbutton{
+  margin:5px;
+  width: 30px;
+  height: 30px;
+  background: #DDDDDD;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid black;
+  display:flex;
+  justify-content: center; /*центрируем элемент по горизонтали */
+  align-items: center; /* и вертикали */
+  overflow: hidden; /* если элемент больше блока-родителя – обрезаем лишнее */
+  tansition: all .3s linear;
+  -webkit-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+  padding: 5px;
+}
+
+.type1{
+    display: flex;
+    flex-direction: row;
+}
+
+.innerbutton:not(:hover){
+	color: #fff;
+    background-color: #DDDDDD;/*transparent !important;*/
+}
+.innerbutton:hover {
+	color: #fff;
+	background: #888;
+	tansition: all .3s linear;
+	-webkit-transition: all .3s linear;
+	-moz-transition: all .3s linear;
+  }
+.innerbutton:active{
+	color: #DDDDDD;
+  }
+
+.refer-column{
+    display:flex;
+    flex-direction:column;
+    margin: 10px;
+}
+
+.type2{
+    font-size: 130%;
+    font-weight: 600;
+}
+
+.refer-column{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 20px;
+    margin-left: 20px;
+}

@@ -1,0 +1,42 @@
+.nav-top{
+    background: linear-gradient(45deg, #FF4500 60%, orange);
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    padding-right:215px;
+    padding-left:215px;
+    display: flex;
+    align-items: center;
+}
+
+.refer2{
+    position : relative;
+    text-decoration: none;
+    color: white;
+    margin: 0;
+    padding-right:10px;
+}
+.top:after{
+    font-style: normal;
+    box-sizing: border-box;
+    content: "\25BE";
+    padding-left: 15px;
+}
+
+.top2:after{
+    font-style: normal;
+    box-sizing: border-box;
+    content: "\0025";
+    width: 20px;
+    height: 20px;
+    background: #FF4500;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid white;
+    margin:0px;
+    display:flex;
+    align-items: center;
+}
+
+
+

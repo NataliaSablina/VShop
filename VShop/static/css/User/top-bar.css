@@ -1,0 +1,23 @@
+.top-bar, .l-top {
+    background-color: #f0f2f5;
+    margin: 0;
+    border:0;
+    padding-right:100px;
+    padding-left:100px;
+}
+
+.l-top{
+display:flex;
+flex-direction: row;
+}
+.refer {
+    text-decoration: none;
+    color: black;
+}
+
+.icofont-checked::before {
+    font-style: normal;
+    box-sizing: border-box;
+    content: "\2611";
+    padding-left: 15px;
+}

@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
+{% load static %}
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/User/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/User/top-bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/User/border-buttom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/User/nav_top.css' %}">
+    <link rel="stylesheet" href="{% static 'css/User/footer.css' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}" sizes="16x16 32х32" type="image/png">
+    <title> {% block title %}TITLE{% endblock %}</title>
+</style>
 </head>
 <body>
-$END$
+{% include 'inc/top_bar.html' %}
+{% include 'inc/border_buttom.html' %}
+{% include 'inc/nav_top.html' %}
+
+<h1>{% block content%}CONTENET{% endblock %}</h1>
+{% include 'inc/footer.html' %}
+
 </body>
 </html>
