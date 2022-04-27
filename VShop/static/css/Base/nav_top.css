@@ -2,14 +2,14 @@
     background: linear-gradient(45deg, #FF4500 60%, orange);
     display: flex;
     flex-direction: row;
-    height: 30px;
-    padding-right:215px;
-    padding-left:215px;
+    height: 35px;
+    padding-right:13%;
+    padding-left:13%;
     display: flex;
     align-items: center;
 }
 
-.refer2{
+.nav-top__refer2{
     position : relative;
     text-decoration: none;
     color: white;
@@ -33,10 +33,31 @@
     cursor: pointer;
     border-radius: 50%;
     border: 1px solid white;
-    margin:0px;
+    margin:2px;
+    padding-left: 2px;
     display:flex;
     align-items: center;
 }
 
+.tr{
+    margin-left: auto;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+.pr{
+    display:flex;
+    flex-direction: row;
+    background: #FF4500;
+    width:70px;
+    height:14px;
+    margin-left: 10px;
+    margin-top: 0px;
+    margin-right: -10px;
+    align-items: center;
+    text-align:center;
+    padding:10px;
+    margin-left:10px;
+}
 
 

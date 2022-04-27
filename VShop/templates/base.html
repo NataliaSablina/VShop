@@ -4,21 +4,20 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/User/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/User/top-bar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/User/border-buttom.css' %}">
-    <link rel="stylesheet" href="{% static 'css/User/nav_top.css' %}">
-    <link rel="stylesheet" href="{% static 'css/User/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Base/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Base/top_bar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Base/border_button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Base/nav_top.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Base/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/User/reg_auth_form.css' %}">
     <link rel="icon" href="{% static 'images/logo.png' %}" sizes="16x16 32х32" type="image/png">
-    <title> {% block title %}TITLE{% endblock %}</title>
-</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 {% include 'inc/top_bar.html' %}
-{% include 'inc/border_buttom.html' %}
+{% include 'inc/border_button.html' %}
 {% include 'inc/nav_top.html' %}
-
-<h1>{% block content%}CONTENET{% endblock %}</h1>
+{% include 'inc/reg_auth_form.html' %}
 {% include 'inc/footer.html' %}
 
 </body>

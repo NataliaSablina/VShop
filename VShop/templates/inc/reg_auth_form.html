@@ -1,0 +1,42 @@
+<div  class="gray"></div>
+<div class="menu_mobile ">
+    <button class="close-menu">X</button>
+        <center>
+            <form action="base.html" name="f1">
+                <input type="text" placeholder="Имя" name="name1" class="input">
+                <input type="text" placeholder="Имя" name="name1" class="input">
+                <input type="text" placeholder="Фамилия" name="name2" class="input">
+                <input type="email" placeholder="Емеил" name="email1" class="input">
+                <input type="email" placeholder="Подтвердите адрес Электронной Почты" name="email2" class="input">
+                <input type="password" placeholder="Пароль" name="pass1" class="input">
+                <input type="password" placeholder="Подтвердите пароль" name="pass2" class="input">
+                <input type='tel' placeholder="Мобильный телефон" name="tel" class="input">
+                <input type="radio" name="radio1"> Мужчина <input type="radio" name="radio1" class="radio"> Женщина
+                <input type="submit" value="Регистрация" name="sab" class="input"> Нажимая «Регистрация», вы подтверждаете, что прочитали и согласны с нашими Условиями Пользования и Политикой Конфиденциальности.
+            </form>
+        </center>
+</div>
+
+<script>
+    // тут мы вешаем на кнопку МЕНЮ событие которое при клике на кнопку
+// добавляет menu_mobile некий класс, в данном случае это active
+
+document.querySelector('.button').addEventListener('click', () => {
+  document.querySelector('.menu_mobile').classList.add('active');
+  document.querySelector('.close-menu').classList.add('close-menu-active');
+  document.querySelector('.close-menu').classList.add('close-gray-active');
+  document.querySelector('.gray').classList.add('active');
+
+
+})
+// а тут мы вешаем на кнопку close-menu событие которое пр кликена кнопку
+// удаляет menu_mobile  класс  active
+
+document.querySelector('.close-menu').addEventListener('click', () => {
+  document.querySelector('.menu_mobile').classList.remove('active');
+  document.querySelector('.gray').classList.remove('active');
+  document.querySelector('.close-menu').classList.remove('close-menu-active')
+  document.querySelector('.close-menu').classList.remove('close-gray-active')
+})
+</script>
+

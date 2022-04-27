@@ -1,0 +1,33 @@
+.top-bar {
+    background-color: #f0f2f5;
+    margin: 0;
+    border:0;
+}
+
+.top-bar__l-top{
+    background-color: #f0f2f5;
+    margin: 0;
+    border:0;
+    padding-right:12%;
+    padding-left:12%;
+    display:flex;
+    flex-direction: row;
+}
+.top-bar__l-top__refer {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.icofont-checked::before {
+    font-style: normal;
+    box-sizing: border-box;
+    content: "\2611";
+    padding-left: 15px;
+}
+
+.helpline{
+margin-left: auto;
+margin-top: 2px;
+margin-right: 5px;
+}

@@ -1,5 +1,4 @@
 .footer{
-    position: absolute;
 	bottom: 0;
 	width: 99.9%;
     background-color: white;
@@ -11,15 +10,16 @@
 .footer-inner{
     border: 0.1px solid #eee;
     height: auto;
-    padding-right: 200px;
-    padding-left: 200px;
+    padding-right: 13%;
+    padding-left: 13%;
     display: flex;
     flex-direction: row;
 }
 
-.innerref{
+.footer-inner__innerref{
     text-decoration: none;
     color: black;
+
 }
 
 .f1{
@@ -81,12 +81,13 @@
 .refer-column{
     display:flex;
     flex-direction:column;
-    margin: 10px;
+    margin:10px;
 }
 
-.type2{
+.refer-column__type2{
     font-size: 130%;
     font-weight: 600;
+
 }
 
 .refer-column{
@@ -94,4 +95,41 @@
     margin-bottom: 50px;
     margin-right: 20px;
     margin-left: 20px;
+}
+
+.footer-image-2{
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-image{
+    margin-left: 10px;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.at{
+    margin-top:30px;
+}
+
+.footer-label{
+    margin-right:20px;
+    margin-top: 20px;
+}
+
+.footer-label-2{
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 5px
+}
+
+.footer-label-3{
+    margin-left: 10px;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 5px
 }

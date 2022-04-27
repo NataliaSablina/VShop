@@ -1,0 +1,68 @@
+.menu_mobile {
+  position: fixed;
+  display: block;
+  width: 30%;
+  height: 100%;
+  right: -100%;
+  top: 0;
+  background: white;
+  border: 1 px solid gray;
+  transition: right 1s 0s;
+  z-index: 150;
+}
+
+.menu_mobile.active {
+  right: 0;
+  transition: right 1s linear 0s;
+
+}
+
+//исчезновение крестика
+.close-menu {
+
+}
+
+.close-menu-active {
+
+}
+.gray{
+  position: fixed;
+  display: block;
+  width: 100%;
+  height: 100%;
+  right: -100%;
+  top: 0;
+  background: rgba(1, 1, 1, 0.75);;
+  border: 1 px solid gray;
+  transition: right 0s .25s;//2ой параметр (через сколько начнет исчезать фон после нажатия на кнопку закрытия окна)
+  //1ый параметр(сколько по времени будет счезать фон)
+  z-index: 120;
+
+}
+
+.gray.active {
+    right: 0;
+    transition: right 0s linear 0s;//2ой параметр (через сколько начнет появляться фон после нажатия на кнопку запуска окна)
+//1ый параметр(сколько по времени будет появляться фон)
+}
+  }
+}
+.close-gray-active{
+  transition: right 0s linear 0s;
+
+}
+.form{
+        width: 280px;
+        margin:-15px auto 20px auto; text-align: center;
+}
+.input{
+    width: 260px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid black;
+    cursor: text;
+}
+.radio{
+    margin-bottom: 10px;
+}
