@@ -50,11 +50,39 @@
 .close-gray-active{
   transition: right 0s linear 0s;
 
-}
+}/*
 .form{
         width: 280px;
         margin:-15px auto 20px auto; text-align: center;
 }
+*/
+
+.reg-form{
+    position: fixed;
+    display: block;
+    right: -100%;
+    width: 280px;
+    margin:-15px auto 20px auto; text-align: center;
+}
+
+.reg-form.active{
+    right: 0;
+    transition: right 0s linear 0s;
+}
+
+.auth-form{
+    position: fixed;
+    display: block;
+    right: -100%;
+    width: 280px;
+    margin:-15px auto 20px auto; text-align: center;
+}
+
+.auth-form.active{
+    right: 0;
+    transition: right 0s linear 0s;
+}
+
 .input{
     width: 260px;
     padding: 5px;
@@ -66,3 +94,17 @@
 .radio{
     margin-bottom: 10px;
 }
+
+.menu_mobile__reg-auth{
+    display: flex;
+    flex-direction: row;
+}
+
+.menu_mobile__reg-auth__reg{
+
+}
+
+.menu_mobile__reg-auth__auth{
+
+}
+

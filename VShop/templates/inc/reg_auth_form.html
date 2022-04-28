@@ -1,9 +1,19 @@
 <div  class="gray"></div>
 <div class="menu_mobile ">
-    <button class="close-menu">X</button>
+    <div class="menu_mobile__reg-auth">
+        <button class="menu_mobile__reg-auth__reg">reg</button>
+        <button class="menu_mobile__reg-auth__auth">auth</button>
+        <button class="close-menu">X</button>
+    </div>
         <center>
-            <form action="base.html" name="f1">
-                <input type="text" placeholder="Имя" name="name1" class="input">
+            <!--{% block registration%}
+                {% endblock %}
+                -->
+            <form method="post" class="reg-form" name="f1">
+                {%csrf_token%}
+                {{reg_form.as_p}}
+                <input type="submit">
+                <!--<input type="text" placeholder="Имя" name="name1" class="input">
                 <input type="text" placeholder="Имя" name="name1" class="input">
                 <input type="text" placeholder="Фамилия" name="name2" class="input">
                 <input type="email" placeholder="Емеил" name="email1" class="input">
@@ -13,6 +23,21 @@
                 <input type='tel' placeholder="Мобильный телефон" name="tel" class="input">
                 <input type="radio" name="radio1"> Мужчина <input type="radio" name="radio1" class="radio"> Женщина
                 <input type="submit" value="Регистрация" name="sab" class="input"> Нажимая «Регистрация», вы подтверждаете, что прочитали и согласны с нашими Условиями Пользования и Политикой Конфиденциальности.
+            -->
+            </form>
+
+            <form method="post" class="auth-form" name="f1">
+                {%csrf_token%}
+                {{auth_form.as_p}}
+                <input type="submit">
+                <!--
+                {% block authorisation%}
+                {% endblock %}
+                -->
+<!--
+                <input type="text" placeholder="Имя" name="name1" class="input">
+                <input type="text" placeholder="Имя" name="name1" class="input">
+-->
             </form>
         </center>
 </div>
@@ -23,6 +48,7 @@
 
 document.querySelector('.button').addEventListener('click', () => {
   document.querySelector('.menu_mobile').classList.add('active');
+  document.querySelector('.reg-form').classList.add('active');
   document.querySelector('.close-menu').classList.add('close-menu-active');
   document.querySelector('.close-menu').classList.add('close-gray-active');
   document.querySelector('.gray').classList.add('active');
@@ -37,6 +63,20 @@ document.querySelector('.close-menu').addEventListener('click', () => {
   document.querySelector('.gray').classList.remove('active');
   document.querySelector('.close-menu').classList.remove('close-menu-active')
   document.querySelector('.close-menu').classList.remove('close-gray-active')
+  document.querySelector('.reg-form').classList.remove('active');
+  document.querySelector('.auth-form').classList.remove('active');
+})
+
+document.querySelector('.menu_mobile__reg-auth__reg').addEventListener('click', () => {
+  document.querySelector('.reg-form').classList.add('active');
+  document.querySelector('.auth-form').classList.remove('active');
+
+})
+
+document.querySelector('.menu_mobile__reg-auth__auth').addEventListener('click', () => {
+  document.querySelector('.auth-form').classList.add('active');
+  document.querySelector('.reg-form').classList.remove('active');
+
 })
 </script>
 
