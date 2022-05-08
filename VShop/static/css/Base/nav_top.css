@@ -1,4 +1,4 @@
-.nav-top{
+.nav-top {
     background: linear-gradient(45deg, #FF4500 60%, orange);
     display: flex;
     flex-direction: row;
@@ -7,15 +7,84 @@
     padding-left:13%;
     display: flex;
     align-items: center;
+    margin-top: 10px;
+}
+.topmenu{
+    list-style: none;
+    height: auto;
+    padding: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
 }
 
 .nav-top__refer2{
+    display: block;
     position : relative;
     text-decoration: none;
     color: white;
     margin: 0;
     padding-right:10px;
+    border: 0;
 }
+
+.topmenu > li {
+  display: inline-block;
+  position: relative;
+}
+/*
+.topmenu > li > a {/* тсыл ко всем тегам а заключенным в li
+  position: relative;
+  text-decoration: none;
+  color: white;
+  padding-right:10px;
+  border: 0;
+}
+*/
+.submenu {
+  display:flex;
+  flex-direction:column;
+  position: absolute;
+  z-index: 4;
+  left: 60%;
+  top: 100%;
+  width: 150px;
+  height:auto;
+  padding: 0px 0;
+  margin-top: 9px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  box-sizing: border-box;
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: .3s;
+}
+.topmenu > li:hover .submenu {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.submenu li{
+    height: auto;
+    width: auto;
+    padding: 5px;
+}
+.submenu a {
+  text-decoration: none;
+  font-size: 90%;
+  color: black;
+
+  letter-spacing: 1px;
+  /*padding: 5px 10px;*/
+  transition: .3s linear;
+
+}
+/*.submenu a:hover {background: #e8e8e8;}*/
+
 .top:after{
     font-style: normal;
     box-sizing: border-box;
@@ -39,25 +108,32 @@
     align-items: center;
 }
 
+.nav-top__dock{
+    margin-left:auto;
+}
+
+.nav-top__dock-10{
+    margin-left:10px;
+
+}
+
 .tr{
     margin-left: auto;
     margin-top: 2px;
     margin-right: 5px;
+    background-color:none;
 }
 
 .pr{
     display:flex;
     flex-direction: row;
     background: #FF4500;
-    width:70px;
-    height:14px;
-    margin-left: 10px;
+    width:80px;
+    margin-left: auto;
     margin-top: 0px;
-    margin-right: -10px;
+
     align-items: center;
     text-align:center;
-    padding:10px;
-    margin-left:10px;
+    padding:5px;
+
 }
-
-

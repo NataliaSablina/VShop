@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/Base/nav_top.css' %}">
     <link rel="stylesheet" href="{% static 'css/Base/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/User/reg_auth_form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/User/user_page.css' %}">
     <link rel="icon" href="{% static 'images/logo.png' %}" sizes="16x16 32х32" type="image/png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -18,6 +19,7 @@
 {% include 'inc/border_button.html' %}
 {% include 'inc/nav_top.html' %}
 {% include 'inc/reg_auth_form.html' %}
+{% block content %}CONTENT{% endblock %}
 {% include 'inc/footer.html' %}
 
 </body>

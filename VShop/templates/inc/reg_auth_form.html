@@ -1,46 +1,61 @@
-<div  class="gray"></div>
-<div class="menu_mobile ">
-    <div class="menu_mobile__reg-auth">
-        <button class="menu_mobile__reg-auth__reg">reg</button>
-        <button class="menu_mobile__reg-auth__auth">auth</button>
-        <button class="close-menu">X</button>
-    </div>
-        <center>
-            <!--{% block registration%}
-                {% endblock %}
-                -->
-            <form method="post" class="reg-form" name="f1">
-                {%csrf_token%}
-                {{reg_form.as_p}}
-                <input type="submit">
-                <!--<input type="text" placeholder="Имя" name="name1" class="input">
-                <input type="text" placeholder="Имя" name="name1" class="input">
-                <input type="text" placeholder="Фамилия" name="name2" class="input">
-                <input type="email" placeholder="Емеил" name="email1" class="input">
-                <input type="email" placeholder="Подтвердите адрес Электронной Почты" name="email2" class="input">
-                <input type="password" placeholder="Пароль" name="pass1" class="input">
-                <input type="password" placeholder="Подтвердите пароль" name="pass2" class="input">
-                <input type='tel' placeholder="Мобильный телефон" name="tel" class="input">
-                <input type="radio" name="radio1"> Мужчина <input type="radio" name="radio1" class="radio"> Женщина
-                <input type="submit" value="Регистрация" name="sab" class="input"> Нажимая «Регистрация», вы подтверждаете, что прочитали и согласны с нашими Условиями Пользования и Политикой Конфиденциальности.
-            -->
-            </form>
+{% load static %}
 
-            <form method="post" class="auth-form" name="f1">
-                {%csrf_token%}
-                {{auth_form.as_p}}
-                <input type="submit">
-                <!--
-                {% block authorisation%}
-                {% endblock %}
-                -->
-<!--
-                <input type="text" placeholder="Имя" name="name1" class="input">
-                <input type="text" placeholder="Имя" name="name1" class="input">
--->
-            </form>
-        </center>
-</div>
+
+<div  class="gray"></div>
+<div class="menu_mobile dropdown-scrollbar">
+    <div class="menu_mobile__reg-auth">
+        <button class="menu_mobile__reg-auth__auth">Sign In</button>
+        <button class="menu_mobile__reg-auth__reg">Sign Up</button>
+        <button class="close-menu"><i class="close-menu-cross"></i></button>
+    </div>
+
+    <form method="post" class="reg-form" name="f1" action="{% url 'user_page' user.email %}">
+        <h1 style="margin-bottom:0;">Let's get started</h1>
+        <text style="margin-bottom:25px;">Create account to see our top picks for you!</text>
+        {%csrf_token%}
+        <label>Name:</label>
+        {{reg_form.username}}
+        <label>Phone Number:</label>
+        {{reg_form.phone_number}}
+        <label>Email:</label>
+        {{reg_form.email}}
+        <label>Password:</label>
+        {{reg_form.password}}
+        <label>Password Confirmation:</label>
+        {{reg_form.password2}}
+        <button type="submit" class="reg-auth-button">Create Account</button>
+        <center><label style="margin-right:55px; margin-top: 15px; margin-bottom: 15px;">or</label></center>
+        <button type="submit" class="reg-auth-apple-store"><img src="{% static 'images/apple.png' %}" width="15px"
+        height="15px" style="margin-bottom:0; margin-right: 10px;">Sign up with Apple</button>
+        <button type="submit" class="reg-auth-google-plus"><img src="{% static 'images/google-plus.png' %}" width="20px"
+        height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Google</button>
+        <a href="" class="reg-auth-ref">Already have an account? Sign in</a>
+        <div class="menu_mobile__help-close-2">
+            <a class="menu_mobile__help-close__close">Close</a>
+            <a href="#" class="menu_mobile__help-close__help">Help</a>
+        </div>
+    </form>
+
+    <form method="post" class="auth-form" name="f1" action="{% url 'user_page' user.email %}">
+        <h1 style="margin-bottom:0;">Welcome Back</h1>
+        <text style="margin-bottom:25px;">Sign in to Continue.</text>
+        {%csrf_token%}
+        <label>Email:</label>
+        {{auth_form.email}}
+        <label>Password:</label>
+        {{auth_form.password}}
+        <button type="submit" class="reg-auth-button">Sign In</button>
+        <center><label style="margin-right:55px; border-top: 50px; margin-bottom: 15px;">or</label></center>
+        <button type="submit" class="reg-auth-apple-store"><img src="{% static 'images/apple.png' %}" width="20px"
+        height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Apple</button>
+        <button type="submit" class="reg-auth-google-plus"><img src="{% static 'images/google-plus.png' %}" width="20px"
+        height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Google</button>
+        <a href="" class="reg-auth-ref">Don't have an account? Sign Up</a>
+        <div class="menu_mobile__help-close-2">
+            <a class="menu_mobile__help-close__close">Close</a>
+            <a href="#" class="menu_mobile__help-close__help">Help</a>
+        </div>
+    </form>
 
 <script>
     // тут мы вешаем на кнопку МЕНЮ событие которое при клике на кнопку
@@ -48,11 +63,12 @@
 
 document.querySelector('.button').addEventListener('click', () => {
   document.querySelector('.menu_mobile').classList.add('active');
-  document.querySelector('.reg-form').classList.add('active');
+  document.querySelector('.auth-form').classList.add('active');
   document.querySelector('.close-menu').classList.add('close-menu-active');
   document.querySelector('.close-menu').classList.add('close-gray-active');
   document.querySelector('.gray').classList.add('active');
-
+  document.querySelector('.menu_mobile__reg-auth__reg').classList.remove('green');
+  document.querySelector('.menu_mobile__reg-auth__auth').classList.add('green');
 
 })
 // а тут мы вешаем на кнопку close-menu событие которое пр кликена кнопку
@@ -67,16 +83,29 @@ document.querySelector('.close-menu').addEventListener('click', () => {
   document.querySelector('.auth-form').classList.remove('active');
 })
 
+document.querySelector('.menu_mobile__help-close__close').addEventListener('click', () => {
+  document.querySelector('.menu_mobile').classList.remove('active');
+  document.querySelector('.gray').classList.remove('active');
+  document.querySelector('.close-menu').classList.remove('close-menu-active')
+  document.querySelector('.close-menu').classList.remove('close-gray-active')
+  document.querySelector('.reg-form').classList.remove('active');
+  document.querySelector('.auth-form').classList.remove('active');
+})
+
 document.querySelector('.menu_mobile__reg-auth__reg').addEventListener('click', () => {
   document.querySelector('.reg-form').classList.add('active');
   document.querySelector('.auth-form').classList.remove('active');
+  document.querySelector('.menu_mobile__reg-auth__reg').classList.add('green');
+  document.querySelector('.menu_mobile__reg-auth__auth').classList.remove('green');
 
 })
 
 document.querySelector('.menu_mobile__reg-auth__auth').addEventListener('click', () => {
   document.querySelector('.auth-form').classList.add('active');
   document.querySelector('.reg-form').classList.remove('active');
-
+  document.querySelector('.menu_mobile__reg-auth__reg').classList.remove('green');
+  document.querySelector('.menu_mobile__reg-auth__auth').classList.add('green');
 })
 </script>
 
+</div>

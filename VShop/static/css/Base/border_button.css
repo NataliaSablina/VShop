@@ -29,7 +29,7 @@ font-size: 110%
 }
 
 .button{
-  margin:5px;
+  margin:8px;
   width: 30px;
   height: 30px;
   background: #DDDDDD;
@@ -63,8 +63,50 @@ font-size: 110%
 .border-button__top-bar-2__buttons{
     margin-left: auto;
     margin-right: 14%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
     display: flex;
     flex-direction: row;
+}
+
+.border-button__user-photo{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right:5px;
+  margin-left:8px;
+  border-radius: 50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.border-button__user-name{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right:0px;
+  margin-left:2px;
+  color: black;
+  text-decoration:none;
+  padding:2px;
+}
+
+.border-button__user-info{
+    display:flex;
+    flex-direction: row;
+    height:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left:0px;
+    margin-right: 7px;
+}
+.border-button__user-name-acc{
+    height:15px;
+    margin-bottom:auto;
+    margin-left:0px;
+}
+.border-button__user-name-acc::before{
+    content:"\25BC";
+    color: black;
+    font-size: 50%;
 }

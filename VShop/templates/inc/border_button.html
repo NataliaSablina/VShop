@@ -1,7 +1,7 @@
 {% load static %}
 <div class="border-button ">
     <div class="border-button__top-bar-2">
-        <a href="#">
+        <a href="{% url 'home_page' %}">
             <img src="{% static 'images/logo.png' %}" width="80px">
         </a>
         <a href="#" class="border-button__top-bar-2__loc">
@@ -15,6 +15,21 @@
             <div class="button">
                 <img src="{% static 'images/reg_log.png' %}" width="25px" height="25px" >
             </div>
+            {% if user.is_authenticated %}
+                <div class="border-button__user-photo">
+                    {%if request.user.photo%}
+                        <img src="{{request.user.photo.url}}" width="45px" height="45px">
+                    {% endif %}
+                    {%if not request.user.photo%}
+                        <img src="{% static 'images/user.png' %}" width="45px" height="45px">
+                    {% endif %}
+                </div>
+                <div class="border-button__user-info">
+                    <a href="{% url 'user_page' request.user.email %}" class="border-button__user-name">{{user.username}}</a>
+                    <div class="border-button__user-name-acc"></div>
+                </div>
+
+            {% endif %}
             <a href="#">
                 <div class="button">
                     <img src="{% static 'images/bell.png' %}" width="25px" height="25px">

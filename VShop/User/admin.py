@@ -7,6 +7,8 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from django.utils.safestring import mark_safe
+
 from .models import User
 
 
@@ -18,7 +20,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'phone_number', 'is_superuser', 'is_staff')
+        fields = ('email', 'username', 'phone_number', 'photo', 'is_superuser', 'is_staff')
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -46,7 +48,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'phone_number', 'username', 'is_active', 'is_staff', 'is_superuser')
+        fields = ('email', 'password', 'phone_number', 'username', 'is_active', 'is_staff', 'is_superuser', 'photo')
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
@@ -63,11 +65,11 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'phone_number', 'username', 'is_staff', 'is_superuser')
+    list_display = ('email', 'phone_number', 'username', 'avatar_tag', 'is_staff', 'is_superuser')
     list_filter = ('is_staff',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('phone_number', 'username')}),
+        ('Personal info', {'fields': ('phone_number', 'username', 'avatar_tag')}),
         ('Permissions', {'fields': ('is_staff', 'is_superuser')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -75,12 +77,18 @@ class UserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'phone_number', 'username', 'password1', 'password2')}
+            'fields': ('email', 'phone_number', 'username', 'avatar_tag', 'password1', 'password2')}
         ),
     )
     search_fields = ('email',)
     ordering = ('email',)
     filter_horizontal = ()
+
+    readonly_fields = ['avatar_tag']  # Be sure to read only mode
+    # def get_image(self, obj):
+    #     return mark_safe(f'<img src={obj.photo.url} width="50" height="50"')
+    #
+    # get_image.short_description = "Photo"
 
 
 admin.site.register(User, UserAdmin)

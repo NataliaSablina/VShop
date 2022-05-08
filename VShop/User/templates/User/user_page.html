@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<div class="user-page">
+    <div class="user-page__containers">
+        <div class="user-page__containers__choices">
+
+            <div class="containers__choices__user-info">
+                <div class="user-info__user-photo">
+                    {%if request.user.photo%}
+                        <img src="{{request.user.photo.url}}" width="90px" height="90px">
+                    {% endif %}
+                    {%if not request.user.photo%}
+                        <img src="{% static 'images/user.png' %}" width="90px" height="90px">
+                    {% endif %}
+                </div>
+                <div class="user-info__user__name">{{request.user.username}}</div>
+                <div class="user-info__user__email">{{request.user.email}}</div>
+            </div>
+            <div class="choices__references">
+                <img src="{% static 'images/user-icon.png' %}" width="20px" height="20px" class="icon-1">
+                <a href="{% url 'user_page' request.user.email %}" class="choices__references__my-account"
+                   style="text-decoration: none;" >My Account </a>
+                <div class="choices__references__my-account-button"></div>
+            </div>
+            <div class="choices__references">
+                <img src="{% static 'images/promo.png' %}" width="30px" height="30px" class="icon-2">
+                <a class="choices__references__promo">Promos</a>
+                <i class="choices__references__promo-button"></i>
+            </div>
+            <div class="choices__references">
+                <img src="{% static 'images/adress-book.png' %}" width="30px" height="30px" class="icon-3">
+                <a class="choices__references__my-address">My Address</a>
+                <i class="choices__references__my-address-button"></i>
+            </div>
+            <div class="choices__references">
+                <img src="{% static 'images/information-centre.png' %}" width="30px" height="30px" class="icon-4">
+                <a class="choices__references__privacy">Terms, Privacy & Policy</a>
+                <i class="choices__references__privacy-button"></i>
+            </div>
+            <div class="choices__references">
+                <img src="{% static 'images/phone.png' %}" width="30px" height="30px" class="icon-5">
+                <a class="choices__references__help">Help & Support</a>
+                <i class="choices__references__help-button"></i>
+            </div>
+            <div class="choices__references">
+                <img src="{% static 'images/phone.png' %}" width="30px" height="30px" class="icon-6">
+                <a class="choices__references__ticket">Ticket</a>
+                <i class="choices__references__ticket-button"></i>
+            </div>
+            <div class="choices__references">
+                <img src="{% static 'images/logout.png' %}" width="30px" height="30px" class="icon-7">
+                <a href="{%url 'logout'%}" class="choices__references__logout" style="text-decoration: none;">Logout</a>
+                <i class="choices__references__logout-button"></i>
+            </div>
+        </div>
+            <div class="user-page__containers__information">
+
+            </div>
+    </div>
+</div>
+
+{% endblock %}
+

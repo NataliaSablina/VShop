@@ -3,4 +3,18 @@ body{
     border:0;
     padding:0;
     height: auto;
+    overflow-x:hidden;/*удалили горизонтальный скролл бар*/
+}
+
+body::-webkit-scrollbar {
+  width: 5px;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: transparent;        /* цвет дорожки */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #A1A1A1;    /* цвет плашки */
+  border-radius: 20px;       /* закругления плашки */
+  /*border: 3px solid orange;*/  /* padding вокруг плашки */
 }

@@ -1,0 +1,189 @@
+.user-page{
+    width: 100%;
+    background-color: #f0f2f5;
+    height: auto;
+}
+
+
+.user-page__containers{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-right: 12%;
+    margin-left: 12%;
+}
+
+.user-page__containers__choices{
+    height: auto;
+    width: 35%;
+    margin-right:4px;
+    background-color: white;
+    border-radius: 2%;
+    box-shadow: 0 0 8px 1px rgba(221, 221, 221, 1);
+}
+
+.user-page__containers__information{
+    height: 696.2px;
+    width: 65%;
+    margin-left:4px;
+    background-color: white;
+    border-radius: 1%;
+    box-shadow: 0 0 8px 1px rgba(221, 221, 221, 1);
+}
+
+.containers__choices__user-info{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    border: 0.1px solid #eee;
+}
+
+
+.user-info__user-photo{
+  margin-left: auto;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  margin-right: auto;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.user-info__user__name{
+  color: black;
+  font-size:120%;
+  font-weight: 1000;
+  margin-left: auto;
+  margin-top: 5px;
+  margin-bottom: 2px;
+  margin-right: auto;
+}
+
+.user-info__user__email{
+  color: grey;
+  font-size:90%;
+  margin-left: auto;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-right: auto;
+}
+
+.choices__references{
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    background-color: white;
+    border: 0.1px solid #eee;
+
+
+}
+
+.icon-1,
+.icon-2,
+.icon-3,
+.icon-4,
+.icon-5,
+.icon-6,
+.icon-7{
+  margin-right:10px;
+  margin-left: 20px;
+  width: 20px;
+  height: 20px;
+  background: black;
+  cursor: pointer;
+  border-radius: 50%;
+  display:flex;
+  justify-content: center; /*центрируем элемент по горизонтали */
+  align-items: center; /* и вертикали */
+  overflow: hidden; /* если элемент больше блока-родителя – обрезаем лишнее */
+  tansition: all .3s linear;
+  -webkit-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+  padding: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.icon-1{
+    background: linear-gradient(135deg, #FF4500, orange);
+}
+
+.icon-2{
+    background: linear-gradient(270deg, #00AA00, yellow);
+}
+
+.icon-3{
+    background: #222222;
+}
+
+.icon-4{
+    background: #4444FF;
+}
+
+.icon-5{
+    background: #FFFF44;
+}
+
+.icon-6{
+    background: linear-gradient(270deg, #00AA00, yellow);
+}
+
+.icon-7{
+    background: linear-gradient(135deg, #FF4500, orange);
+}
+
+.choices__references__my-account,
+.choices__references__promo,
+.choices__references__my-address,
+.choices__references__privacy,
+.choices__references__help,
+.choices__references__ticket,
+.choices__references__logout{
+    margin-top:auto;
+    margin-bottom: auto;
+    color: grey;
+    font-size: 95%;
+}
+
+.choices__references__my-account-button,
+.choices__references__promo-button,
+.choices__references__my-address-button,
+.choices__references__privacy-button,
+.choices__references__help-button,
+.choices__references__ticket-button,
+.choices__references__logout-button{
+    height:20px;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left:auto;
+    margin-right:15px;
+}
+.choices__references__my-account-button::before,
+.choices__references__promo-button::before,
+.choices__references__my-address-button::before,
+.choices__references__privacy-button::before,
+.choices__references__help-button::before,
+.choices__references__ticket-button::before,
+.choices__references__logout-button::before{
+    height: 20px;
+    width: 20px;
+    margin-right:auto;
+    border-radius: 50%;
+    font-style: normal;
+    content: "\203A";
+    color: orange;
+    font-weight:600;
+    font-size:110%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgb(40 167 69 / 15%);
+}
+

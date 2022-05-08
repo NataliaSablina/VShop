@@ -1,9 +1,50 @@
-<div class="nav-top">
-    <a href="#" class="nav-top__refer2" >Home</a>
-    <a href="#" class="nav-top__refer2"><i class="top"></i>Products</a>
-    <a href="#" class="nav-top__refer2"><i class="top"></i>Checkout Process</a>
-    <a href="#" class="nav-top__refer2"><i class="top"></i>My Order</a>
-    <a href="#" class="nav-top__refer2"><i class="top"></i>Extra Pages</a>
-    <a href="#" class="nav-top__refer2 tr">Trending</a>
-    <a href="#" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a>
-</div>
+<nav class="nav-top">
+  <ul class="topmenu ">
+    <li><a href="{% url 'home_page' %}" class="nav-top__refer2">Home</a></li>
+    <li><a href="" class="down nav-top__refer2"><i class="top"></i>Products</a>
+      <ul class="submenu">
+        <li><a href="">Listing</a></li>
+        <li style="border-bottom: 1px solid #f0f2f5; padding-bottom: 15px"><a href="#" >Detail</a></li>
+        <li style="padding-top: 15px;"><a href="#" >Trending</a></li>
+        <li><a href="">Recommended</a></li>
+        <li><a href="">Most Popular</a></li>
+      </ul>
+    </li>
+    <li><a href="" class="down nav-top__refer2"><i class="top"></i>Checkout Process</a>
+      <ul class="submenu">
+        <li><a href="">Cart</a></li>
+        <li><a href="">Checkout</a></li>
+        <li><a href="">Successful</a></li>
+      </ul>
+    </li>
+    <li><a href="" class="down nav-top__refer2"><i class="top"></i>My Order</a>
+      <ul class="submenu">
+        <li><a href="">My Order</a></li>
+        <li><a href="">Status Complete</a></li>
+        <li><a href="">Status on Process</a></li>
+        <li><a href="">Status Canceled</a></li>
+        <li><a href="">Review</a></li>
+      </ul>
+    </li>
+    <li><a href="" class="down nav-top__refer2"><i class="top"></i>Extra Pages</a>
+      <ul class="submenu">
+        <li><a href="">Verification</a></li>
+        <li><a href="">Promos</a></li>
+        <li><a href="">Promo Details</a></li>
+        <li><a href="">Terms & Conditions</a></li>
+        <li><a href="">Privacy</a></li>
+        <li><a href="">Conditions</a></li>
+        <li><a href="">Help & Support</a></li>
+        <li><a href="">Help Ticket</a></li>
+        <li><a href="">Refund Payment</a></li>
+        <li><a href="">FAQ</a></li>
+        <li><a href="">Sign In</a></li>
+        <li><a href="">Sign Up</a></li>
+        <li><a href="">Search</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-top__dock" style="right: -430px;"><a href="#" class="nav-top__refer2 tr">Trending</a></li>
+    <li class="nav-top__dock-10" style="right: -420px;"><a href="#" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a></li>
+  </ul>
+</nav>
