@@ -1,6 +1,10 @@
 <nav class="nav-top">
   <ul class="topmenu ">
-    <li><a href="{% url 'home_page' %}" class="nav-top__refer2">Home</a></li>
+    {%if name %}
+      <li><a href="{% url 'home_page' name %}" class="nav-top__refer2">Home</a></li>
+    {% else %}
+      <li><a href="{% url 'home_page' %}" class="nav-top__refer2">Home</a></li>
+    {% endif %}
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Products</a>
       <ul class="submenu">
         <li><a href="">Listing</a></li>

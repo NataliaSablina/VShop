@@ -1,8 +1,11 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views import View
+from country.models import Country, City
+from Categories.models import Product
 
 
-# Create your views here.
+class ProductView(View):
+    def get(self, request, pk):
+        product = Product.objects.get(pk=pk)
+        return render(request, 'product_page.html', {'product': product})
 
-def view(request):
-    return HttpResponse('123213')

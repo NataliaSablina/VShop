@@ -138,6 +138,7 @@
     background: linear-gradient(135deg, #FF4500, orange);
 }
 
+
 .choices__references__my-account,
 .choices__references__promo,
 .choices__references__my-address,
@@ -149,6 +150,7 @@
     margin-bottom: auto;
     color: grey;
     font-size: 95%;
+    text-decoration:none;
 }
 
 .choices__references__my-account-button,
@@ -187,3 +189,128 @@
     background-color: rgb(40 167 69 / 15%);
 }
 
+.user-page__containers__information{
+
+}
+
+.user_page__change_password_deactivate{
+    display: flex;
+    flex-direction: column;
+
+}
+.user_page__changes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#f0f2f5;
+    width: auto;
+    height:50px;
+    border: none;
+    margin: 15px;
+    margin-top:5px;
+    margin-bottom:5px;
+    border-radius: 6px;
+    text-align:center;
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
+.user_page__changes:hover{
+    background: #cccccc;
+}
+.user_page__change_user{
+    width: auto;
+    margin:auto;
+    color: white;
+    font-size:120%;
+    font-weight:400;
+    border: none;
+    border-radius: 6px;
+    background:linear-gradient(45deg, #FF4500 60%, orange);
+}
+.user_page__choices__references{
+    justify-content: left;
+    align-items: left;
+    height:20px;
+    margin-top:auto;
+    margin-bottom:auto;
+
+    margin-right:15px;
+}
+.user_page__choices__references::before{
+    height: 20px;
+    width: 20px;
+    margin-right:auto;
+    border-radius: 50%;
+    font-style: normal;
+    content: "\203A";
+    color: black;
+    font-weight:600;
+    font-size:110%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: transparent;
+    border:none;
+}
+
+.user_page__changes__text{
+    margin:auto;
+}
+
+.change_user_form{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.user_change_special{
+    height: 30px;
+    width: auto;
+    margin-right:15px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-bottom:15px;
+}
+
+.user_change_button{
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(45deg, #FF4500 50%, orange);
+  height: 50px;
+  width: auto;
+  color: white;
+  margin-top: 20px;
+  margin-right:15px;
+  font-weight:300;
+  font-size:100%;
+  margin-bottom:10px;
+  text-align: center;
+}
+
+.user_change_focus {
+    outline: none;
+    border: 1px solid orange; /* Рамка при получении фокуса */
+    height: 30px;
+    width: auto;
+    border-radius: 4px;
+    margin-right:15px;
+    margin-bottom:15px;
+}
+
+.user_change_text {
+    border: 1px solid black;
+    height: 30px;
+    width: auto;
+    border-radius: 4px;
+    margin-right:15px;
+    margin-bottom:15px;
+}
+
+.user_page_deactivate_text{
+    margin-left:15px;
+    color:grey;
+    margin-top:8px;
+    margin-bottom:0px;
+}

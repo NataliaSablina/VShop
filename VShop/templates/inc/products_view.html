@@ -1,0 +1,10 @@
+<div class="products_view" >
+    {% for product in products %}
+    <a href="{% url 'product_page' product.pk %}" class="view_cards_refer">
+        <div class="products_view__product_card">
+            <img src="{{product.photo.url}}" width="180px" height="150px" style="margin-left: 15px; margin-top:15px;">
+            <text style="margin-left: 15px; margin-top:15px;">{{product.name}}</text>
+        </div>
+    </a>
+{% endfor %}
+</div>

@@ -1,0 +1,32 @@
+{% extends 'User/user_page_my_account.html' %}
+{% load static %}
+
+{% block form_change %}
+<h1 style="margin-left:15px;">Deactivate Account</h1>
+<h4 style="margin-left:15px; margin-bottom:0px;">Email</h4>
+<text style="margin-left:15px; margin-bottom:0px; color:grey;">{{request.user.email}}</text>
+<h4 style="margin-left:15px; margin-bottom:0px;">Number</h4>
+<text style="margin-left:15px; margin-bottom:20px; color:grey;">{{request.user.phone_number}}</text>
+<form method="post" name="f1" class="change_user_form">
+    {%csrf_token%}
+        <label style="margin-top:20px;">Password:</label>
+        {{user_deactivate_form.password}}
+    <button type="submit" class="user_change_button">CONFIRM DEACTIVATE</button>
+</form>
+<h4 style="margin-left:15px; margin-bottom:0px;">When you deactivate the account</h4>
+<p class="user_page_deactivate_text">We will miss you.</p>
+<p class="user_page_deactivate_text">You won't be able to access your Wish list.</p>
+<p class="user_page_deactivate_text">You will not get updates about the latest offers & discounts.</p>
+<p class="user_page_deactivate_text">You will have to fill your details while checking out over and over again.</p>
+<p class="user_page_deactivate_text">You won't be able to check your past orders.</p>
+<h4 style="margin-left:15px; margin-bottom:0px;">How do I reactivate my Grocery account?</h4>
+<p class="user_page_deactivate_text">Coming back is easy.</p>
+<p class="user_page_deactivate_text">Simply contact us to re-activate your account.
+    Your account data will be fully restored - default settings will be applied and
+    you will be subscribed to receive promotional emails from Grocery.</p>
+<p class="user_page_deactivate_text">Grocery retains your account data for you to conveniently start off from where you left,
+    if you decide to reactivate your account.</p>
+
+
+{% endblock %}
+

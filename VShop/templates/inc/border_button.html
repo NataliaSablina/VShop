@@ -1,9 +1,15 @@
 {% load static %}
 <div class="border-button ">
     <div class="border-button__top-bar-2">
+        {%if name%}
+        <a href="{% url 'home_page' name %}">
+            <img src="{% static 'images/logo.png' %}" width="80px">
+        </a>
+        {% else %}
         <a href="{% url 'home_page' %}">
             <img src="{% static 'images/logo.png' %}" width="80px">
         </a>
+        {%endif%}
         <a href="#" class="border-button__top-bar-2__loc">
             <img src="{% static 'images/i.webp' %}" width="45px" height="45px">
             <div class="border-button__top-bar-2__loc__loc-col-2">
@@ -25,7 +31,7 @@
                     {% endif %}
                 </div>
                 <div class="border-button__user-info">
-                    <a href="{% url 'user_page' request.user.email %}" class="border-button__user-name">{{user.username}}</a>
+                    <a href="{% url 'user_page_my_account' request.user.email %}" class="border-button__user-name">{{user.username}}</a>
                     <div class="border-button__user-name-acc"></div>
                 </div>
 

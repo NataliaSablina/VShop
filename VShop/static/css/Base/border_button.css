@@ -1,7 +1,8 @@
 .border-button{
     margin:0;
     border:0;
-
+    border-bottom:20px;
+    background: white;
 }
 
 .border-button__top-bar-2{

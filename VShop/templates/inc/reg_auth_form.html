@@ -9,7 +9,7 @@
         <button class="close-menu"><i class="close-menu-cross"></i></button>
     </div>
 
-    <form method="post" class="reg-form" name="f1" action="{% url 'user_page' user.email %}">
+    <form method="post" class="reg-form" name="f1">
         <h1 style="margin-bottom:0;">Let's get started</h1>
         <text style="margin-bottom:25px;">Create account to see our top picks for you!</text>
         {%csrf_token%}
@@ -30,13 +30,14 @@
         <button type="submit" class="reg-auth-google-plus"><img src="{% static 'images/google-plus.png' %}" width="20px"
         height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Google</button>
         <a href="" class="reg-auth-ref">Already have an account? Sign in</a>
+        <a href="{% url 'forgot_password' %}">forogot password</a>
         <div class="menu_mobile__help-close-2">
             <a class="menu_mobile__help-close__close">Close</a>
             <a href="#" class="menu_mobile__help-close__help">Help</a>
         </div>
     </form>
 
-    <form method="post" class="auth-form" name="f1" action="{% url 'user_page' user.email %}">
+    <form method="post" class="auth-form" name="f1" >
         <h1 style="margin-bottom:0;">Welcome Back</h1>
         <text style="margin-bottom:25px;">Sign in to Continue.</text>
         {%csrf_token%}
@@ -51,12 +52,12 @@
         <button type="submit" class="reg-auth-google-plus"><img src="{% static 'images/google-plus.png' %}" width="20px"
         height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Google</button>
         <a href="" class="reg-auth-ref">Don't have an account? Sign Up</a>
+        <a href="{% url 'forgot_password' %}">forogot password</a>
         <div class="menu_mobile__help-close-2">
             <a class="menu_mobile__help-close__close">Close</a>
             <a href="#" class="menu_mobile__help-close__help">Help</a>
         </div>
     </form>
-
 <script>
     // тут мы вешаем на кнопку МЕНЮ событие которое при клике на кнопку
 // добавляет menu_mobile некий класс, в данном случае это active
