@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<div style="width:100%;
+            height:40px;
+            background:#DDDDDD;">
+    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
+        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
+            <text style="color:red">Home</text>
+            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
+            <text style="color:grey">{{extra_bar}}</text>
+        </div>
+    </div>
+
+</div>
+<div class="user-page__containers__information" style="height:500px; margin-left:auto; margin-right:auto; margin-bottom:15px;">
+      <h1 style="margin-left:15px;">FAQ</h1>
+<div class="navigaonusing">
+  <div class="gaonutosal">
+  <div class="pesontedan">
+  <input id="pesontedan-one" type="checkbox" name="pesontedans">
+  <label for="pesontedan-one"><text style="margin-left:15px;">Do you have any built-in caching?</text></label>
+  <div class="pesontedan-content">
+  <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid ...</p>
+  </div>
+  </div>
+  <div class="pesontedan">
+  <input id="pesontedan-two" type="checkbox" name="pesontedans">
+  <label for="pesontedan-two"><text style="margin-left:15px;">Can I add/upgrade my plan at any time?</text></label>
+  <div class="pesontedan-content">
+  <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid ...</p>
+  </div>
+  </div>
+  <div class="pesontedan">
+  <input id="pesontedan-three" type="checkbox" name="pesontedans">
+  <label for="pesontedan-three"><text style="margin-left:15px;">What access come with hosting plan?</text></label>
+  <div class="pesontedan-content">
+  <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid ...</p>
+  </div>
+  </div>
+    <div class="pesontedan">
+  <input id="pesontedan-four" type="checkbox" name="pesontedans">
+  <label for="pesontedan-four"><text style="margin-left:15px;">How can I change my password?</text></label>
+  <div class="pesontedan-content">
+  <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid ...</p>
+  </div>
+  </div>
+  </div>
+  </div>
+</div>
+{% endblock %}

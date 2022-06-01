@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<div style="width:100%;
+            height:40px;
+            background:#DDDDDD;">
+    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
+        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
+            <text style="color:red">Home</text>
+            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
+            <text style="color:grey">{{extra_bar}}</text>
+        </div>
+    </div>
+
+</div>
+<div class="user-page__containers__information" style="height:300px; margin-left:auto; margin-right:auto; margin-bottom:15px;">
+      <h1 style="margin-left:15px;">Help & Support</h1>
+    <div class="help-support-div">
+     <a href="{% url 'terms_conditions_not_log_in' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">Terms & Conditions</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'privacy_not_log_in' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">Privacy</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'faq_not_log_in' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">FAQ</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+</div>
+
+
+{% endblock %}

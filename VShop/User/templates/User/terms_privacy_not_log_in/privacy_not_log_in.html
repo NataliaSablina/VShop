@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<div style="width:100%;
+            height:40px;
+            background:#DDDDDD;">
+    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
+        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
+            <text style="color:red">Home</text>
+            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
+            <text style="color:grey">{{extra_bar}}</text>
+        </div>
+    </div>
+
+</div>
+<div class="user-page__containers__information" style="height:300px; margin-left:auto; margin-right:auto; margin-bottom:15px;">
+      <h1 style="margin-left:15px;">Privacy</h1>
+<p style="color:grey; margin-left:15px; margin-right:15px;">Grocery may give refunds for some item purchases, depending on the refund policies. You can also contact us directly.</p>
+<p style="color:grey; margin-left:15px; margin-right:15px;">If a purchase was accidentally made by a friend or family member using your account, request a refund on the grocery website.</p>
+<p style="color:grey; margin-left:15px; margin-right:15px;">If you find a grocery purchase on your card or other payment method that you did'nt make and that wasn't made by anyone you know, report unauthorized charges within 120 days of the transaction.</p>
+<p style="color:grey; margin-left:15px; margin-right:15px;">If you've had a refund request accepted, check how long your refund will take.</p>
+</div>
+{% endblock %}

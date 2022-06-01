@@ -865,12 +865,134 @@ class HelpPrivacyView(LoginRequiredMixin, View):
         return render(request, "User/terms_privacy/privacy.html", {"extra_bar": extra_bar})
 
 
+class HelpPrivacyNotLogInView(View):
+    def get(self, request):
+        extra_bar = "Privacy"
+        reg_form = UserRegistrationForm()
+        auth_form = UserAuthenticationForm()
+        return render(request, "User/terms_privacy_not_log_in/privacy_not_log_in.html", {"extra_bar": extra_bar,
+                                                                                         "reg_form": reg_form,
+                                                                                         "auth_form": auth_form})
+
+    def post(self, request):
+        reg_form = UserRegistrationForm(request.POST)
+        auth_form = UserAuthenticationForm(request.POST)
+        if reg_form.is_valid():
+            user = reg_form.save(commit=False)
+            user.set_password(reg_form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+            return redirect('user_page_my_account', user.email)
+        else:
+            print(reg_form.errors)
+        if auth_form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+            if user is not None and user.is_active:
+                login(request, user)
+                return redirect('user_page_my_account', user.email)
+        else:
+            print(auth_form.errors)
+
+
 class FAQView(LoginRequiredMixin, View):
     login_url = 'home_page'
 
     def get(self, request):
         extra_bar = "FAQ"
         return render(request, "User/terms_privacy/faq.html", {"extra_bar": extra_bar})
+
+
+class FAQNotLogInView(View):
+    def get(self, request):
+        extra_bar = "FAQ"
+        reg_form = UserRegistrationForm()
+        auth_form = UserAuthenticationForm()
+        return render(request, "User/terms_privacy_not_log_in/faq_not_log_in.html", {"extra_bar": extra_bar, "reg_form":reg_form,
+                                                                                     "auth_form":auth_form})
+
+    def post(self, request):
+        reg_form = UserRegistrationForm(request.POST)
+        auth_form = UserAuthenticationForm(request.POST)
+        if reg_form.is_valid():
+            user = reg_form.save(commit=False)
+            user.set_password(reg_form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+            return redirect('user_page_my_account', user.email)
+        else:
+            print(reg_form.errors)
+        if auth_form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+            if user is not None and user.is_active:
+                login(request, user)
+                return redirect('user_page_my_account', user.email)
+        else:
+            print(auth_form.errors)
+
+
+class TermsPrivacyNotLogIn(View):
+    def get(self, request):
+        extra_bar = "Terms & Privacy"
+        reg_form = UserRegistrationForm()
+        auth_form = UserAuthenticationForm()
+        return render(request, "User/terms_privacy_not_log_in.html", {"extra_bar": extra_bar, "reg_form":reg_form, "auth_form":auth_form})
+
+    def post(self, request):
+        reg_form = UserRegistrationForm(request.POST)
+        auth_form = UserAuthenticationForm(request.POST)
+        if reg_form.is_valid():
+            user = reg_form.save(commit=False)
+            user.set_password(reg_form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+            return redirect('user_page_my_account', user.email)
+        else:
+            print(reg_form.errors)
+        if auth_form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+            if user is not None and user.is_active:
+                login(request, user)
+                return redirect('user_page_my_account', user.email)
+        else:
+            print(auth_form.errors)
+
+
+class HelpTermsConditionsNotLogInView( View):
+    def get(self, request):
+        extra_bar = "Terms & Conditions"
+        reg_form = UserRegistrationForm()
+        auth_form = UserAuthenticationForm()
+        return render(request, "User/terms_privacy_not_log_in/terms_conditions_not_log_in.html", {"extra_bar": extra_bar,
+                                                                                                  "reg_form": reg_form,
+                                                                                                  "auth_form":auth_form})
+
+    def post(self, request):
+        reg_form = UserRegistrationForm(request.POST)
+        auth_form = UserAuthenticationForm(request.POST)
+        if reg_form.is_valid():
+            user = reg_form.save(commit=False)
+            user.set_password(reg_form.cleaned_data['password'])
+            user.save()
+            login(request, user)
+            return redirect('user_page_my_account', user.email)
+        else:
+            print(reg_form.errors)
+        if auth_form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+            if user is not None and user.is_active:
+                login(request, user)
+                return redirect('user_page_my_account', user.email)
+        else:
+            print(auth_form.errors)
+
 
 
 

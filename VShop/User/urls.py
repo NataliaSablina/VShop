@@ -9,7 +9,8 @@ from .views import index2, HomePageView, UserPageView, logout_view, DeactivateAc
     SendMailSuccess, SignUpView, SignInView, HelpSupportNotLogIn, HelpCheckStatusOfMYOrderNotLogInView, \
     HelpChangeItemsOfMyOrderNotLogInView, HelpCancelMYOrderNotLogInView, HelpChangeMyDeliveryAddressNotLogInView, \
     HelpPickUpOrderNotLogInView, HelpDeliveryPersonMadeUnsafeNotLogInView, HelpRefundingPaymentNotLogInView, \
-    HelpClientNotLogInView, HelpTermsConditionsView, HelpPrivacyView, FAQView
+    HelpClientNotLogInView, HelpTermsConditionsView, HelpPrivacyView, FAQView, TermsPrivacyNotLogIn, \
+    HelpTermsConditionsNotLogInView, HelpPrivacyNotLogInView, FAQNotLogInView
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
 
@@ -47,8 +48,12 @@ urlpatterns = [
     path('help_support', HelpSupportView.as_view(), name='help_support'),
     path('forgot_password', ForgotPasswordView.as_view(), name='forgot_password'),
     path('terms_conditions_user', HelpTermsConditionsView.as_view(), name='terms_conditions_user'),
+    path('terms_conditions_not_log_in', HelpTermsConditionsNotLogInView.as_view(), name='terms_conditions_not_log_in'),
     path('privacy', HelpPrivacyView.as_view(), name='privacy'),
+    path('privacy_not_log_in', HelpPrivacyNotLogInView.as_view(), name='privacy_not_log_in'),
     path('faq', FAQView.as_view(), name='faq'),
+    path('faq_not_log_in', FAQNotLogInView.as_view(), name='faq_not_log_in'),
+    path('terms_privacy_not_log_in', TermsPrivacyNotLogIn.as_view(), name='terms_privacy_not_log_in'),
     path('send_mail_success', SendMailSuccess.as_view(), name='send_mail_success'),
     # path('password_reset', password_reset_request, name="password_reset"),
     path('password_reset', contact_view, name="password_reset"),
