@@ -7,44 +7,50 @@
     {% endif %}
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Products</a>
       <ul class="submenu">
-        <li><a href="">Listing</a></li>
-        <li style="border-bottom: 1px solid #f0f2f5; padding-bottom: 15px"><a href="#" >Detail</a></li>
-        <li style="padding-top: 15px;"><a href="#" >Trending</a></li>
-        <li><a href="">Recommended</a></li>
-        <li><a href="">Most Popular</a></li>
+        <li class="border-button__user-list" style="margin-top:5px;"><a href="{% url 'categories_product_listing' %}">Listing</a></li>
+        <li class="border-button__user-list" style="border-bottom: 1px solid #f0f2f5; padding-bottom: 15px"><a href="#" >Detail</a></li>
+        <li class="border-button__user-list" style="padding-top: 15px;"><a href="#" >Trending</a></li>
+        <li class="border-button__user-list"><a href="">Recommended</a></li>
+        <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Most Popular</a></li>
       </ul>
     </li>
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Checkout Process</a>
       <ul class="submenu">
-        <li><a href="">Cart</a></li>
-        <li><a href="">Checkout</a></li>
-        <li><a href="">Successful</a></li>
+        <li class="border-button__user-list" style="margin-top:5px;"><a href="">Cart</a></li>
+        <li class="border-button__user-list"><a href="">Checkout</a></li>
+        <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Successful</a></li>
       </ul>
     </li>
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>My Order</a>
       <ul class="submenu">
-        <li><a href="">My Order</a></li>
-        <li><a href="">Status Complete</a></li>
-        <li><a href="">Status on Process</a></li>
-        <li><a href="">Status Canceled</a></li>
-        <li><a href="">Review</a></li>
+        <li class="border-button__user-list" style="margin-top:5px;"><a href="">My Order</a></li>
+        <li class="border-button__user-list"><a href="">Status Complete</a></li>
+        <li class="border-button__user-list"><a href="">Status on Process</a></li>
+        <li class="border-button__user-list"><a href="">Status Canceled</a></li>
+        <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Review</a></li>
       </ul>
     </li>
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Extra Pages</a>
       <ul class="submenu">
-        <li><a href="">Verification</a></li>
-        <li><a href="">Promos</a></li>
-        <li><a href="">Promo Details</a></li>
-        <li><a href="">Terms & Conditions</a></li>
-        <li><a href="">Privacy</a></li>
-        <li><a href="">Conditions</a></li>
-        <li><a href="">Help & Support</a></li>
-        <li><a href="">Help Ticket</a></li>
-        <li><a href="">Refund Payment</a></li>
-        <li><a href="">FAQ</a></li>
-        <li><a href="">Sign In</a></li>
-        <li><a href="">Sign Up</a></li>
-        <li><a href="">Search</a></li>
+        <li class="border-button__user-list" style="margin-top:5px;"><a href="">Verification</a></li>
+        <li class="border-button__user-list"><a href="">Promos</a></li>
+        <li class="border-button__user-list"><a href="">Promo Details</a></li>
+        <li class="border-button__user-list"><a href="">Terms & Conditions</a></li>
+        <li class="border-button__user-list"><a href="">Privacy</a></li>
+        <li class="border-button__user-list"><a href="">Conditions</a></li>
+        <li class="border-button__user-list"><a href="">Help & Support</a></li>
+        {% if request.user.is_authenticated %}
+                <li class="border-button__user-list"><a href="{% url 'ticket' %}">Help Ticket</a></li>
+
+        {% else %}
+                <li class="border-button__user-list"><a href="{% url 'ticket_not_log_in' %}">Help Ticket</a></li>
+
+        {% endif %}
+        <li class="border-button__user-list"><a href="">Refund Payment</a></li>
+        <li class="border-button__user-list"><a href="">FAQ</a></li>
+        <li class="border-button__user-list"><a href="{% url 'sign_in_page' %}">Sign In</a></li>
+        <li class="border-button__user-list"><a href="{% url 'sign_up_page' %}">Sign Up</a></li>
+        <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Search</a></li>
       </ul>
     </li>
 

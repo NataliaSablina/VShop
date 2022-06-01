@@ -1,0 +1,167 @@
+.sign_up_page-main-div{
+    height:100%;
+    width:30%;
+    background:white;
+    border:none;
+    margin-right:auto;
+    border-radius:6px;
+    box-shadow: 0 0 8px 1px rgba(221, 221, 221, 1);
+    margin-left:15px;
+    margin-top:10px;
+}
+
+
+
+/* User styles */
+@media screen and (min-width: 911px) {
+  .ant-carousel {
+    max-width: 35%;
+  }
+}
+
+.ant-carousel {
+  margin-left:auto;
+  margin-top:20px;
+  border: none;
+  height:auto;
+  background-color: transparent;
+}
+
+.ant-carousel-element {
+  width: 100%;
+  text-align: center;
+  background:linear-gradient(135deg, orange 10%, green);
+  height:700px;
+}
+
+/* General styles */
+.ant-carousel {
+  width: auto;
+  position: relative;
+height:auto;
+}
+
+.ant-carousel-hider {
+  overflow: hidden;
+   border-radius:6px;
+   height:auto;
+}
+
+.ant-carousel-list {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ant-carousel-element {
+  display: block;
+  flex: 0 0 auto;
+}
+
+/* Navigation item styles */
+div.ant-carousel-arrow-left,
+div.ant-carousel-arrow-right {
+   width: 30px;
+  height: 30px;
+  position: absolute;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 2;
+  border-radius: 50%;
+  font-style: normal;
+  border:1px solid black;
+  color: grey;
+  font-weight:600;
+  font-size:110%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: white;
+}
+
+div.ant-carousel-arrow-left {
+  left: 10px;
+  top: 50%;
+  display: block;
+  background: url("http://pvbk.spb.ru/inc/carousel/ant-files/ant-arrow-left.png") no-repeat;
+  background-size:5px;
+  margin-left:10px;
+  background-position: center center;
+  background-color:white;
+}
+
+div.ant-carousel-arrow-right {
+  right: 10px;
+  top: 50%;
+  display: block;
+  background: url("http://pvbk.spb.ru/inc/carousel/ant-files/ant-arrow-right.png") no-repeat;
+  background-size:5px;
+  margin-left:10px;
+  background-color:white;
+  background-position: center center;
+}
+
+div.ant-carousel-arrow-left:hover {
+  opacity: 1.0;
+}
+
+div.ant-carousel-arrow-right:hover {
+  opacity: 1.0;
+}
+
+div.ant-carousel-dots {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+  z-index: 30;
+  text-align: center;
+}
+
+span.ant-dot {
+  width: 7px;
+  height: 7px;
+  margin: 5px 7px;
+  padding: 0;
+  display: inline-block;
+  background-color: black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ant-carousel-element__info{
+    position:relative;
+    top:200px;
+    display: flex;
+    flex-direction:column;
+    margin-top:auto;
+    border:none;
+    background:transparent;
+}
+
+.ant-carousel-element__info__skip{
+    height:30px;
+    width:70px;
+    position:relative;
+    border:1px solid white;
+    top:-200px;
+    color:white;
+    margin-left:auto;
+    margin-top:15px;
+    margin-right:15px;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    border-radius:2px;
+    background:transparent;
+    text-decoration:none;
+}
+
+.ant-carousel-element__info__skip:hover{
+    color:black;
+    background:white;
+}

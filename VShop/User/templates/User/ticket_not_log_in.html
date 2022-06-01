@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<div style="width:100%;
+            height:40px;
+            background:#DDDDDD;">
+    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
+        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
+            <text style="color:red">Home</text>
+            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
+            <text style="color:grey">extra_bar</text>
+        </div>
+    </div>
+
+</div>
+<div class="user-page__containers__information" style="margin-left:auto; margin-right:auto; margin-bottom:15px; height:400px;">
+    <h1 style="margin-left:15px;">Tickets</h1>
+<form method="post" name="f1" style="display:flex; flex-direction:column; margin-left:15px; margin-right:15px;">
+    {% csrf_token %}
+    <label>Full Name:</label>
+    {{help_client_form.name}}
+    <label>Full Name:</label>
+    {{help_client_form.email}}
+    <label>Full Name:</label>
+    {{help_client_form.message}}
+    <button type="submit" class="user_change_button">Ask us freely</button>
+</form>
+</div>
+
+
+{% endblock %}
+

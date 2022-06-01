@@ -1,0 +1,103 @@
+.gaonutosal {
+  float: left;
+  width: 95%;
+  padding: 0 1em;
+}
+
+.pesontedan {
+  position: relative;
+  margin-bottom: 1px;
+  width: 95%;
+  color: black;
+  overflow: hidden;
+  top:10px;
+
+}
+
+.pesontedan input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.pesontedan label {
+    width: 100%;
+    height:50px;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    display:flex;
+    background:#F8F9FA;
+    border-radius:4px;
+    margin-top:5px;
+}
+
+.pesontedan label:hover{
+    background:#DDDDDD;
+}
+
+.pesontedan-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #CCFFFF;
+  transition: max-height .40s;
+  font-size: 14px;
+  color: black;
+  border-radius: 6px;
+   border-bottom-width: 1px; /* Толщина линии внизу */
+    border-bottom-style: solid; /* Стиль линии внизу */
+    border-bottom-color: orange; /* Цвет линии внизу */
+    border-left-width: 1px; /* Толщина линии внизу */
+    border-left-style: solid; /* Стиль линии внизу */
+    border-left-color: orange; /* Цвет линии внизу */
+    border-right-width: 0.5px; /* Толщина линии внизу */
+    border-right-style: solid; /* Стиль линии внизу */
+    border-right-color: orange; /* Цвет линии внизу */
+
+}
+
+.pesontedan-content {
+  background:#CCFFFF;
+}
+.pesontedan-content p {
+  margin: 1em;
+}
+/* :checked */
+.pesontedan input:checked ~ .pesontedan-content {
+  max-height: 100vh;
+}
+
+/* Icon */
+.pesontedan label::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-left:auto;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: all .40s;
+  -o-transition: all .40s;
+  transition: all .40s;
+}
+.pesontedan input[type=checkbox] + label::after {
+  content: "\203A";
+  color: black;
+  font-weight:600;
+  font-size:110%;
+  border-right:1 px solid grey;
+  border-radius:6px;
+}
+
+
+.pesontedan input[type=radio] + label::after {
+  content: "\25BC";
+}
+.pesontedan input[type=checkbox]:checked + label::after {
+  transform: rotate(360deg);
+}
+.pesontedan input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+}

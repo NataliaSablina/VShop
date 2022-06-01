@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     margin-left:auto;
     margin-right:auto;
+    margin-bottom: 30px;
 }
 
 .products_view__product_card{
@@ -17,7 +18,7 @@
     background: white;
     border:none;
     border-radius: 4px;
-
+    overflow: hidden;
 }
 
 .from_home_page_refer{
@@ -44,3 +45,30 @@
     font-weight:300;
 
 }
+
+.product_view_promo{
+    position: absolute;
+    border: none;
+    border-radius: 4px;
+    height:30px;
+    width:40px;
+    margin_right: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    margin-top: 10px;
+    background: rgb(255 96 0 / 15%);
+    z-index: 100;
+}
+
+.product_view_refer_promo{
+    position: relative;
+    margin-top:auto;
+    margin-bottom:auto;
+    top: 4px;
+    left: 6px;
+    color: #ff6000;
+    text-decoration: none;
+    height:30px;
+    width:auto;
+}
+

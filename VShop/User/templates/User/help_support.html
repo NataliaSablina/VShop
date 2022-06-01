@@ -3,5 +3,46 @@
 
 {% block form_change %}
 <h1 style="margin-left:15px;">Help & Support</h1>
-
+<div class="help-support-div">
+     <a href="{% url 'check_status_of_my_order' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">How to check status of my order</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'change_items_of_my_order' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">Change items in my order</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'cancel_my_order' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">Cancel my order</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'change_my_delivery_address' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">Change my delivery address</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'help_with_a_pick-up_order' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">Help with a pick-up order</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'my_delivery_person_made_me_unsafe' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">My delivery person made me unsafe</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
+<div class="help-support-div">
+     <a href="{% url 'refunding_payment' %}" style="text-decoration: none; color:black">
+         <text style="margin-left:15px;">Refunding Payment</text>
+     </a>
+    <div class="choices__references-button"></div>
+</div>
 {% endblock %}

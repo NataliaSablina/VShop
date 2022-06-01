@@ -6,16 +6,15 @@ from .models import User
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label="Password", widget=forms.TextInput(attrs={'class': 'special',
-                                                                               'placeholder': "Enter Password",
-                                                                               'onfocus': "this.className='focus'",
-                                                                               'onblur': "this.className='text'",
-                                                                               }))
-    password2 = forms.CharField(label="Repeat Password",
-                                widget=forms.TextInput(attrs={'class': 'special',
+    password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'special',
                                                               'placeholder': "Enter Confirmation Of Password",
                                                               'onfocus': "this.className='focus'",
                                                               'onblur': "this.className='text'", }))
+    password2 = forms.CharField(label="Repeat Password",
+                                widget=forms.PasswordInput(attrs={'class': 'special',
+                                                                  'placeholder': "Enter Confirmation Of Password",
+                                                                  'onfocus': "this.className='focus'",
+                                                                  'onblur': "this.className='text'", }))
 
     class Meta:
         model = User
@@ -35,11 +34,11 @@ class UserRegistrationForm(forms.ModelForm):
                                              'onfocus': "this.className='focus'",
                                              'onblur': "this.className='text'", }),
 
-                   'password': TextInput(attrs={'class': 'special',
+                   'password': forms.PasswordInput(attrs={'class': 'special',
                                                 'placeholder': "Enter Password",
                                                 'onfocus': "this.className='focus'",
                                                 'onblur': "this.className='text'", }),
-                   'password2': TextInput(attrs={'class': 'special',
+                   'password2': forms.PasswordInput(attrs={'class': 'special',
                                                  'placeholder': "Enter Confirmation Of Password",
                                                  'onfocus': "this.className='focus'",
                                                  'onblur': "this.className='text'", }),
@@ -58,7 +57,7 @@ class UserAuthenticationForm(forms.Form):
                                                                           'onfocus': "this.className='focus'",
                                                                           'onblur': "this.className='text'", }))
 
-    password = forms.CharField(label="Password", widget=forms.TextInput(attrs={'class': 'special',
+    password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'special',
                                                                                'placeholder': "Password",
                                                                                'onfocus': "this.className='focus'",
                                                                                'onblur': "this.className='text'", }))
@@ -83,19 +82,19 @@ class ChangeUserInformation(forms.ModelForm):
 
 
 class ChangeUserPassword(forms.Form):
-    old_password = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'user_change_special',
+    old_password = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={'class': 'user_change_special',
                                                                                  'placeholder': "Password",
                                                                                  'onfocus': "this.className"
                                                                                             "='user_change_focus'",
                                                                                  'onblur': "this.className"
                                                                                            "='user_change_text'", }))
-    new_password = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'user_change_special',
+    new_password = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={'class': 'user_change_special',
                                                                                  'placeholder': "New Password",
                                                                                  'onfocus': "this.className"
                                                                                             "='user_change_focus'",
                                                                                  'onblur': "this.className"
                                                                                            "='user_change_text'", }))
-    new_password2 = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'user_change_special',
+    new_password2 = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={'class': 'user_change_special',
                                                                                   'placeholder': "Confirm New Password",
                                                                                   'onfocus': "this.className"
                                                                                              "='user_change_focus'",
@@ -110,7 +109,7 @@ class ChangeUserPassword(forms.Form):
 
 
 class DeactivateAccount(forms.Form):
-    password = forms.CharField(max_length=255, widget=forms.TextInput(attrs={'class': 'user_change_special',
+    password = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={'class': 'user_change_special',
                                                                              'placeholder': "Password",
                                                                              'onfocus': "this.className"
                                                                                         "='user_change_focus'",
@@ -119,6 +118,56 @@ class DeactivateAccount(forms.Form):
 
 
 class ContactForm(forms.Form):
-    from_email = forms.EmailField(label='Email', required=True)
-    subject = forms.CharField(label='Тема', required=True)
-    message = forms.CharField(label='Сообщение', widget=forms.Textarea, required=True)
+    to_email = forms.EmailField(label='Email', required=True, widget=forms.TextInput(attrs={'class': 'user_change_special',
+                                                                             'placeholder': "Email",
+                                                                             'onfocus': "this.className"
+                                                                                        "='user_change_focus'",
+                                                                             'onblur': "this.className"
+                                                                                       "='user_change_text'", }))
+    # # from_email = forms.EmailField(label='Email', required=True)
+    # subject = forms.CharField(label='Тема', required=True)
+    # message = forms.CharField(label='Сообщение', widget=forms.Textarea, required=True)
+
+
+class ActivateAccountForm(forms.Form):
+    email = forms.EmailField(label='Your Email', required=True, widget=forms.TextInput(attrs={'class': 'user_change_special',
+                                                                             'placeholder': "Enter Email You Want Activate",
+                                                                             'onfocus': "this.className"
+                                                                                        "='user_change_focus'",
+                                                                             'onblur': "this.className"
+                                                                                       "='user_change_text'", }))
+    subject = forms.CharField(label='Тема', required=True, widget=forms.TextInput(attrs={'class': 'user_change_special',
+                                                                             'placeholder': "Enter Theme",
+                                                                             'onfocus': "this.className"
+                                                                                        "='user_change_focus'",
+                                                                             'onblur': "this.className"
+                                                                                       "='user_change_text'", }))
+    message = forms.CharField(label='Сообщение', required=True, widget=forms.TextInput(attrs={'class': 'user_change_special',
+                                                                             'placeholder': "Enter Message",
+                                                                             'onfocus': "this.className"
+                                                                                        "='user_change_focus'",
+                                                                             'onblur': "this.className"
+                                                                                       "='user_change_text'", }))
+
+
+class HelpClientForm(forms.Form):
+    name = forms.CharField(label='Full Name', required=True, widget=forms.TextInput(attrs={'class': 'user_change_special',
+                                                                             'placeholder': "Enter Full Name",
+                                                                             'onfocus': "this.className"
+                                                                                        "='user_change_focus'",
+                                                                             'onblur': "this.className"
+                                                                                       "='user_change_text'", }))
+    email = forms.EmailField(label='Email', required=True, widget=forms.TextInput(attrs={'class': 'user_change_special',
+                                                                             'placeholder': "Enter Email",
+                                                                             'onfocus': "this.className"
+                                                                                        "='user_change_focus'",
+                                                                             'onblur': "this.className"
+                                                                                       "='user_change_text'", }))
+    message = forms.CharField(label='How can we improve', required=True, widget=forms.TextInput(attrs={'class': 'user_change_special',
+                                                                             'placeholder': "can we improve?",
+                                                                             'onfocus': "this.className"
+                                                                                        "='user_change_focus'",
+                                                                             'onblur': "this.className"
+                                                                                       "='user_change_text'", }))
+
+

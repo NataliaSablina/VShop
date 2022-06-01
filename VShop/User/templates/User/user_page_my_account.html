@@ -5,6 +5,18 @@
 Vegishop
 {% endblock %}
 {% block content %}
+<div style="width:100%;
+            height:40px;
+            background:#DDDDDD;">
+    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
+        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
+            <text style="color:red">Home</text>
+            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
+            <text style="color:grey">{{extra_bar}}</text>
+        </div>
+    </div>
+
+</div>
 <div class="user-page">
     <div class="user-page__containers">
         <div class="user-page__containers__choices">
@@ -23,8 +35,14 @@ Vegishop
             </div>
             <div class="choices__references">
                 <img src="{% static 'images/user-icon.png' %}" width="20px" height="20px" class="icon-1">
-                <a href="{% url 'user_page_my_account' request.user.email %}" class="choices__references__my-account"
+                {% if request.user.is_authenticated%}
+                    <a href="{% url 'user_page_my_account' request.user.email %}" class="choices__references__my-account"
                    style="text-decoration: none;" >My Account </a>
+                {% else%}
+                    <a href="#" class="choices__references__my-account"
+                   style="text-decoration: none;" >My Account </a>
+                {% endif %}
+
                 <div class="choices__references__my-account-button"></div>
             </div>
             <div class="choices__references">

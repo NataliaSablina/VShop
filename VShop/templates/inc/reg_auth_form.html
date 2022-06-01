@@ -1,6 +1,6 @@
 {% load static %}
 
-
+{% if not request.user.is_authenticated %}
 <div  class="gray"></div>
 <div class="menu_mobile dropdown-scrollbar">
     <div class="menu_mobile__reg-auth">
@@ -29,11 +29,16 @@
         height="15px" style="margin-bottom:0; margin-right: 10px;">Sign up with Apple</button>
         <button type="submit" class="reg-auth-google-plus"><img src="{% static 'images/google-plus.png' %}" width="20px"
         height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Google</button>
-        <a href="" class="reg-auth-ref">Already have an account? Sign in</a>
-        <a href="{% url 'forgot_password' %}">forogot password</a>
+        <a href="" class="reg-auth-ref" style="position:relative; right:30px;">Already have an account? Sign in</a>
+        <a href="{% url 'activate_account' %}" class="form__activate-account" >
+            <text style="position:relative; top:5px; padding-top:10px; margin-bottom:auto; background:transparent;">Here you can activate deactivated account.</text></a>
         <div class="menu_mobile__help-close-2">
-            <a class="menu_mobile__help-close__close">Close</a>
-            <a href="#" class="menu_mobile__help-close__help">Help</a>
+            <a href="#" class="menu_mobile__help-close__close">Close</a>
+           {% if request.user.is_authenticated%}
+                <a href="{% url 'help_support' %}" class="menu_mobile__help-close__help">Help</a>
+            {% else %}
+                <a href="{% url 'help_support_not_log_in' %}" class="menu_mobile__help-close__help">Help</a>
+            {% endif %}
         </div>
     </form>
 
@@ -51,13 +56,21 @@
         height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Apple</button>
         <button type="submit" class="reg-auth-google-plus"><img src="{% static 'images/google-plus.png' %}" width="20px"
         height="20px" style="margin-bottom:0; margin-right: 10px;">Sign up with Google</button>
-        <a href="" class="reg-auth-ref">Don't have an account? Sign Up</a>
-        <a href="{% url 'forgot_password' %}">forogot password</a>
+        <a href="" class="reg-auth-ref" style="position:relative; right:30px;">Don't have an account? Sign Up</a>
+        <a href="{% url 'password_reset' %}" style="margin-right:auto; margin-left:auto; text-decoration:none; color:black; margin-bottom:10px; position:relative; right:30px;">Forgot password? Reset it.</a>
+        <a href="{% url 'activate_account' %}" class="form__activate-account">
+        <text style="position:relative; top:5px; padding-top:10px; margin-bottom:auto; background:transparent;">Here you can activate deactivated account.</text></a>
         <div class="menu_mobile__help-close-2">
-            <a class="menu_mobile__help-close__close">Close</a>
-            <a href="#" class="menu_mobile__help-close__help">Help</a>
+            <a href="#" class="menu_mobile__help-close__close-2">Close</a>
+            {% if request.user.is_authenticated%}
+                <a href="{% url 'help_support' %}" class="menu_mobile__help-close__help">Help</a>
+            {% else %}
+                <a href="{% url 'help_support_not_log_in' %}" class="menu_mobile__help-close__help">Help</a>
+            {% endif %}
+
         </div>
     </form>
+
 <script>
     // тут мы вешаем на кнопку МЕНЮ событие которое при клике на кнопку
 // добавляет menu_mobile некий класс, в данном случае это active
@@ -93,6 +106,16 @@ document.querySelector('.menu_mobile__help-close__close').addEventListener('clic
   document.querySelector('.auth-form').classList.remove('active');
 })
 
+
+document.querySelector('.menu_mobile__help-close__close-2').addEventListener('click', () => {
+  document.querySelector('.menu_mobile').classList.remove('active');
+  document.querySelector('.gray').classList.remove('active');
+  document.querySelector('.close-menu').classList.remove('close-menu-active')
+  document.querySelector('.close-menu').classList.remove('close-gray-active')
+  document.querySelector('.reg-form').classList.remove('active');
+  document.querySelector('.auth-form').classList.remove('active');
+})
+
 document.querySelector('.menu_mobile__reg-auth__reg').addEventListener('click', () => {
   document.querySelector('.reg-form').classList.add('active');
   document.querySelector('.auth-form').classList.remove('active');
@@ -110,3 +133,4 @@ document.querySelector('.menu_mobile__reg-auth__auth').addEventListener('click',
 </script>
 
 </div>
+{% endif %}

@@ -1,0 +1,59 @@
+.promos_categories_list{
+    width:94%;
+    height:150px;
+    border: none;
+    border-radius: 6px;
+    margin:20px;
+}
+
+.promos_categories_list:nth-child(5n){
+    background: linear-gradient(135deg, yellow 2%, orange);
+}
+
+.promos_categories_list:nth-child(5n-1){
+    background: linear-gradient(135deg, red 1%, orange);
+}
+
+.promos_categories_list:nth-child(5n-2){
+    background: linear-gradient(135deg, purple 1%, blue);
+}
+
+.promos_categories_list:nth-child(5n-3){
+    background: linear-gradient(135deg, pink 1%, yellow);
+}
+
+.promos_categories_list:nth-child(5n-4){
+    background: linear-gradient(135deg, yellow 2%, green);
+}
+
+.promos_categories_list__photo{
+    margin-bottom:auto;
+    margin-top:30px;
+    margin-left:auto;
+    margin-right:15px;
+}
+
+.promos_categories_list__name{
+    color:white;
+    margin-left:15px;
+    margin-top:10px;
+    font-size:120%;
+    text-decoration:none;
+}
+
+.promos_categories_list__button{
+    height: 35px;
+    width: 130px;
+    border: 1px solid white;
+    border-radius: 4px;
+    background:transparent;
+    color:white;
+    font-size:90%;
+}
+
+.promos_categories_list__button:hover{
+    background:white;
+    color:black;
+}
+
+

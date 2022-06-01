@@ -1,0 +1,31 @@
+{% extends 'User/user_page_my_account.html' %}
+{% load static %}
+{% load promo_category_photo %}
+
+{% block form_change %}
+<h1 style="margin-left:15px;">Available Promos</h1>
+{% for category in categories %}
+<div class="promos_categories_list">
+    <div style="display:flex; flex-direction:row;">
+        <div style="display:flex; flex-direction:column;">
+            <div style="display:flex; flex-direction:row; padding-top:10px; margin-left:15px;">
+            <img src="{% static 'images/logo.png' %}" width="70px" height="50px">
+            <h2 style="color:white;margin-top:auto; margin-bottom:auto; margin-left:15px;">Grocery</h2>
+            </div>
+            <a href="{% url 'promo_page' category|get_promo_id_from_category category|get_product_id_from_category%}" class="promos_categories_list__name">
+                <text >{{category|promo_category_name}} - {{category.name}}</text>
+            </a>
+            <div style="margin-left:15px; margin-top:10px;">
+                <a href="{% url 'promos_category_page' category.id %}"><button class="promos_categories_list__button">
+                    <i class="fa fa-smile-o" aria-hidden="true" style="margin-right:5px;"></i>CHECK NOW</button>
+                </a>
+            </div>
+        </div>
+            <img src="{{category|promo_category_photo}}" width="110px" height="100px" class="promos_categories_list__photo">
+    </div>
+</div>
+{% endfor %}
+<div style="width:74%;position:relative; left:170px; display:flex; flex-direction:row;">
+    <a href="{% url 'all_promo_categories' %}" style="margin-left:auto;"><button class="from_home_page_refer">See more</button></a>
+</div>
+{% endblock %}

@@ -3,14 +3,14 @@
 
 </style>
 
-<div class="ant-carousel-2" id="second">
+<div class="ant-carousel-2" id="second" style="z-index:1">
   <div class="ant-carousel-hider-2">
     <ul class="ant-carousel-list-2">
 
 {% for promo in promos %}
       <a href="#"><li class="ant-carousel-element-2"
                       style="overflow:hidden; height:200px; width: 367px;"><img src="{{promo.photo.url}}"
-                                                  width="400px" height="200px" style="margin:0px; border-radius:6px;">
+                                                  width="400px" height="200px" style="margin:0px; border-radius:6px;z-index:200 ">
 
       </li></a>
 {% endfor %}

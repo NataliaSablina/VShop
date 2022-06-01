@@ -22,6 +22,7 @@ class MyBCryptSHA256PasswordHasher(BCryptSHA256PasswordHasher):
     rounds = 15
 
 
+CART_SESSION_ID = 'cart'  # ключ по которому мы будем хранить данные корзины в сессии
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

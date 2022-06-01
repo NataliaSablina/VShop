@@ -1,0 +1,42 @@
+.help-support-div{
+    width: 90%;
+    height:50px;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background:#F8F9FA;
+    border: 1px solid #DDDDDD;
+    border-radius:4px;
+    margin-left:15px;
+    margin-top:5px;
+}
+.help-support-div:hover{
+    background:#DDDDDD;
+}
+.choices__references-button{
+    height:20px;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left:auto;
+    margin-right:15px;
+}
+.choices__references-button::before{
+    height: 20px;
+    width: 20px;
+    margin-right:auto;
+    border-radius: 50%;
+    font-style: normal;
+    content: "\203A";
+    color: red;
+    font-weight:600;
+    font-size:110%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: transparent;
+}

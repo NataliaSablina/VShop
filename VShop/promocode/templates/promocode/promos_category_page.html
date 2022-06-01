@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load promo_page_photo %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<div style="width:100%;
+            height:40px;
+            background:#DDDDDD;">
+    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
+        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
+            <text style="color:red">Home</text>
+            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
+            <text style="color:grey">{{extra_bar}}</text>
+        </div>
+    </div>
+
+</div>
+<div class="promo_category_page-main-div">
+    {% for product in products %}
+
+        <div class="promo_category_page-inner-div" style="display:flex;flex-direction:row;">
+            <div class="promo_category_page__div_photo_container-2">
+                <div class="promo_page__div_photo_container__promo-photo" style="text-align:center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;">
+                    <img src="{{product.photo.url}}" width="150px" height="140px" style="position:relative; margin:auto; top:20px; margin-bottom: 10px;">
+                </div>
+            </div>
+            <div class="promo_page__div_info_container">
+        <div style="display:flex;flex-direction:row;">
+            <div style="display:flex;flex-direction:column;">
+                <text style="color:red;font-size:150%;font-weight:600; margin-top:15px; margin-left:15px; margin-bottom:10px;">{{product.promo_code.name}} - {{product.name}}</text>
+                <text style="color:grey; margin-left:15px;">Available until {{product.promo_code.expire_date}}</text>
+            </div>
+            <div style="width:74%;position:relative; margin-left:auto; margin-right:15px; margin-top:15px; display:flex; flex-direction:row;">
+                <a href="{% url 'product_page' product.id %}" style="margin-left:auto;"><button class="promo_page__div_info_container__buy_now">Buy Now</button></a>
+            </div>
+        </div>
+        <div class="promo_page__div_info_container__highlights" style="margin-bottom:15px;">
+            <div class="promo_page__div_info_container__highlights__inner">
+                <h4>Highlights</h4>
+                <text>
+                    {{product.promo_code.highlight}}
+                </text>
+            </div>
+        </div>
+                <a href="{% url 'promo_page' product.promo_code.id product.id %}" style="position:relative; margin-bottom:10px; margin-left:10px; bottom:10px;"><button class="from_home_page_refer">See more</button></a>
+        </div>
+        </div>
+
+    {% endfor %}
+</div>
+{% endblock %}

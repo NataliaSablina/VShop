@@ -18,9 +18,12 @@
             </div>
         </a>
         <div class="border-button__top-bar-2__buttons">
-            <div class="button">
-                <img src="{% static 'images/reg_log.png' %}" width="25px" height="25px" >
-            </div>
+            {% if not request.user.is_authenticated %}
+                <div class="button">
+                    <img src="{% static 'images/reg_log.png' %}" width="25px" height="25px" >
+                </div>
+            {% endif %}
+
             {% if user.is_authenticated %}
                 <div class="border-button__user-photo">
                     {%if request.user.photo%}
@@ -31,8 +34,38 @@
                     {% endif %}
                 </div>
                 <div class="border-button__user-info">
-                    <a href="{% url 'user_page_my_account' request.user.email %}" class="border-button__user-name">{{user.username}}</a>
-                    <div class="border-button__user-name-acc"></div>
+                    <ul class="topmenu ">
+                        {% if request.user.is_authenticated%}
+                            <li><a href="{% url 'user_page_my_account' request.user.email %}"
+                            class="down nav-top__refer2 border-button__user-name" style="color:black;">
+                            <i class="top"></i>{{user.username}}</a>
+                            <ul class="submenu" style="list-style:none;">
+                                <li class="border-button__user-list" style="margin-top:5px;"><a href="#" >My Account</a></li>
+                                <li class="border-button__user-list"><a href="#" >Promos</a></li>
+                                <li class="border-button__user-list"><a href="">My Address</a></li>
+                                <li class="border-button__user-list"><a href="">Terms & Conditions</a></li>
+                                <li class="border-button__user-list"><a href="">Help & Support</a></li>
+                                <li class="border-button__user-list"><a href="">Help Ticket</a></li>
+                                <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Logout</a></li>
+                            </ul>
+                        </li>
+                        {% else %}
+                            <li><a href="#"
+                            class="down nav-top__refer2 border-button__user-name" style="color:black;">
+                            <i class="top"></i>{{user.username}}</a>
+                            <ul class="submenu" style="list-style:none;">
+                                <li class="border-button__user-list" style="margin-top:5px;"><a href="#" >My Account</a></li>
+                                <li class="border-button__user-list"><a href="#" >Promos</a></li>
+                                <li class="border-button__user-list"><a href="">My Address</a></li>
+                                <li class="border-button__user-list"><a href="">Terms & Conditions</a></li>
+                                <li class="border-button__user-list"><a href="">Help & Support</a></li>
+                                <li class="border-button__user-list"><a href="">Help Ticket</a></li>
+                                <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Logout</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+
+                    </ul>
                 </div>
 
             {% endif %}
@@ -49,3 +82,4 @@
         </div>
     </div>
 </div>
+

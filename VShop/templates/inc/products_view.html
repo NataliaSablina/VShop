@@ -1,10 +1,44 @@
+
+{%load promocodes%}
 <div class="products_view" >
     {% for product in products %}
-    <a href="{% url 'product_page' product.pk %}" class="view_cards_refer">
         <div class="products_view__product_card">
-            <img src="{{product.photo.url}}" width="180px" height="150px" style="margin-left: 15px; margin-top:15px;">
-            <text style="margin-left: 15px; margin-top:15px;">{{product.name}}</text>
+            {% if product.promo_code %}
+                    {%if product.promo_code.sailing_percent|promo_color:5%}
+                        <div class="product_view_promo" style="background: rgb(255 96 0 / 15%);">
+                            <a href="#" class="product_view_refer_promo" style="color: red; ">
+                            {{product.promo_code.sailing_percent}} %</a>
+                        </div>
+                    {%elif product.promo_code.sailing_percent|promo_color:10%}
+                        <div class="product_view_promo" style="background: rgb(40 167 69 / 15%);">
+                            <a href="#" class="product_view_refer_promo" style="color: #fbbf3b; ">
+                            {{product.promo_code.sailing_percent}} %</a>
+                        </div>
+                    {%elif product.promo_code.sailing_percent|promo_color:20%}
+                        <div class="product_view_promo" style="background:rgb(255 193 7 / 15%);">
+                            <a href="#" class="product_view_refer_promo" style="color: #eab002; ">
+                            {{product.promo_code.sailing_percent}} %</a>
+                        </div>
+                    {%elif product.promo_code.sailing_percent|promo_color:50%}
+                        <div class="product_view_promo" style="background:brown;">
+                            <a href="#" class="product_view_refer_promo" style="color: purple; ">
+                            {{product.promo_code.sailing_percent}} %</a>
+                        </div>
+                    {%elif product.promo_code.sailing_percent|promo_color:100%}
+                        <div class="product_view_promo" style="background:#cc99ff;">
+                            <a href="#" class="product_view_refer_promo" style="color: purple; ">
+                            {{product.promo_code.sailing_percent}} %</a>
+                        </div>
+                    {%endif%}
+
+
+            {% endif %}
+            <a href="{% url 'product_page' product.pk %}" class="view_cards_refer" style="margin-left: auto; margin-right: auto;
+            margin-top:15px; z-index: 120; position: relative; overflow: hidden;">
+                <img src="{{product.photo.url}}" width="180px" height="150px" style="z-index:120; position:relative;"></a>
+            <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="font-weight: 800; font-size: 20px; margin-top: 10px; margin-left: 15px; margin-bottom: 15px;">{{product.name}}</text></a>
+            <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="color: red; font-weight: 800; font-size: 20px; margin-left: 15px;">{{product.price}}$/kg</text></a>
         </div>
-    </a>
+
 {% endfor %}
 </div>

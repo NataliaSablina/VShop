@@ -74,17 +74,18 @@
   border: 1 px solid gray;
   transition: right 0s .25s;//2ой параметр (через сколько начнет исчезать фон после нажатия на кнопку закрытия окна)
   //1ый параметр(сколько по времени будет счезать фон)
-  z-index: 120;
+  z-index:auto;
 
 }
 
 .gray.active {
     right: 0;
+    z-index:149;
     transition: right 0s linear 0s;//2ой параметр (через сколько начнет появляться фон после нажатия на кнопку запуска окна)
-//1ый параметр(сколько по времени будет появляться фон)
+    //1ый параметр(сколько по времени будет появляться фон)
+
 }
-  }
-}
+
 .close-gray-active{
   transition: right 0s linear 0s;
 
@@ -132,12 +133,12 @@
 }
 */
 .auth-form{
-    position: relative;
+    position:relative;
     display: flex;
     flex-direction: column;
     right: -100%;
     margin-left:30px;
-    top: -825px;
+    top: -620px;
     /*margin:20px auto 20px auto;*/
 }
 .pb{
@@ -152,10 +153,10 @@
 
 .special{
    height: 30px;
-    width: 300px;
+    width: 95%;
     border: 1px solid grey;
     border-radius: 4px;
-    margin-bottom:15px;
+    margin-bottom:5px;
 }
 
 .auth-form > input: focus{
@@ -165,17 +166,17 @@
     outline: none;
     border: 1px solid orange; /* Рамка при получении фокуса */
     height: 30px;
-    width: 300px;
+    width: 95%;
     border-radius: 4px;
-    margin-bottom:15px;
+    margin-bottom:5px;
 }
 
 .text {
     border: 1px solid black;
     height: 30px;
-    width: 300px;
+    width: 95%;
     border-radius: 4px;
-    margin-bottom:15px;
+    margin-bottom:5px;
    }
 
 .menu_mobile__reg-auth{
@@ -303,6 +304,23 @@
     border-top: 1px solid grey;
     border-right: 1px solid grey;
 }
+
+.menu_mobile__help-close__close-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:50%;
+    height:60px;
+    text-align: center;
+    font-weight:500;
+    font-size:110%;
+    text-decoration: none;
+    color:black;
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+    border-right: 1px solid grey;
+}
+
 .menu_mobile__help-close__help{
 
     display: flex;
@@ -326,6 +344,25 @@
     text-align: center;
     text-decoration: none;
     color:black;
-    margin-bottom:60px;
+    margin-bottom:15px;
+}
+
+.form__activate-account{
+    margin-right:auto;
+    text-decoration:none;
+    color:black;
+    margin-bottom:30px;
+    height:30px; width: 85%;
+    background: white;
+    border:1px solid black;
+    border-radius:4px;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.form__activate-account:hover{
+    background:#DDDDDD;
 }
 

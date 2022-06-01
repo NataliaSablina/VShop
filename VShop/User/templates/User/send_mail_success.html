@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<div class="activate_deactivated_account">
+    <div class="activate_deactivated_account__margin">
+        <text style="margin-top:15px;font-size:110%;">Your request sent successfully.</text>
+        <text style="margin-bottom:15px;font-size:110%;">Wait the message on your mail.</text>
+        <div style="display:flex;flex-direction:row; margin-left:auto; margin-right:auto;">
+            <img src="{% static 'images/hamburger.png'%}" width="170px" height="160px" style="margin-left:5px;margin-bottom:10px;margin-right:5px;">
+            <img src="{% static 'images/hamburger.png'%}" width="170px" height="160px" style="margin-left:5px; margin-bottom:10px; margin-right:5px;">
+            <img src="{% static 'images/hamburger.png'%}" width="170px" height="160px" style="margin-left:5px; margin-bottom:10px; margin-right:5px;">
+        </div>
+
+    </div>
+</div>
+{% endblock %}

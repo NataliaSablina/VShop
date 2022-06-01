@@ -26,9 +26,10 @@ class Product(models.Model):
     price = models.FloatField(verbose_name='Price')
     creation = models.DateTimeField(auto_now=False, auto_now_add=True, null=True, verbose_name='Creation')
     changing = models.DateTimeField(auto_now=True, auto_now_add=False, null=True, verbose_name='Changing')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Category')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name='Category',
+                                 related_name="product_category")
     promo_code = models.ForeignKey('promocode.PromoCode', on_delete=models.SET_NULL, verbose_name='Promo Code',
-                                   null=True, blank=True)
+                                   null=True, blank=True, related_name="product_promo")
     review = models.IntegerField(verbose_name="Views", null=True, blank=True)
     product_details = models.TextField(verbose_name='Product Details')
     delivery = models.ForeignKey('DeliveryType', on_delete=models.SET_DEFAULT, default='Free')
