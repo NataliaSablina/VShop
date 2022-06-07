@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from User.views import HomePageView
+from mainpage.views import HomePageView
 from django.conf.urls.static import static
 from . import settings
 
@@ -27,5 +27,6 @@ urlpatterns = [
     path('categories/', include('Categories.urls')),
     path('cart/', include('cart.urls')),
     path('promocode/', include('promocode.urls')),
+    path('mainpage/', include('mainpage.urls')),
     # path('country/', include('country.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

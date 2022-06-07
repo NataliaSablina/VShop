@@ -4,62 +4,28 @@
 {%load products_number %}
 
 {% block content %}
-<div style="width:100%;
-            height:40px;
-            background:#DDDDDD;">
-    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
-        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
-            <text style="color:red">Home</text>
-            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
-            <text style="color:grey">{{extra_bar}}</text>
-        </div>
-    </div>
-
-</div>
 {% for category in categories %}
-    <h2 style="margin-left:200px;">{{category}}</h2>
-    <div class="products_view" >
+<h2 class="category_product_listing__category-name">{{category}}</h2>
+<div class="products_view">
     {% for product in category.product_category.all|products_number %}
-        <div class="products_view__product_card">
-            {% if product.promo_code %}
-                    {%if product.promo_code.sailing_percent|promo_color:5%}
-                        <div class="product_view_promo" style="background: rgb(255 96 0 / 15%);">
-                            <a href="#" class="product_view_refer_promo" style="color: red; ">
-                            {{product.promo_code.sailing_percent}} %</a>
-                        </div>
-                    {%elif product.promo_code.sailing_percent|promo_color:10%}
-                        <div class="product_view_promo" style="background: rgb(40 167 69 / 15%);">
-                            <a href="#" class="product_view_refer_promo" style="color: #fbbf3b; ">
-                            {{product.promo_code.sailing_percent}} %</a>
-                        </div>
-                    {%elif product.promo_code.sailing_percent|promo_color:20%}
-                        <div class="product_view_promo" style="background:rgb(255 193 7 / 15%);">
-                            <a href="#" class="product_view_refer_promo" style="color: #eab002; ">
-                            {{product.promo_code.sailing_percent}} %</a>
-                        </div>
-                    {%elif product.promo_code.sailing_percent|promo_color:50%}
-                        <div class="product_view_promo" style="background:brown;">
-                            <a href="#" class="product_view_refer_promo" style="color: purple; ">
-                            {{product.promo_code.sailing_percent}} %</a>
-                        </div>
-                    {%elif product.promo_code.sailing_percent|promo_color:100%}
-                        <div class="product_view_promo" style="background:#cc99ff;">
-                            <a href="#" class="product_view_refer_promo" style="color: purple; ">
-                            {{product.promo_code.sailing_percent}} %</a>
-                        </div>
-                    {%endif%}
-            {% endif %}
-            <a href="{% url 'product_page' product.pk %}" class="view_cards_refer" style="margin-left: auto; margin-right: auto;
-            margin-top:15px; z-index: 120; position: relative; overflow: hidden;">
-                <img src="{{product.photo.url}}" width="180px" height="150px" ></a>
-            <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="font-weight: 800; font-size: 20px; margin-top: 10px; margin-left: 15px; margin-bottom: 15px;">{{product.name}}</text></a>
-            <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="color: red; font-weight: 800; font-size: 20px; margin-left: 15px;">{{product.price}}$/kg</text></a>
-        </div>
-
-    {% endfor %}
+    <div class="products_view__product_card">
+        {% include 'inc/promo_color.html' %}
+        <a href="{% url 'product_page' product.pk %}" class="view_cards_refer refer_product_page-1">
+            <img src="{{product.photo.url}}" width="180px" height="150px">
+        </a>
+        <a href="{% url 'product_page' product.pk %}" class="view_cards_refer">
+            <text class="refer_product_page-2">{{product.name}}</text>
+        </a>
+        <a href="{% url 'product_page' product.pk %}" class="view_cards_refer">
+            <text class="refer_product_page-3">{{product.price}}$/kg</text>
+        </a>
     </div>
-<div style="width:74%; margin: 20px auto auto; display:flex; flex-direction:row;">
-    <a href="{% url 'category_product_listing' category.pk%}" style="margin-left:auto;"><button class="from_home_page_refer" style="margin-top:0px;">See more</button></a>
+    {% endfor %}
+</div>
+<div class="category_product_listing_button">
+    <a href="{% url 'category_product_listing' category.pk%}" class="category_product_listing_button__refer">
+        <button class="from_home_page_refer category_product_listing_button__refer__button">See more</button>
+    </a>
 </div>
 {% endfor %}
 {% endblock %}

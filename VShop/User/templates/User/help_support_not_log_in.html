@@ -5,62 +5,52 @@
 Vegishop
 {% endblock %}
 {% block content %}
-<div style="width:100%;
-            height:40px;
-            background:#DDDDDD;">
-    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
-        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
-            <text style="color:red">Home</text>
-            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
-            <text style="color:grey">{{extra_bar}}</text>
-        </div>
-    </div>
 
-</div>
-<div class="user-page__containers__information" style="height:500px; margin-left:auto; margin-right:auto; margin-bottom:15px;">
-      <h1 style="margin-left:15px;">Help & Support</h1>
-<div class="help-support-div">
-     <a href="{% url 'check_status_of_my_order_not_log_in' %}" style="text-decoration: none; color:black">
-         <text style="margin-left:15px;">How to check status of my order</text>
-     </a>
-    <div class="choices__references-button"></div>
-</div>
-<div class="help-support-div">
-     <a href="{% url 'change_items_of_my_order_not_log_in' %}" style="text-decoration: none; color:black">
-         <text style="margin-left:15px;">Change items in my order</text>
-     </a>
-    <div class="choices__references-button"></div>
-</div>
-<div class="help-support-div">
-     <a href="{% url 'cancel_my_order_not_log_in' %}" style="text-decoration: none; color:black">
-         <text style="margin-left:15px;">Cancel my order</text>
-     </a>
-    <div class="choices__references-button"></div>
-</div>
-<div class="help-support-div">
-     <a href="{% url 'change_my_delivery_address_not_log_in' %}" style="text-decoration: none; color:black">
-         <text style="margin-left:15px;">Change my delivery address</text>
-     </a>
-    <div class="choices__references-button"></div>
-</div>
-<div class="help-support-div">
-     <a href="{% url 'help_with_a_pick-up_order_not_log_in' %}" style="text-decoration: none; color:black">
-         <text style="margin-left:15px;">Help with a pick-up order</text>
-     </a>
-    <div class="choices__references-button"></div>
-</div>
-<div class="help-support-div">
-     <a href="{% url 'my_delivery_person_made_me_unsafe_not_log_in' %}" style="text-decoration: none; color:black">
-         <text style="margin-left:15px;">My delivery person made me unsafe</text>
-     </a>
-    <div class="choices__references-button"></div>
-</div>
-<div class="help-support-div" style="margin-bottom:15px;">
-     <a href="{% url 'refunding_payment_not_log_in' %}" style="text-decoration: none; color:black; ">
-         <text style="margin-left:15px;">Refunding Payment</text>
-     </a>
-    <div class="choices__references-button"></div>
-</div>
+<div class="user-page__containers__information"
+     style="height:500px; margin-left:auto; margin-right:auto; margin-bottom:15px;">
+    <h1 style="margin-left:15px;">Help & Support</h1>
+    <div class="help-support-div">
+        <a href="{% url 'check_status_of_my_order_not_log_in' %}" style="text-decoration: none; color:black">
+            <text style="margin-left:15px;">How to check status of my order</text>
+        </a>
+        <div class="choices__references-button"></div>
+    </div>
+    <div class="help-support-div">
+        <a href="{% url 'change_items_of_my_order_not_log_in' %}" style="text-decoration: none; color:black">
+            <text style="margin-left:15px;">Change items in my order</text>
+        </a>
+        <div class="choices__references-button"></div>
+    </div>
+    <div class="help-support-div">
+        <a href="{% url 'cancel_my_order_not_log_in' %}" style="text-decoration: none; color:black">
+            <text style="margin-left:15px;">Cancel my order</text>
+        </a>
+        <div class="choices__references-button"></div>
+    </div>
+    <div class="help-support-div">
+        <a href="{% url 'change_my_delivery_address_not_log_in' %}" style="text-decoration: none; color:black">
+            <text style="margin-left:15px;">Change my delivery address</text>
+        </a>
+        <div class="choices__references-button"></div>
+    </div>
+    <div class="help-support-div">
+        <a href="{% url 'help_with_a_pick-up_order_not_log_in' %}" style="text-decoration: none; color:black">
+            <text style="margin-left:15px;">Help with a pick-up order</text>
+        </a>
+        <div class="choices__references-button"></div>
+    </div>
+    <div class="help-support-div">
+        <a href="{% url 'my_delivery_person_made_me_unsafe_not_log_in' %}" style="text-decoration: none; color:black">
+            <text style="margin-left:15px;">My delivery person made me unsafe</text>
+        </a>
+        <div class="choices__references-button"></div>
+    </div>
+    <div class="help-support-div" style="margin-bottom:15px;">
+        <a href="{% url 'refunding_payment_not_log_in' %}" style="text-decoration: none; color:black; ">
+            <text style="margin-left:15px;">Refunding Payment</text>
+        </a>
+        <div class="choices__references-button"></div>
+    </div>
 
 </div>
 

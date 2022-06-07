@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'country',
     'promocode',
     'cart',
+    'mainpage',
 ]
 
 MIDDLEWARE = [

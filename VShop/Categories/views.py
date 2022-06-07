@@ -2,10 +2,8 @@ from django.contrib.auth import authenticate, login
 from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.views import View
-
-from User.forms import UserRegistrationForm, UserAuthenticationForm
-from country.models import Country, City
 from Categories.models import Product, Category
+from User.forms import UserRegistrationForm, UserAuthenticationForm
 
 
 class ProductView(View):
@@ -16,12 +14,15 @@ class ProductView(View):
         reg_form = UserRegistrationForm()
         auth_form = UserAuthenticationForm()
         extra_bar = "Products"
-        return render(request, 'Categories/product_page.html', {'product': product,
-                                                                'category':category,
-                                                                'products':products,
-                                                                'extra_bar': extra_bar,
-                                                                "reg_form":reg_form,
-                                                                "auth_form":auth_form,})
+        context = {
+            'product': product,
+            'category': category,
+            'products': products,
+            'extra_bar': extra_bar,
+            "reg_form": reg_form,
+            "auth_form": auth_form,
+        }
+        return render(request, 'Categories/product_page.html', context)
 
     def post(self, request):
         reg_form = UserRegistrationForm(request.POST)
@@ -125,4 +126,3 @@ class CategoryProductsView(View):
                 return redirect('user_page_my_account', user.email)
         else:
             print(auth_form.errors)
-

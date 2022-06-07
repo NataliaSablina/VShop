@@ -6,41 +6,34 @@
 Vegishop
 {% endblock %}
 {% block content %}
-<div style="width:100%;
-            height:40px;
-            background:#DDDDDD;">
-    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
-        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
-            <text style="color:red">Home</text>
-            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
-            <text style="color:grey">{{extra_bar}}</text>
-        </div>
-    </div>
 
-</div>
 <div class="all_promo_categories">
     <div style="padding-top:10px; padding-bottom:10px;padding-left:20px;">
         {% for category in categories %}
-<div class="promos_categories_list" style="height: 200px;">
-    <div style="display:flex; flex-direction:row;">
-        <div style="display:flex; flex-direction:column;">
-            <div style="display:flex; flex-direction:row; padding-top:10px; margin-left:15px;">
-            <img src="{% static 'images/logo.png' %}" width="70px" height="50px">
-            <h2 style="color:white;margin-top:auto; margin-bottom:auto; margin-left:15px;">Grocery</h2>
-            </div>
-            <a href="{% url 'promo_page' category|get_promo_id_from_category category|get_product_id_from_category %}" class="promos_categories_list__name">
-                <text >{{category|promo_category_name}} - {{category.name}}</text>
-            </a>
-            <div style="margin-left:15px; margin-top:30px;">
-                <a href="{% url 'promos_category_page' category.id %}"><button class="promos_categories_list__button">
-                    <i class="fa fa-smile-o" aria-hidden="true" style="margin-right:5px;"></i>CHECK NOW</button>
-                </a>
+        <div class="promos_categories_list" style="height: 200px;">
+            <div style="display:flex; flex-direction:row;">
+                <div style="display:flex; flex-direction:column;">
+                    <div style="display:flex; flex-direction:row; padding-top:10px; margin-left:15px;">
+                        <img src="{% static 'images/logo.png' %}" width="70px" height="50px">
+                        <h2 style="color:white;margin-top:auto; margin-bottom:auto; margin-left:15px;">Grocery</h2>
+                    </div>
+                    <a href="{% url 'promo_page' category|get_promo_id_from_category category|get_product_id_from_category %}"
+                       class="promos_categories_list__name">
+                        <text>{{category|promo_category_name}} - {{category.name}}</text>
+                    </a>
+                    <div style="margin-left:15px; margin-top:30px;">
+                        <a href="{% url 'promos_category_page' category.id %}">
+                            <button class="promos_categories_list__button">
+                                <i class="fa fa-smile-o" aria-hidden="true" style="margin-right:5px;"></i>CHECK NOW
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <img src="{{category|promo_category_photo}}" width="150px" height="140px"
+                     class="promos_categories_list__photo">
             </div>
         </div>
-            <img src="{{category|promo_category_photo}}" width="150px" height="140px" class="promos_categories_list__photo">
-    </div>
-</div>
-{% endfor %}
+        {% endfor %}
     </div>
 
 </div>

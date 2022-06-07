@@ -5,18 +5,7 @@
 Vegishop
 {% endblock %}
 {% block content %}
-<div style="width:100%;
-            height:40px;
-            background:#DDDDDD;">
-    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
-        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
-            <text style="color:red">Home</text>
-            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
-            <text style="color:grey">{{extra_bar}}</text>
-        </div>
-    </div>
 
-</div>
 <div class="user-page">
 
     <div class="user-page__containers">
@@ -25,10 +14,10 @@ Vegishop
             <div class="containers__choices__user-info">
                 <div class="user-info__user-photo">
                     {%if request.user.photo%}
-                        <img src="{{request.user.photo.url}}" width="90px" height="90px">
+                    <img src="{{request.user.photo.url}}" width="90px" height="90px">
                     {% endif %}
                     {%if not request.user.photo%}
-                        <img src="{% static 'images/user.png' %}" width="90px" height="90px">
+                    <img src="{% static 'images/user.png' %}" width="90px" height="90px">
                     {% endif %}
                 </div>
                 <div class="user-info__user__name">{{request.user.username}}</div>
@@ -37,7 +26,7 @@ Vegishop
             <div class="choices__references">
                 <img src="{% static 'images/user-icon.png' %}" width="20px" height="20px" class="icon-1">
                 <a href="{% url 'user_page' request.user.email %}" class="choices__references__my-account"
-                   style="text-decoration: none;" >My Account </a>
+                   style="text-decoration: none;">My Account </a>
                 <div class="choices__references__my-account-button"></div>
             </div>
             <div class="choices__references">
@@ -72,7 +61,7 @@ Vegishop
             </div>
         </div>
         <div class="user-page__containers__information">
-        {% block change_forms %}F{% endblock %}
+            {% block change_forms %}F{% endblock %}
         </div>
     </div>
 </div>

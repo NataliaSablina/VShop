@@ -8,7 +8,7 @@
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Products</a>
       <ul class="submenu">
         <li class="border-button__user-list" style="margin-top:5px;"><a href="{% url 'categories_product_listing' %}">Listing</a></li>
-        <li class="border-button__user-list" style="border-bottom: 1px solid #f0f2f5; padding-bottom: 15px"><a href="#" >Detail</a></li>
+        <li class="border-button__user-list" style="border-bottom: 1px solid #f0f2f5; padding-bottom: 15px"><a href="{% url 'product_page' 1 %}" >Detail</a></li>
         <li class="border-button__user-list" style="padding-top: 15px;"><a href="#" >Trending</a></li>
         <li class="border-button__user-list"><a href="">Recommended</a></li>
         <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Most Popular</a></li>
@@ -32,29 +32,43 @@
     </li>
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Extra Pages</a>
       <ul class="submenu">
-        <li class="border-button__user-list" style="margin-top:5px;"><a href="">Verification</a></li>
-        <li class="border-button__user-list"><a href="">Promos</a></li>
-        <li class="border-button__user-list"><a href="">Promo Details</a></li>
-        <li class="border-button__user-list"><a href="{% url 'terms_privacy_not_log_in' %}">Terms & Conditions</a></li>
-        <li class="border-button__user-list"><a href="">Privacy</a></li>
-        <li class="border-button__user-list"><a href="">Conditions</a></li>
-        <li class="border-button__user-list"><a href="">Help & Support</a></li>
         {% if request.user.is_authenticated %}
-                <li class="border-button__user-list"><a href="{% url 'ticket' %}">Help Ticket</a></li>
-
+          <li class="border-button__user-list" style="margin-top:5px;"><a href="">Verification</a></li>
+          <li class="border-button__user-list"><a href="{% url 'available_promos' %}">Promos</a></li>
+          <li class="border-button__user-list"><a href="{% url 'all_promo_categories' %}">Promo Details</a></li>
+          <li class="border-button__user-list"><a href="{% url 'terms_privacy_not_log_in' %}">Terms & Conditions</a></li>
+          <li class="border-button__user-list"><a href="{% url 'privacy' %}">Privacy</a></li>
+          <li class="border-button__user-list"><a href="{% url 'terms_conditions' %}">Conditions</a></li>
+          <li class="border-button__user-list"><a href="{% url 'help_support' %}">Help & Support</a></li>
+          <li class="border-button__user-list"><a href="{% url 'ticket' %}">Help Ticket</a></li>
+          <li class="border-button__user-list"><a href="{% url 'refunding_payment' %}">Refund Payment</a></li>
+          <li class="border-button__user-list"><a href="{% url 'faq' %}">FAQ</a></li>
+          <li class="border-button__user-list"><a href="{% url 'sign_in_page' %}">Sign In</a></li>
+          <li class="border-button__user-list"><a href="{% url 'sign_up_page' %}">Sign Up</a></li>
+          <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Search</a></li>
         {% else %}
-                <li class="border-button__user-list"><a href="{% url 'ticket_not_log_in' %}">Help Ticket</a></li>
-
+          <li class="border-button__user-list" style="margin-top:5px;"><a href="">Verification</a></li>
+          <li class="border-button__user-list"><a href="{% url 'all_promo_categories' %}">Promos</a></li>
+          <li class="border-button__user-list"><a href="{% url 'terms_privacy_not_log_in' %}">Terms & Conditions</a></li>
+          <li class="border-button__user-list"><a href="{% url 'privacy_not_log_in' %}">Privacy</a></li>
+          <li class="border-button__user-list"><a href="{% url 'terms_conditions_not_log_in' %}">Conditions</a></li>
+          <li class="border-button__user-list"><a href="{% url 'help_support_not_log_in' %}">Help & Support</a></li>
+          <li class="border-button__user-list"><a href="{% url 'ticket_not_log_in' %}">Help Ticket</a></li>
+          <li class="border-button__user-list"><a href="{% url 'refunding_payment_not_log_in' %}">Refund Payment</a></li>
+          <li class="border-button__user-list"><a href="{% url 'faq_not_log_in' %}">FAQ</a></li>
+          <li class="border-button__user-list"><a href="{% url 'sign_in_page' %}">Sign In</a></li>
+          <li class="border-button__user-list"><a href="{% url 'sign_up_page' %}">Sign Up</a></li>
+          <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Search</a></li>
         {% endif %}
-        <li class="border-button__user-list"><a href="">Refund Payment</a></li>
-        <li class="border-button__user-list"><a href="">FAQ</a></li>
-        <li class="border-button__user-list"><a href="{% url 'sign_in_page' %}">Sign In</a></li>
-        <li class="border-button__user-list"><a href="{% url 'sign_up_page' %}">Sign Up</a></li>
-        <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Search</a></li>
+
       </ul>
     </li>
 
     <li class="nav-top__dock" style="right: -430px;"><a href="#" class="nav-top__refer2 tr">Trending</a></li>
-    <li class="nav-top__dock-10" style="right: -420px;"><a href="#" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a></li>
+    {% if request.user.is_authenticated %}
+        <li class="nav-top__dock-10" style="right: -420px;"><a href="{% url 'available_promos' %}" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a></li>
+    {% else %}
+        <li class="nav-top__dock-10" style="right: -420px;"><a href="{% url 'all_promo_categories' %}" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a></li>
+    {% endif %}
   </ul>
 </nav>

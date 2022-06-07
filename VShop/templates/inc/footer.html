@@ -18,8 +18,8 @@
     <div class=" footer-inner ">
         <div class="refer-column">
             <span class="refer-column__type2">Products</span>
-            <a href="#" class=" footer-inner__innerref f2">Listing</a>
-            <a href="#" class=" footer-inner__innerref f1">Detail</a>
+            <a href="{% url 'categories_product_listing' %}" class=" footer-inner__innerref f2">Listing</a>
+            <a href="{% url 'product_page' 1  %}" class=" footer-inner__innerref f1">Detail</a>
             <a href="#" class=" footer-inner__innerref f1" >Trending</a>
             <a href="#" class=" footer-inner__innerref f1" >Recommended</a>
             <a href="#" class=" footer-inner__innerref f1" >Most Popular</a>
@@ -45,30 +45,52 @@
             <span class="refer-column__type2">My Account</span>
             {% if user.is_authenticated %}
                 <a href="{% url 'user_page_my_account' request.user.email %}" class="footer-inner__innerref f2">My Account</a>
+                <a href="{% url 'available_promos' %}" class="footer-inner__innerref f1"> Promos</a>
+                <a href="{% url 'address' %}" class="footer-inner__innerref f1">My Address</a>
+                <a href="{% url 'terms_conditions' %}" class="footer-inner__innerref f1">Terms &amp; Conditions</a>
+                <a href="{% url 'help_support' %}" class="footer-inner__innerref f1">Help &amp; Support</a>
+                <a href="{% url 'ticket' %}" class="footer-inner__innerref f1">Help Ticket</a>
+                <a href="{%url 'logout'%}" class="footer-inner__innerref f1">Log out</a>
             {% else %}
-                <a href="#" class="footer-inner__innerref f2">My Account</a>
+                <a href="{% url 'home_page'  %}" class="footer-inner__innerref f2">My Account</a>
+                <a href="{% url 'all_promo_categories' %}" class="footer-inner__innerref f1"> Promos</a>
+                <a href="{% url 'address' %}" class="footer-inner__innerref f1">My Address</a>
+                <a href="{% url 'terms_conditions_not_log_in' %}" class="footer-inner__innerref f1">Terms &amp; Conditions</a>
+                <a href="{% url 'help_support_not_log_in' %}" class="footer-inner__innerref f1">Help &amp; Support</a>
+                <a href="{% url 'ticket_not_log_in' %}" class="footer-inner__innerref f1">Help Ticket</a>
+                <a href="{%url 'logout'%}" class="footer-inner__innerref f1">Log out</a>
             {% endif %}
-            <a href="{% url 'available_promos' %}" class="footer-inner__innerref f1"> Promos</a>
-            <a href="{% url 'address' %}" class="footer-inner__innerref f1">My Address</a>
-            <a href="{% url 'terms_conditions' %}" class="footer-inner__innerref f1">Terms &amp; Conditions</a>
-            <a href="{% url 'help_support' %}" class="footer-inner__innerref f1">Help &amp; Support</a>
-            <a href="{% url 'ticket' %}" class="footer-inner__innerref f1">Help Ticket</a>
-            <a href="{%url 'logout'%}" class="footer-inner__innerref f1">Log out</a>
+
         </div>
         <div class="refer-column">
             <span class="refer-column__type2">Extra Pages</span>
-            <a href="#" class="footer-inner__innerref f2">Promo Details</a>
-            <a href="#" class="footer-inner__innerref f1">Conditions</a>
-            <a href="#" class="footer-inner__innerref f1">Help Support</a>
-            <a href="#" class="footer-inner__innerref f1">Refund Payment</a>
-            <a href="#" class="footer-inner__innerref f1">FAQ</a>
-            <a href="#" class="footer-inner__innerref f1">Sign In</a>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'promos_category_page' 1 %}" class="footer-inner__innerref f2">Promo Details</a>
+                <a href="{% url 'terms_conditions' %}" class="footer-inner__innerref f1">Conditions</a>
+                <a href="{% url 'help_support' %}" class="footer-inner__innerref f1">Help Support</a>
+                <a href="{% url 'refunding_payment_not_log_in' %}" class="footer-inner__innerref f1">Refund Payment</a>
+                <a href="{% url 'faq' %}" class="footer-inner__innerref f1">FAQ</a>
+                <a href="{% url 'sign_in_page' %}" class="footer-inner__innerref f1">Sign In</a>
+            {% else %}
+                <a href="{% url 'promos_category_page' 1 %}" class="footer-inner__innerref f2">Promo Details</a>
+                <a href="{% url 'terms_conditions_not_log_in' %}" class="footer-inner__innerref f1">Conditions</a>
+                <a href="{% url 'help_support_not_log_in' %}" class="footer-inner__innerref f1">Help Support</a>
+                <a href="{% url 'refunding_payment_not_log_in' %}" class="footer-inner__innerref f1">Refund Payment</a>
+                <a href="{% url 'faq_not_log_in' %}" class="footer-inner__innerref f1">FAQ</a>
+                <a href="{% url 'sign_in_page' %}" class="footer-inner__innerref f1">Sign In</a>
+            {% endif %}
+
         </div>
     </div>
     <div class="footer-inner" >
-        <a href="#" class="footer-inner__innerref footer-label"><i class="autor"></i>2021 Vegishop</a>
-        <a href="#" class="footer-inner__innerref footer-label">Privacy</a>
-        <a href="#" class="footer-inner__innerref footer-label" >Terms &amp; Conditions</a>
+        <a href="{% url 'home_page' %}" class="footer-inner__innerref footer-label"><i class="autor"></i>2021 Vegishop</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'privacy' %}" class="footer-inner__innerref footer-label">Privacy</a>
+            <a href="{% url 'terms_conditions' %}" class="footer-inner__innerref footer-label" >Terms &amp; Conditions</a>
+        {% else %}
+            <a href="{% url 'privacy_not_log_in' %}" class="footer-inner__innerref footer-label">Privacy</a>
+            <a href="{% url 'terms_conditions_not_log_in' %}" class="footer-inner__innerref footer-label" >Terms &amp; Conditions</a>
+        {% endif %}
         <a href="#" class="footer-label-2"><img src="{% static 'images/appstore.png' %}" width="105px" height="35px"></a>
         <a href="#" class="footer-label-3"><img src="{% static 'images/playmarket.png' %}" width="105px" height="35px"></a>
     </div>

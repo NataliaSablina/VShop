@@ -4,9 +4,14 @@
     <ul class="ant-carousel-list">
 
 {% for category in categories %}
-      <li class="ant-carousel-element"><img src="{{category.photo.url}}" width="60px" height="60px" style="margin-top:10px">
-        <p style="margin-top:0px;">{{category.name}}</p>
-      </li>
+        {% if category.product_category.first %}
+            <a href="{% url 'category_product_listing' category.id %}" style="height:auto;text-decoration:none;color:black; height: 120px;
+                background:white;border-radius:6px; margin-left:5px; margin-right:5px;">
+                <li class="ant-carousel-element"><img src="{{category.photo.url}}" width="60px" height="60px" style="margin-top:10px">
+                    <p style="margin-top:0px;">{{category.name}}</p>
+                </li>
+            </a>
+        {% endif %}
 {% endfor %}
       </ul>
   </div>

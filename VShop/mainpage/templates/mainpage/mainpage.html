@@ -4,21 +4,17 @@
 Vegishop
 {% endblock %}
 {% block content %}
-
 {% include 'inc/category_skroll.html' %}
-
 <div style="width:74%; margin: 20px auto auto; display:flex; flex-direction:row; margin-bottom:0px;">
     <h2 style="color:black;">Promos for you</h2>
-    <a href="" style="margin-left:auto;">
+    <a href="{% url 'categories_product_listing' %}" style="margin-left:auto;">
         <button class="from_home_page_refer">See more</button>
     </a>
 </div>
-
 {% include 'inc/promos.html' %}
-
 <div style="width:74%; margin: 20px auto auto; display:flex; flex-direction:row;">
     <h2 style="color:black;">Pick's Today</h2>
-    <a href="" style="margin-left:auto;">
+    <a href="{% url 'all_promo_categories' %}" style="margin-left:auto;">
         <button class="from_home_page_refer">See more</button>
     </a>
 </div>

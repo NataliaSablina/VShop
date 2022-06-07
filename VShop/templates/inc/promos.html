@@ -1,4 +1,5 @@
 {% load static %}
+{% load promo_page_photo %}
 <style>
 
 </style>
@@ -8,7 +9,7 @@
     <ul class="ant-carousel-list-2">
 
 {% for promo in promos %}
-      <a href="#"><li class="ant-carousel-element-2"
+      <a href="{% url 'promo_page' promo.pk promo|promo_product_id %}"><li class="ant-carousel-element-2"
                       style="overflow:hidden; height:200px; width: 367px;"><img src="{{promo.photo.url}}"
                                                   width="400px" height="200px" style="margin:0px; border-radius:6px;z-index:200 ">
 

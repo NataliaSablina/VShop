@@ -116,3 +116,30 @@
     margin-left:auto;
 }
 
+.product_page__product_card__photo__buttons__cart__inner-div-1{
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left:auto;
+}
+
+.product_page__product_card__photo__buttons__cart__inner-div-2{
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-right:auto;
+}
+
+.product_page__add-to-cart{
+    font-style:normal;
+    font-size: 120%;
+}
+
+.product_page__product_card__photo__style{
+    margin:auto;
+}
+
+.product_page-buy-now{
+    margin-right:5px;
+}
+
+
+

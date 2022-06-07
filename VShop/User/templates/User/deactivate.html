@@ -9,8 +9,8 @@
 <text style="margin-left:15px; margin-bottom:20px; color:grey;">{{request.user.phone_number}}</text>
 <form method="post" name="f1" class="change_user_form">
     {%csrf_token%}
-        <label style="margin-top:20px;">Password:</label>
-        {{user_deactivate_form.password}}
+    <label style="margin-top:20px;">Password:</label>
+    {{user_deactivate_form.password}}
     <button type="submit" class="user_change_button">CONFIRM DEACTIVATE</button>
 </form>
 <h4 style="margin-left:15px; margin-bottom:0px;">When you deactivate the account</h4>
@@ -24,7 +24,8 @@
 <p class="user_page_deactivate_text">Simply contact us to re-activate your account.
     Your account data will be fully restored - default settings will be applied and
     you will be subscribed to receive promotional emails from Grocery.</p>
-<p class="user_page_deactivate_text">Grocery retains your account data for you to conveniently start off from where you left,
+<p class="user_page_deactivate_text">Grocery retains your account data for you to conveniently start off from where you
+    left,
     if you decide to reactivate your account.</p>
 {% endblock %}
 

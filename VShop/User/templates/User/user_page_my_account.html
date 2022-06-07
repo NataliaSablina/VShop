@@ -5,18 +5,7 @@
 Vegishop
 {% endblock %}
 {% block content %}
-<div style="width:100%;
-            height:40px;
-            background:#DDDDDD;">
-    <div style="width:74%; background: transparent; margin-left:auto; margin-right:auto; ">
-        <div style="display:flex; flex-direction:row; position:relative; top:10px;">
-            <text style="color:red">Home</text>
-            <text style="color:grey; margin-left:10px; margin-right:10px;">/</text>
-            <text style="color:grey">{{extra_bar}}</text>
-        </div>
-    </div>
 
-</div>
 <div class="user-page">
     <div class="user-page__containers">
         <div class="user-page__containers__choices">
@@ -24,10 +13,10 @@ Vegishop
             <div class="containers__choices__user-info">
                 <div class="user-info__user-photo">
                     {%if request.user.photo%}
-                        <img src="{{request.user.photo.url}}" width="90px" height="90px">
+                    <img src="{{request.user.photo.url}}" width="90px" height="90px">
                     {% endif %}
                     {%if not request.user.photo%}
-                        <img src="{% static 'images/user.png' %}" width="90px" height="90px">
+                    <img src="{% static 'images/user.png' %}" width="90px" height="90px">
                     {% endif %}
                 </div>
                 <div class="user-info__user__name">{{request.user.username}}</div>
@@ -36,11 +25,11 @@ Vegishop
             <div class="choices__references">
                 <img src="{% static 'images/user-icon.png' %}" width="20px" height="20px" class="icon-1">
                 {% if request.user.is_authenticated%}
-                    <a href="{% url 'user_page_my_account' request.user.email %}" class="choices__references__my-account"
-                   style="text-decoration: none;" >My Account </a>
+                <a href="{% url 'user_page_my_account' request.user.email %}" class="choices__references__my-account"
+                   style="text-decoration: none;">My Account </a>
                 {% else%}
-                    <a href="#" class="choices__references__my-account"
-                   style="text-decoration: none;" >My Account </a>
+                <a href="#" class="choices__references__my-account"
+                   style="text-decoration: none;">My Account </a>
                 {% endif %}
 
                 <div class="choices__references__my-account-button"></div>
@@ -73,29 +62,32 @@ Vegishop
             <div class="choices__references">
                 <img src="{% static 'images/logout.png' %}" width="30px" height="30px" class="icon-7">
                 <a href="{%url 'logout'%}" class="choices__references__logout" style="text-decoration: none;">Logout</a>
-<!--                <i class="choices__references__logout-button"></i>-->
+                <!--                <i class="choices__references__logout-button"></i>-->
             </div>
         </div>
         <div class="user-page__containers__information">
             {% block form_change %}
             <h1 style="margin-left:15px;">My Account</h1>
-           <form method="post" name="f1" class="change_user_form">
-                    {%csrf_token%}
-               <label>Name:</label>
-        {{user_change_form.username}}
-        <label>Phone Number:</label>
-        {{user_change_form.phone_number}}
-        <label>Email:</label>
-        {{user_change_form.email}}
+            <form method="post" name="f1" class="change_user_form">
+                {%csrf_token%}
+                <label>Name:</label>
+                {{user_change_form.username}}
+                <label>Phone Number:</label>
+                {{user_change_form.phone_number}}
+                <label>Email:</label>
+                {{user_change_form.email}}
 
-<!--                    {{user_change_form.as_p}}-->
-                    <button type="submit" class="user_change_button">Save Changes</button>
-<!--                    <button type="submit" class="user_page__change_user">Save Changes</button>-->
+                <!--                    {{user_change_form.as_p}}-->
+                <button type="submit" class="user_change_button">Save Changes</button>
+                <!--                    <button type="submit" class="user_page__change_user">Save Changes</button>-->
             </form>
             <div class="user_page__change_password_deactivate">
                 <a href="{% url 'user_page_change_password' request.user.email %}"
-                   class="user_page__changes"><div class="user_page__changes__text">Change Password</div><i class="user_page__choices__references"></i></a>
-                <a href="{% url 'deactivate' %}" class="user_page__changes"><div class="user_page__changes__text">Deactivate Account</div>
+                   class="user_page__changes">
+                    <div class="user_page__changes__text">Change Password</div>
+                    <i class="user_page__choices__references"></i></a>
+                <a href="{% url 'deactivate' %}" class="user_page__changes">
+                    <div class="user_page__changes__text">Deactivate Account</div>
                     <i class="user_page__choices__references"></i>
                 </a>
             </div>
