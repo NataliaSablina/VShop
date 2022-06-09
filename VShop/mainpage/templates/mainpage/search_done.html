@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Vegishop
+{% endblock %}
+kkkkkkkkkkkkkk
+{% block content %}
+{% if product_list %}
+    {% for product in product_list %}
+        {{product.name}}
+    {% endfor %}
+{% endif %}
+{% if category_list %}
+    {% for category in category_list %}
+        {{category.name}}
+    {% endfor %}
+{% endif %}
+{% if promo_code_list %}
+    {% for promo in promo_code_list %}
+        {{promo.name}}
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

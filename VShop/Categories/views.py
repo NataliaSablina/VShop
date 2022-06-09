@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.views import View
-from Categories.models import Product, Category
+from Categories.models import Product, Category, UserProductRelation
 from User.forms import UserRegistrationForm, UserAuthenticationForm
 
 
@@ -106,7 +106,7 @@ class CategoryProductsView(View):
         }
         return render(request, "Categories/category_product_listing.html", context)
 
-    def post(self, request):
+    def post(self, request, pk):
         reg_form = UserRegistrationForm(request.POST)
         auth_form = UserAuthenticationForm(request.POST)
         if reg_form.is_valid():
@@ -126,3 +126,22 @@ class CategoryProductsView(View):
                 return redirect('user_page_my_account', user.email)
         else:
             print(auth_form.errors)
+
+
+# class UserProductRelation(View):
+    # pass
+
+
+def like_product(request, product_id, back_url):
+
+    try:
+        product = Product.objects.get(pk=product_id)
+    except Product.DoesNotExist:
+        return redirect(back_url, product_id)
+    user = request.user
+    upr, created = UserProductRelation.objects.get_or_create(user=user, product=product)
+    upr.like = not upr.like
+    upr.save()
+    return redirect(back_url, product_id)
+
+

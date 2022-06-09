@@ -17,6 +17,7 @@
                 <a  class="border-button__top-bar-2__loc__loc-town">###</a>
             </div>
         </a>
+        {% include 'inc/search.html' %}
         <div class="border-button__top-bar-2__buttons">
             {% if not request.user.is_authenticated %}
                 <div class="button">

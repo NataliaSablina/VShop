@@ -77,6 +77,7 @@
             <p style="font-weight:600; margin-bottom: 10px;">Product Details:</p>
             <text style="margin-top:0px; color:grey;">{{product.product_details}}</text>
         </div>
+        <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true">{{product.like_amount}}</i></a>
     </div>
 </div>
 {%if category.product_category.all|products_number_in_category %}

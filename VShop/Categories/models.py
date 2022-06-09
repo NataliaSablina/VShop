@@ -8,7 +8,7 @@ class Category(models.Model):
     name = models.CharField(verbose_name='Name', max_length=150, db_index=True)
     creation_time = models.DateTimeField(auto_now=False, auto_now_add=True, verbose_name='Creation Time')
     changing_time = models.DateTimeField(auto_now=True, auto_now_add=False, verbose_name='Changing Time')
-    city = models.ManyToManyField(City, verbose_name='City')
+    city = models.ManyToManyField(City, verbose_name='City', related_name='city')
     photo = models.ImageField(upload_to='categories/%Y/%m/%d/', null=True, blank=True)
     active = models.BooleanField(default=True, null=True, blank=True)
 
@@ -38,6 +38,10 @@ class Product(models.Model):
 
     def count_average_rating(self):
         pass
+
+    @property
+    def like_amount(self):
+        return len(self.upr.filter(like=True))
 
     class Meta:
         verbose_name = 'Product'
@@ -72,12 +76,23 @@ class ProductPhoto(models.Model):
         ordering = ['creation']
 
 
-# <img src="images.0.photo.url">
-# images = ProductPhoto.objects.filter(product=product)
-# class ProductPhoto:
-# photo = image
+class UserProductRelation(models.Model):
+    RATE_CHOICES = (
+        (1, 'Ok'),
+        (2, 'Fine'),
+        (3, 'Good'),
+        (4, 'Amazing'),
+        (5, 'Incredible'),
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='upr')
+    like = models.BooleanField(default=False)
+    in_bookmarks = models.BooleanField(default=False)
+    rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES, default=RATE_CHOICES[4][0])
 
-# photos = ForeignKey(to=)
+    def __str__(self):
+        return f'{self.user.username}:{self.product.name}, RATE {self.rate}'
+
 
 class DeliveryType(models.Model):
     name = models.CharField(max_length=50, verbose_name='Delivery')

@@ -1,0 +1,7 @@
+<form action="{% url 'search_done' %}" method="get" class = "search-form">
+    <div class="search-form__div">
+        <input name="q" type="text" placeholder="Search..."
+               class="search-request" onfocus="this.className='search-form__onfocus'" onblur="this.className='search-form__onblur'">
+        <button type="submit" class="search-button"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </div>
+</form>

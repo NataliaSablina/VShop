@@ -38,6 +38,7 @@
                 <img src="{{product.photo.url}}" width="180px" height="150px" style="z-index:120; position:relative;"></a>
             <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="font-weight: 800; font-size: 20px; margin-top: 10px; margin-left: 15px; margin-bottom: 15px;">{{product.name}}</text></a>
             <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="color: red; font-weight: 800; font-size: 20px; margin-left: 15px;">{{product.price}}$/kg</text></a>
+            <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true"></i>{{product.like_amount}}</a>
         </div>
 
 {% endfor %}
