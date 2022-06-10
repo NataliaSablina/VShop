@@ -78,6 +78,8 @@
             <text style="margin-top:0px; color:grey;">{{product.product_details}}</text>
         </div>
         <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true">{{product.like_amount}}</i></a>
+        <text>{{product.views_amount}}</text>
+        <a href="{% url 'comments' product.id%}"><i class="fa fa-comment-o" aria-hidden="true"></i></i></a>
     </div>
 </div>
 {%if category.product_category.all|products_number_in_category %}

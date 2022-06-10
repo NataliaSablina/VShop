@@ -2,7 +2,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views import View
 from django.db.models import Q
-from Categories.models import Product, Category
+from Categories.models import Product, Category, UserProductRelation
 from User.forms import UserRegistrationForm, UserAuthenticationForm
 from country.models import Country
 from promocode.models import PromoCode
@@ -21,6 +21,23 @@ class HomePageView(View):
         products_1 = Product.objects.filter(category__id__in=categories)
         products = products_1[0:8]
         extra_bar = "Home"
+        products_2 = UserProductRelation.objects.filter(user=user).order_by('like', 'view').values_list(
+            'product',
+            flat=True
+        )
+        products_ready = []
+        if products_2.count() <= 3:
+            products_ready.extend(products)
+        else:
+            products_ready = products[0:3]
+        categories_2 = Product.objects.filter(id__in=products_ready).values_list('category', flat=True)
+        recommended_products = Product.objects.filter(category__id__in=categories_2)
+        relations = UserProductRelation.objects.filter(product__id__in=recommended_products).order_by('like', 'view')
+        recommended_products_ready = list(Product.objects.filter(upr__id__in=relations)) + list(recommended_products)
+        result_recommended = []
+        for product in recommended_products_ready:
+            if product not in result_recommended:
+                result_recommended.append(product)
         context = {
             "res": res,
             "reg_form": reg_form,
@@ -32,6 +49,7 @@ class HomePageView(View):
             "promos": promos,
             "promos_1": promos_1,
             "extra_bar": extra_bar,
+            "result_recommended":result_recommended,
         }
         return render(request, "mainpage/mainpage.html", context)
 

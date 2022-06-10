@@ -19,5 +19,7 @@ Vegishop
     </a>
 </div>
 {% include 'inc/products_view.html' %}
-
+{% for recommended in result_recommended %}
+    {{recommended.name}}
+{% endfor %}
 {% endblock %}

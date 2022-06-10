@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{%load promocodes%}
+{%load products_number %}
+
+{% block content %}
+<form action="{% url 'comments' product.pk%}" method="post" name="f1" >
+            {%csrf_token%}
+            <label>Content:</label><br>
+            <input  name="content_comment">
+            <button type="submit">Send</button>
+        </form>
+{% for comment in comments %}
+    {{comment.content}}
+    <a href="{% url 'comment_like' comment.id product.id  'comments' %}" ><i class="fa fa-heart-o" aria-hidden="true"></i>{{comment.like_amount}}</a>
+    <form method="post" name="f2" >
+            {%csrf_token%}
+            <label>Content:</label><br>
+            <input  name="content_comment">
+            <input type="hidden" name="comment_id" value="{{comment.pk}}">
+            <button type="submit"  >Send</button>
+        </form>
+{% endfor %}
+
+{% endblock %}

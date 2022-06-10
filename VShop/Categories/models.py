@@ -30,7 +30,7 @@ class Product(models.Model):
                                  related_name="product_category")
     promo_code = models.ForeignKey('promocode.PromoCode', on_delete=models.SET_NULL, verbose_name='Promo Code',
                                    null=True, blank=True, related_name="product_promo")
-    review = models.IntegerField(verbose_name="Views", null=True, blank=True)
+    review = models.IntegerField(verbose_name="Views", default=0)
     product_details = models.TextField(verbose_name='Product Details')
     delivery = models.ForeignKey('DeliveryType', on_delete=models.SET_DEFAULT, default='Free')
     active = models.BooleanField(default=True, null=True, blank=True)
@@ -42,6 +42,14 @@ class Product(models.Model):
     @property
     def like_amount(self):
         return len(self.upr.filter(like=True))
+
+    @property
+    def views_amount(self):
+        return len(self.upr.filter(view=True))
+
+    # def counter(self):
+    #     self.review += 1
+    #     return self.review
 
     class Meta:
         verbose_name = 'Product'
@@ -89,6 +97,7 @@ class UserProductRelation(models.Model):
     like = models.BooleanField(default=False)
     in_bookmarks = models.BooleanField(default=False)
     rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES, default=RATE_CHOICES[4][0])
+    view = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.username}:{self.product.name}, RATE {self.rate}'
@@ -103,3 +112,27 @@ class DeliveryType(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CommentProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='comment', null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
+    content = models.TextField(verbose_name="Text")
+    date = models.DateTimeField(auto_now=False, auto_now_add=True, null=True, verbose_name='Comment Date')
+    comment = models.ForeignKey('CommentProduct', on_delete=models.CASCADE, verbose_name='Parent Comment', blank=True, null=True)
+
+    @property
+    def like_amount(self):
+        return len(self.comment_product.filter(like=True))
+
+
+class UserCommentRelation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="User")
+    comment = models.ForeignKey(CommentProduct, on_delete=models.CASCADE, related_name='comment_product')
+    like = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.user.username}:{self.comment.product}'
+
+
+
