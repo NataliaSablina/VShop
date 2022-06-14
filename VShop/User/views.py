@@ -411,6 +411,8 @@ class SignUpView(View):
 
 class SignInView(View):
     def get(self, request):
+        gt = request.GET
+        print(gt.get('r1'))
         auth_form = UserAuthenticationForm()
         context = {
             "auth_form": auth_form
@@ -418,6 +420,10 @@ class SignInView(View):
         return render(request, "User/sign_in_page.html", context)
 
     def post(self, request):
+        gt = request.POST.get('r1')
+        print(gt)
+        print(request.POST.get('r2'))
+        print(request.POST.get('sum'))
         auth_form = UserAuthenticationForm(request.POST)
         if auth_form.is_valid():
             email = request.POST['email']

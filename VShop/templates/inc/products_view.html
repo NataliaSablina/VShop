@@ -40,7 +40,11 @@
             <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="color: red; font-weight: 800; font-size: 20px; margin-left: 15px;">{{product.price}}$/kg</text></a>
             <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true"></i>{{product.like_amount}}</a>
             <a href="{% url 'comments' product.id%}"><i class="fa fa-comment-o" aria-hidden="true"></i></i></a>
-
+            <a href="{% url 'bookmarks' product.id 'product_page'%}"><i class="fa fa-bookmark" aria-hidden="true"></i>{{product.books_amount}}</a>
+            {{product.rating}}
+            {{product.promo_code}}
+            {{product.free_delivery}}
+            <text>Popular: {{product.popular}}</text>
         </div>
 
 {% endfor %}

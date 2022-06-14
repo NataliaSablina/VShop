@@ -4,6 +4,21 @@
 {%load products_number %}
 
 {% block content %}
+<form method="post" name="filter_form">
+    {%csrf_token%}
+    <fieldset id="group1">
+        <input type="radio" value="value1" name="group1">
+        <input type="radio" value="value2" name="group1">
+    </fieldset>
+    <input type="radio" name="r1" value="10" onClick="document.getElementById('hidfield').value=this.value"/>10
+    <br/>
+    <input type="radio" name="r1" value="45" onClick="document.getElementById('hidfield').value=this.value"/>
+    45
+    <br/>
+    <input type="hidden" name="sum" value="1" id="hidfield"/>
+    <button type="submit" class="reg-auth-button" style="width:95%;">Sign In</button>
+
+</form>
 {% for category in categories %}
 <h2 class="category_product_listing__category-name">{{category}}</h2>
 <div class="products_view">

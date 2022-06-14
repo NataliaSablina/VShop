@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<form method="post" action="{% url 'sort' 'sort_filter_page' %}" name="f1" >
+    {%csrf_token%}
+    <text>SORT BY</text>
+    <input type="radio" name="r1" value="TOP_RATE" onClick="document.getElementById('hidfield').value=this.value"/>Top Rated
+    <br/>
+    <input type="radio" name="r1" value="HIGH_TO_LOW" onClick="document.getElementById('hidfield').value=this.value"/>Cost High to Low
+    <br/>
+    <input type="radio" name="r1" value="LOW_TO_HIGH" onClick="document.getElementById('hidfield').value=this.value"/>Cost Low to High
+    <br/>
+    <input type="radio" name="r1" value="MOST_POPULAR" onClick="document.getElementById('hidfield').value=this.value"/>Most Popular
+    <br/>
+    <input type="hidden" name="sum" value="TOP_RATE" id="hidfield"/>
+    <text>FILTER</text>
+    <input type="checkbox" name="r2">Free Delivery
+    <input type="checkbox" name="r3">Have PromoCode
+    <text>ADDITIONAL FILTERS</text>
+    <button type="submit">Submit</button>
+</form>
+
+{% include 'inc/products_view.html' %}
+
+{% endblock %}
+
