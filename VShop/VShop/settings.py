@@ -22,7 +22,9 @@ class MyBCryptSHA256PasswordHasher(BCryptSHA256PasswordHasher):
     rounds = 15
 
 
-CART_SESSION_ID = 'cart'  # ключ по которому мы будем хранить данные корзины в сессии
+CART_SESSION_ID = 'cart'  # ключ по которому мы будем хранить данные корзины в сессии,
+# сессии джанго ассоциируются с конкретным посетителем сайта, поэтому один и тот же ключ используется для
+# разных посетителей джанго
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart'
             ],
         },
     },

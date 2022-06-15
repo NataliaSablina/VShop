@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cart</title>
+    {% load static %}
 </head>
 <body>
-<h1>Корзина покупок</h1>
+  <h1>Корзина покупок</h1>
   <table class="cart">
     <thead>
       <tr>
@@ -20,10 +21,17 @@
     </thead>
     <tbody>
       {% for item in cart %}
-        {% with product=item.product %}
+        {%with product=item.product%}
           <tr>
             <td>
-              <a href="{{ product.get_absolute_url }}">
+              <a href="{% url 'product_page' product.id '}">
+                {% if product.photo %}
+                                <img src="{% if product.photo %}">
+
+                {%else %}
+                                <img src="{% static 'img/phone.png' %}">
+
+                {% endif %}
               </a>
             </td>
             <td>{{ product.name }}</td>
@@ -42,7 +50,8 @@
             <td class="num">${{ item.price }}</td>
             <td class="num">${{ item.total_price }}</td>
           </tr>
-        {% endwith %}
+       {% endif %}
+      {% endwith %}
       {% endfor %}
       <tr class="total">
         <td>Всего</td>
@@ -52,7 +61,7 @@
     </tbody>
   </table>
   <p class="text-right">
-    <a href="{% url 'home_page'%}" class="button light">В магазин</a>
+    <a href="{% url 'home_page' %}" class="button light">В магазин</a>
     <a href="#" class="button">Оформить заказ</a>
   </p>
 </body>

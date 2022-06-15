@@ -4,7 +4,20 @@
 {%load product_number_in_category%}
 
 {% block content %}
-
+<div id="subheader">
+    <div class="cart">
+        {% with total_items=cart|length%}
+        {% if cart|length > 0%}
+        In Cart:
+       <a href="{% url 'cart:cart_detail' %}">
+        {{total_items}}, ${{cart.get_total_price}}
+           </a>
+        else:
+        Empty Cart
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
 <div class="product_page__product_card">
     <div class="product_page__product_card__widgets">
         <div class="product_page__product_card__photo">
@@ -77,6 +90,11 @@
             <p style="font-weight:600; margin-bottom: 10px;">Product Details:</p>
             <text style="margin-top:0px; color:grey;">{{product.product_details}}</text>
         </div>
+        <form action = "{% url 'cart:cart_add' product.id %}" method="post">
+            {{cart_product_form}}
+            {% csrf_token %}
+            <input type="submit" value="In Cart">
+        </form>
         <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true">{{product.like_amount}}</i></a>
         <a href="{% url 'bookmarks' product.id 'product_page'%}"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
         <text>{{product.views_amount}}</text>

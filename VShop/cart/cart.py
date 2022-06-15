@@ -67,7 +67,7 @@ class Cart(object):
 
     def get_total_price(self):
         # получаем общую стоимость
-        return sum(item['price'] * item['quantity'] for item in self.cart.values())
+        return sum(float(item['price']) * float(item['quantity']) for item in self.cart.values())
 
     def clear(self):
         # очищаем корзину в сессии

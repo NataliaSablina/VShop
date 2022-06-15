@@ -5,27 +5,18 @@ from django.views import View
 
 from Categories.models import Product, Category, UserProductRelation, CommentProduct, UserCommentRelation
 from User.forms import UserRegistrationForm, UserAuthenticationForm
+from cart.forms import CartAddProductForm
 
 
 class ProductView(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
+        cart_product_form =  CartAddProductForm()
         if request.user.is_authenticated:
             user = request.user
             upr, created = UserProductRelation.objects.get_or_create(user=user, product=product)
             upr.view = True
             upr.save()
-            # try:
-            #     product = Product.objects.get(pk=product_id)
-            # except Product.DoesNotExist:
-            #     return redirect(back_url, product_id)
-            # user = request.user
-            # upr, created = UserProductRelation.objects.get_or_create(user=user, product=product)
-            # upr.like = not upr.like
-            # upr.save()
-
-        # product.review = product.review + 1
-        # product.save()
         category = Category.objects.get(product_category=product)
         products = Category.objects.get(product_category=product).product_category.exclude(pk=pk)[:8]
         reg_form = UserRegistrationForm()
@@ -40,6 +31,7 @@ class ProductView(View):
             'extra_bar': extra_bar,
             "reg_form": reg_form,
             "auth_form": auth_form,
+            "cart_product_form": cart_product_form,
         }
         return render(request, 'Categories/product_page.html', context)
 
