@@ -300,13 +300,15 @@ class SortFilterPageView(View):
         'MOST_POPULAR': 4,
     }
 
-    def get(self, request, sorting_id, filter_str=None):
-        if not (4 < sorting_id < 0):
+    def get(self, request, sorting_id, filter_str=None, minmax="0&10000"):
+        if sorting_id > 4 or sorting_id < 1:
             sorting_id = 1
         extra_bar = 'Listing'
         context = {
             'extra_bar': extra_bar,
         }
+        min_max_list = minmax.split('&')
+        low_board, high_board = int(min_max_list[0]), int(min_max_list[1])
         if filter_str is None:
             fd = {}
         else:
@@ -317,16 +319,18 @@ class SortFilterPageView(View):
                 if 'isnull' in element:
                     fd[element] = False
         if sorting_id == self.sort_dict['TOP_RATE']:
-            products = sorted(Product.objects.filter(**fd), key=lambda p: p.rating, reverse=True)
+            products = sorted(Product.objects.filter(**fd, price__range=[low_board, high_board]),
+                              key=lambda p: p.rating, reverse=True)
             context['products'] = products
         if sorting_id == self.sort_dict['HIGH_TO_LOW']:
-            products = Product.objects.filter(**fd).order_by('-price')
+            print(sorting_id)
+            products = Product.objects.filter(**fd, price__range=[low_board, high_board]).order_by('-price')
             context['products'] = products
         if sorting_id == self.sort_dict['LOW_TO_HIGH']:
-            products = Product.objects.filter(**fd).order_by('price')
+            products = Product.objects.filter(**fd, price__range=[low_board, high_board]).order_by('price')
             context['products'] = products
         if sorting_id == self.sort_dict['MOST_POPULAR']:
-            products = sorted(Product.objects.filter(**fd), key=lambda p: p.popular, reverse=True)
+            products = sorted(Product.objects.filter(**fd, price__range=[low_board, high_board]), key=lambda p: p.popular, reverse=True)
             context['products'] = products
         return render(request, 'Categories/sort_filter_page.html', context)
 
@@ -340,9 +344,14 @@ class SortProducts(View):
     }
 
     def get(self, request, back_url):
+        # scale = request.POST.get('scale')
         return redirect(back_url, 1)
 
     def post(self, request, back_url):
+        # scale = request.POST.get('scale')
+        minimum = request.POST.get('min')
+        maximum = request.POST.get('max')
+        # print(minimum, scale, maximum)
         filter_dict = ''
         if request.POST.get('r2') and request.POST.get('r3'):
             filter_dict += 'delivery__free' + '&' + 'promo_code__isnull'
@@ -351,32 +360,5 @@ class SortProducts(View):
         elif request.POST.get('r3'):
             filter_dict += 'promo_code__isnull'
         if filter_dict:
-            return redirect(back_url, self.sort_dict.get(request.POST.get('sum', 1)), filter_dict)
-        return redirect(back_url, self.sort_dict.get(request.POST.get('sum', 1), 1))
-
-        # if int(request.POST.get('sum')) == self.sort_dict['TOP_RATE']:
-        #     return redirect(back_url, self.sort_dict['TOP_RATE'], filter_dict)
-        # if int(request.POST.get('sum')) == self.sort_dict['HIGH_TO_LOW']:
-        #     return redirect(back_url, 2, filter_dict)
-        # if int(request.POST.get('sum')) == self.sort_dict['LOW_TO_HIGH']:
-        #     return redirect(back_url, 3, filter_dict)
-        # if int(request.POST.get('sum')) == self.sort_dict['MOST_POPULAR']:
-        #     return redirect(back_url, 4, filter_dict)
-
-
-
-
-
-
-      # if sorting_id == self.sort_dict['TOP_RATE']:
-      #           products = sorted(Product.objects.all(), key=lambda p: p.rating, reverse=True)
-      #           context['products'] = products
-      #       if sorting_id == self.sort_dict['HIGH_TO_LOW']:
-      #           products = sorted(Product.objects.all(), key=lambda p: p.price, reverse=True)
-      #           context['products'] = products
-      #       if sorting_id == self.sort_dict['LOW_TO_HIGH']:
-      #           products = sorted(Product.objects.all(), key=lambda p: p.price)
-      #           context['products'] = products
-      #       if sorting_id == self.sort_dict['MOST_POPULAR']:
-      #           products = sorted(Product.objects.all(), key=lambda p: p.popular, reverse=True)
-      #           context['products'] = products
+            return redirect(back_url, self.sort_dict.get(request.POST.get('sum', 1)), filter_dict, f'{minimum}&{maximum}')
+        return redirect(back_url, self.sort_dict.get(request.POST.get('sum', 1), 1), f'{minimum}&{maximum}')

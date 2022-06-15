@@ -5,22 +5,44 @@
 Vegishop
 {% endblock %}
 {% block content %}
-<form method="post" action="{% url 'sort' 'sort_filter_page' %}" name="f1" >
+<form method="post" action="{% url 'sort' 'sort_filter_page' %}" name="f1">
     {%csrf_token%}
     <text>SORT BY</text>
-    <input type="radio" name="r1" value="TOP_RATE" onClick="document.getElementById('hidfield').value=this.value"/>Top Rated
+    <input type="radio" name="r1" value="TOP_RATE" onClick="document.getElementById('hidfield').value=this.value"/>Top
+    Rated
     <br/>
-    <input type="radio" name="r1" value="HIGH_TO_LOW" onClick="document.getElementById('hidfield').value=this.value"/>Cost High to Low
+    <input type="radio" name="r1" value="HIGH_TO_LOW" onClick="document.getElementById('hidfield').value=this.value"/>Cost
+    High to Low
     <br/>
-    <input type="radio" name="r1" value="LOW_TO_HIGH" onClick="document.getElementById('hidfield').value=this.value"/>Cost Low to High
+    <input type="radio" name="r1" value="LOW_TO_HIGH" onClick="document.getElementById('hidfield').value=this.value"/>Cost
+    Low to High
     <br/>
-    <input type="radio" name="r1" value="MOST_POPULAR" onClick="document.getElementById('hidfield').value=this.value"/>Most Popular
+    <input type="radio" name="r1" value="MOST_POPULAR" onClick="document.getElementById('hidfield').value=this.value"/>Most
+    Popular
     <br/>
     <input type="hidden" name="sum" value="TOP_RATE" id="hidfield"/>
     <text>FILTER</text>
     <input type="checkbox" name="r2">Free Delivery
     <input type="checkbox" name="r3">Have PromoCode
     <text>ADDITIONAL FILTERS</text>
+    <div>
+        <input type="range" min="0" step="1" max="10000" value="50" name="scale" id="myRange">
+        <text>Min:</text>
+        <input type="text" value="0" id="Min" name='min' onKeyUp='document.all["scale"].min = this.value'>
+        <text>Max:</text>
+        <input type="text" value="10000" name='max' id="Max" onKeyUp='document.all["scale"].max = this.value'>
+        <p>Value: <span id="demo"></span></p>
+    </div>
+    <script>
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function() {
+            output.innerHTML = this.value;
+            }
+
+    </script>
     <button type="submit">Submit</button>
 </form>
 
