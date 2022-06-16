@@ -65,6 +65,18 @@ class Cart(object):
             del self.cart[product_id]
             self.save()
 
+    def get(self, product):
+        product_id = str(product.id)
+        if product_id in self.cart:
+            return self.cart[product_id]['quantity']
+        else:
+            self.add(product, quantity=0, update_quantity=True)
+            self.save()
+            return self.cart[product_id]['quantity']
+            # self.add(product, quantity=0, update_quantity=False)
+
+        #     return self.cart[product_id]['quantity']
+
     def get_total_price(self):
         # получаем общую стоимость
         return sum(float(item['price']) * float(item['quantity']) for item in self.cart.values())

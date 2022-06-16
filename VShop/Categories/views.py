@@ -5,13 +5,13 @@ from django.views import View
 
 from Categories.models import Product, Category, UserProductRelation, CommentProduct, UserCommentRelation
 from User.forms import UserRegistrationForm, UserAuthenticationForm
-from cart.forms import CartAddProductForm
+from cart.cart import Cart
 
 
 class ProductView(View):
     def get(self, request, pk):
         product = Product.objects.get(pk=pk)
-        cart_product_form =  CartAddProductForm()
+        cart = Cart(request)
         if request.user.is_authenticated:
             user = request.user
             upr, created = UserProductRelation.objects.get_or_create(user=user, product=product)
@@ -24,6 +24,7 @@ class ProductView(View):
         # blog_object.blog_views = blog_object.blog_views + 1
         # blog_object.save()
         extra_bar = "Products"
+
         context = {
             'product': product,
             'category': category,
@@ -31,7 +32,7 @@ class ProductView(View):
             'extra_bar': extra_bar,
             "reg_form": reg_form,
             "auth_form": auth_form,
-            "cart_product_form": cart_product_form,
+            "cart": cart,
         }
         return render(request, 'Categories/product_page.html', context)
 

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Cart</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {% load static %}
+    {% load quantity %}
 </head>
 <body>
   <h1>Корзина покупок</h1>
@@ -37,10 +39,22 @@
             <td>{{ product.name }}</td>
             <td>
               <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                {{ item.update_quantity_form.quantity }}
-                {{ item.update_quantity_form.update }}
+                  {% csrf_token %}
+<!--                {{ item.update_quantity_form.quantity }}-->
+<!--                {{ item.update_quantity_form.update }}-->
+
+
+            <div class="amount">
+	            <span class="minus">-</span>
+                <input type="text" value="{%quantity request product %}" name="count_products"/>
+                <text>{{product.id}}</text>
+	            <span class="plus">+</span>
+            </div>
+
+
+
                 <input type="submit" value="Обновить">
-                {% csrf_token %}
+
               </form>
             </td>
             <td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
@@ -64,5 +78,25 @@
     <a href="{% url 'home_page' %}" class="button light">В магазин</a>
     <a href="#" class="button">Оформить заказ</a>
   </p>
+<script>
+$(document).ready(function() {
+		$('.minus').click(function () {
+			var $input = $(this).parent().find('input');
+			var count = parseInt($input.val()) - 1;
+			count = count < 1 ? 1 : count;
+			$input.val(count);
+			$input.change();
+			return false;
+		});
+		$('.plus').click(function () {
+			var $input = $(this).parent().find('input');
+			$input.val(parseInt($input.val()) + 1);
+			$input.change();
+			return false;
+		});
+	});
+
+</script>
+
 </body>
 </html>

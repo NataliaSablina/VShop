@@ -9,12 +9,14 @@ from .forms import CartAddProductForm
 def cart_add(request, product_id):
     cart = Cart(request)
     print(cart.get_total_price())
+    print(request.POST.get('count_products'))
     product = get_object_or_404(Product, id=product_id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
+        cd['update'] = True
         cart.add(product=product,
-                 quantity=cd['quantity'],
+                 quantity=int(request.POST.get('count_products')),
                  update_quantity=cd['update'])
     return redirect('cart:cart_detail')
 

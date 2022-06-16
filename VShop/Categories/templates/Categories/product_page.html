@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {%load promocodes%}
+{%load quantity%}
 {%load product_number_in_category%}
 
 {% block content %}
@@ -93,6 +94,37 @@
         <form action = "{% url 'cart:cart_add' product.id %}" method="post">
             {{cart_product_form}}
             {% csrf_token %}
+            <div class="amount">
+	<span class="down">-</span>
+    <input type="text" value="{%quantity request product %}" name="count_products"/>
+	<span class="up">+</span>
+</div>
+<!--        <button id="plus">+</button>-->
+<!--<span id="number">0</span>-->
+<!--<button id="minus">-</button>-->
+
+<!--<script src="jquery.js"></script>-->
+
+<script>
+
+$(document).ready(function() {
+		$('.down').click(function () {
+			var $input = $(this).parent().find('input');
+			var count = parseInt($input.val()) - 1;
+			count = count < 1 ? 1 : count;
+			$input.val(count);
+			$input.change();
+			return false;
+		});
+		$('.up').click(function () {
+			var $input = $(this).parent().find('input');
+			$input.val(parseInt($input.val()) + 1);
+			$input.change();
+			return false;
+		});
+	});
+
+</script>
             <input type="submit" value="In Cart">
         </form>
         <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true">{{product.like_amount}}</i></a>
@@ -101,8 +133,73 @@
         <a href="{% url 'comments' product.id%}"><i class="fa fa-comment-o" aria-hidden="true"></i></i>{{product.books_amount}}</a>
         {{product.rating}}
         Popular: {{product.popular}}
+<!--        <script type="text/javascript">-->
+
+<!--var count = 0;-->
+
+<!--$("#update").click(function() {-->
+<!--    count++;-->
+<!--    $("#counter").html("My current count is: "+count);-->
+<!--}-->
+
+<!--</script>-->
+<!--<button id="update" type="button">Button</button>-->
+<!--<div id="counter">1</div>-->
+<!--        <div class="amount">-->
+<!--	<span class="down">-</span>-->
+<!--    <input type="text" value="1" name="count_products"/>-->
+<!--	<span class="up">+</span>-->
+<!--</div>-->
+<!--        <button id="plus">+</button>-->
+<!--<span id="number">0</span>-->
+<!--<button id="minus">-</button>-->
+
+<!--<script src="jquery.js"></script>-->
+
+<script>
+/*
+$("#plus").on('click', function() {
+   $("#number").html(parseInt($('#number').html(), 10)+1);
+});
+$("#minus").on('click', function() {
+   $("#number").html(parseInt($('#number').html(), 10)-1)
+});
+*/
+/*
+$(document).ready(function() {
+		$('.down').click(function () {
+			var $input = $(this).parent().find('input');
+			var count = parseInt($input.val()) - 1;
+			count = count < 1 ? 1 : count;
+			$input.val(count);
+			$input.change();
+			return false;
+		});
+		$('.up').click(function () {
+			var $input = $(this).parent().find('input');
+			$input.val(parseInt($input.val()) + 1);
+			$input.change();
+			return false;
+		});
+	});
+*/
+</script>
+<!--        <button onclick="clicked(-1)">Previous</button>-->
+<!--<span id="test" name="products_in_cart">0</span>-->
+<!--<button onclick="clicked(1)">next</button>-->
+<!--<script type="text/javascript">-->
+<!--var i = 0;-->
+<!--function clicked(n) {-->
+<!--    var img = document.getElementsByTagName("img");-->
+<!--    var test = document.getElementById("test");-->
+<!--    i = i + n;-->
+<!--    test.innerHTML = i;-->
+<!--};-->
+<!--window.onclick;-->
+<!--</script>-->
     </div>
 </div>
+
 {%if category.product_category.all|products_number_in_category %}
 <h1 style="margin-left:200px; margin-bottom:5px; margin-top:35px;">Maybe You Like this.</h1>
 {% endif %}
