@@ -62,7 +62,7 @@
               {{ item.quantity }}
             </td>
             <td class="num">${{ item.price }}</td>
-            <td class="num">${{ item.total_price }}</td>
+            <td class="num">${% total_price request product %}</td>
           </tr>
        {% endif %}
       {% endwith %}
@@ -83,7 +83,7 @@ $(document).ready(function() {
 		$('.minus').click(function () {
 			var $input = $(this).parent().find('input');
 			var count = parseInt($input.val()) - 1;
-			count = count < 1 ? 1 : count;
+			count = count < 1 ? 0 : count;
 			$input.val(count);
 			$input.change();
 			return false;

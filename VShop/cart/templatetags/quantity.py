@@ -16,3 +16,9 @@ def quantity(request, product_id):
     print(product_id.id)
     cart = Cart(request)
     return cart.get(product_id)
+
+
+@register.simple_tag
+def total_price(request, product_id):
+    cart = Cart(request)
+    return cart.total_price(product_id)

@@ -36,6 +36,7 @@ class HomePageView(LoginRequiredMixin, View):
         categories_2 = Product.objects.filter(id__in=products_ready).values_list('category', flat=True)
         recommended_products = Product.objects.filter(category__id__in=categories_2)
         result_recommended = []
+        result_recommended_main_page = []
         if user.is_authenticated:
             relations = UserProductRelation.objects.filter(product__id__in=recommended_products).order_by('like',
                                                                                                           'view')
@@ -45,6 +46,8 @@ class HomePageView(LoginRequiredMixin, View):
             for product in recommended_products_ready:
                 if product not in result_recommended:
                     result_recommended.append(product)
+            result_recommended_main_page = result_recommended[0:3]
+        recommended_count = len(result_recommended) - len(result_recommended_main_page)
         context = {
             "res": res,
             "reg_form": reg_form,
@@ -56,7 +59,8 @@ class HomePageView(LoginRequiredMixin, View):
             "promos": promos,
             "promos_1": promos_1,
             "extra_bar": extra_bar,
-            "result_recommended" : result_recommended,
+            "recommended_count":recommended_count,
+            "result_recommended_main_page": result_recommended_main_page,
         }
         return render(request, "mainpage/mainpage.html", context)
 

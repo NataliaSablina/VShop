@@ -10,16 +10,16 @@
         {% with total_items=cart|length%}
         {% if cart|length > 0%}
         In Cart:
-       <a href="{% url 'cart:cart_detail' %}">
-        {{total_items}}, ${{cart.get_total_price}}
-           </a>
+        <a href="{% url 'cart:cart_detail' %}">
+            {{total_items}}, ${{cart.get_total_price}}
+        </a>
         else:
         Empty Cart
         {% endif %}
         {% endwith %}
     </div>
 </div>
-<div class="product_page__product_card">
+<div class="product_page__product_card" style="2000px; ">
     <div class="product_page__product_card__widgets">
         <div class="product_page__product_card__photo">
             <img src="{{product.photo.url}}" width="400px" height="320px" style="margin:auto">
@@ -38,7 +38,7 @@
             </button>
         </div>
     </div>
-    <div class="product_page__product_card__information">
+    <div class="product_page__product_card__information" style="2000px;">
         <div class="product_page__product_card__information_2">
             <h2>{{product.name}}</h2>
             <div class="product_page__product_card__information_2__price" style="align-items: center;">
@@ -91,112 +91,66 @@
             <p style="font-weight:600; margin-bottom: 10px;">Product Details:</p>
             <text style="margin-top:0px; color:grey;">{{product.product_details}}</text>
         </div>
-        <form action = "{% url 'cart:cart_add' product.id %}" method="post">
+        <div style="display: flex; flex-direction: row;">
+            <div class="product-information-popularity">
+            <a href="{% url 'like' product.id 'product_page'%}" style="position: relative; top: 15px; text-decoration: none; color:#666666;">
+                <i class="fa fa-heart-o" aria-hidden="true" style="font-size:130%; margin-left: 10px; margin-right: 10px; ">
+                    <text style="font-weight:600; font-size:110%;">{{product.like_amount}}</text>
+                </i>
+            </a>
+        <a href="{% url 'bookmarks' product.id 'product_page'%}" style="position: relative; top: 15px; text-decoration: none; color:#666666;">
+            <i class="fa fa-bookmark" aria-hidden="true" style="font-size:130%; margin-left: 10px; margin-right: 10px; text-decoration: none">
+                <text style="font-weight:600; font-size:110%; text-decoration: none;">{{product.books_amount}}</text>
+            </i>
+
+        </a>
+        <a href="{% url 'comments' product.id%}" style="position: relative; top: 15px; text-decoration: none; color:#666666;">
+            <i class="fa fa-comment-o" aria-hidden="true" style="font-size:130%; margin-left: 10px; margin-right: 10px; text-decoration: none;">
+                            <text style="font-weight:600; font-size:110%; text-decoration: none;">{{product.comment_amount}}</text>
+            </i>
+        </a>
+                <text style="position: relative; top: 15px;">
+                    <i class="fa fa-eye" aria-hidden="true" style="font-size:130%; margin-left: 10px; margin-right: 10px; color:#666666;">
+                                            <text style="font-weight:600; font-size:110%;">{{product.views_amount}}</text>
+
+                    </i>
+                </text>
+
+                </div>
+        <form action="{% url 'cart:cart_add' product.id %}" method="post">
             {{cart_product_form}}
             {% csrf_token %}
-            <div class="amount">
-	<span class="down">-</span>
-    <input type="text" value="{%quantity request product %}" name="count_products"/>
-	<span class="up">+</span>
-</div>
-<!--        <button id="plus">+</button>-->
-<!--<span id="number">0</span>-->
-<!--<button id="minus">-</button>-->
+                <div class="amount">
+                    <button class="product-down" style="margin-left:auto;">-</button>
+                    <input type="text" value="{%quantity request product %}" name="count_products"
+                       class="input__add-to-cart-products"
+                        style="border:none; width:30px; font-weight:800px; font-size:110%; color:#666666; background:transparent;
+margin-left:15px;"/>
+                    <button class="product-up">+</button>
+                    <button type="submit"  class="button-add-to-cart">Add to Cart</button>
 
-<!--<script src="jquery.js"></script>-->
-
-<script>
-
-$(document).ready(function() {
-		$('.down').click(function () {
-			var $input = $(this).parent().find('input');
-			var count = parseInt($input.val()) - 1;
-			count = count < 1 ? 1 : count;
-			$input.val(count);
-			$input.change();
-			return false;
-		});
-		$('.up').click(function () {
-			var $input = $(this).parent().find('input');
-			$input.val(parseInt($input.val()) + 1);
-			$input.change();
-			return false;
-		});
-	});
-
-</script>
-            <input type="submit" value="In Cart">
+                </div>
+            <script>
+            $(document).ready(function() {
+		        $('.product-down').click(function () {
+			    var $input = $(this).parent().find('input');
+			    var count = parseInt($input.val()) - 1;
+			    count = count < 1 ? 0 : count;
+			    $input.val(count);
+			    $input.change();
+			    return false;
+		        });
+		    $('.product-up').click(function () {
+			    var $input = $(this).parent().find('input');
+			    $input.val(parseInt($input.val()) + 1);
+			    $input.change();
+			    return false;
+		        });
+	        });
+            </script>
         </form>
-        <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true">{{product.like_amount}}</i></a>
-        <a href="{% url 'bookmarks' product.id 'product_page'%}"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
-        <text>{{product.views_amount}}</text>
-        <a href="{% url 'comments' product.id%}"><i class="fa fa-comment-o" aria-hidden="true"></i></i>{{product.books_amount}}</a>
-        {{product.rating}}
-        Popular: {{product.popular}}
-<!--        <script type="text/javascript">-->
 
-<!--var count = 0;-->
-
-<!--$("#update").click(function() {-->
-<!--    count++;-->
-<!--    $("#counter").html("My current count is: "+count);-->
-<!--}-->
-
-<!--</script>-->
-<!--<button id="update" type="button">Button</button>-->
-<!--<div id="counter">1</div>-->
-<!--        <div class="amount">-->
-<!--	<span class="down">-</span>-->
-<!--    <input type="text" value="1" name="count_products"/>-->
-<!--	<span class="up">+</span>-->
-<!--</div>-->
-<!--        <button id="plus">+</button>-->
-<!--<span id="number">0</span>-->
-<!--<button id="minus">-</button>-->
-
-<!--<script src="jquery.js"></script>-->
-
-<script>
-/*
-$("#plus").on('click', function() {
-   $("#number").html(parseInt($('#number').html(), 10)+1);
-});
-$("#minus").on('click', function() {
-   $("#number").html(parseInt($('#number').html(), 10)-1)
-});
-*/
-/*
-$(document).ready(function() {
-		$('.down').click(function () {
-			var $input = $(this).parent().find('input');
-			var count = parseInt($input.val()) - 1;
-			count = count < 1 ? 1 : count;
-			$input.val(count);
-			$input.change();
-			return false;
-		});
-		$('.up').click(function () {
-			var $input = $(this).parent().find('input');
-			$input.val(parseInt($input.val()) + 1);
-			$input.change();
-			return false;
-		});
-	});
-*/
-</script>
-<!--        <button onclick="clicked(-1)">Previous</button>-->
-<!--<span id="test" name="products_in_cart">0</span>-->
-<!--<button onclick="clicked(1)">next</button>-->
-<!--<script type="text/javascript">-->
-<!--var i = 0;-->
-<!--function clicked(n) {-->
-<!--    var img = document.getElementsByTagName("img");-->
-<!--    var test = document.getElementById("test");-->
-<!--    i = i + n;-->
-<!--    test.innerHTML = i;-->
-<!--};-->
-<!--window.onclick;-->
-<!--</script>-->
+            </div>
     </div>
 </div>
 

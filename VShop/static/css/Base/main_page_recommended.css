@@ -1,0 +1,48 @@
+.main-page__recommended{
+    width:74%;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.main-page__recommended__total-count{
+    margin-left:auto;
+    color:red;
+    text-decoration: none;
+    width:80px;
+    height:30px;
+    border:1px solid red;
+    border-radius:6px;
+    background: transparent;
+    position: relative;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.main-page__recommended__total-count:hover{
+    background: linear-gradient(45deg, #FF4500 60%, orange);
+    color:white;
+    border:none;
+}
+
+.main-page__recommended__each-product{
+    width:32%;
+    height:250px;
+    margin-left:7px;
+    margin-right:7px;
+    background: white;
+    border:none;
+    border-radius: 8px;
+    box-shadow: 0 0 8px 1px rgba(221, 221, 221, 1);
+    margin-bottom:40px;
+}
+
+.ant-carousel-element-3{
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    height:70px;
+    width:100px;
+}

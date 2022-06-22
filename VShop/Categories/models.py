@@ -71,6 +71,10 @@ class Product(models.Model):
     def is_promo_code(self):
         return bool(self.promo_code)
 
+    @property
+    def comment_amount(self):
+        return len(self.comment.all())
+
     # def counter(self):
     #     self.review += 1
     #     return self.review
@@ -160,3 +164,4 @@ class UserCommentRelation(models.Model):
 
     def __str__(self):
         return f'{self.user.username}:{self.comment.product}'
+

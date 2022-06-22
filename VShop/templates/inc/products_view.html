@@ -1,5 +1,6 @@
 
 {%load promocodes%}
+{%load quantity%}
 <div class="products_view" >
     {% for product in products %}
         <div class="products_view__product_card">
@@ -38,14 +39,54 @@
                 <img src="{{product.photo.url}}" width="180px" height="150px" style="z-index:120; position:relative;"></a>
             <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="font-weight: 800; font-size: 20px; margin-top: 10px; margin-left: 15px; margin-bottom: 15px;">{{product.name}}</text></a>
             <a href="{% url 'product_page' product.pk %}" class="view_cards_refer"><text style="color: red; font-weight: 800; font-size: 20px; margin-left: 15px;">{{product.price}}$/kg</text></a>
-            <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true"></i>{{product.like_amount}}</a>
-            <a href="{% url 'comments' product.id%}"><i class="fa fa-comment-o" aria-hidden="true"></i></i></a>
-            <a href="{% url 'bookmarks' product.id 'product_page'%}"><i class="fa fa-bookmark" aria-hidden="true"></i>{{product.books_amount}}</a>
-            {{product.rating}}
-            {{product.promo_code}}
-            {{product.free_delivery}}
-            <text>Popular: {{product.popular}}</text>
+<!--            <a href="{% url 'like' product.id 'product_page'%}"><i class="fa fa-heart-o" aria-hidden="true"></i>{{product.like_amount}}</a>-->
+<!--            <a href="{% url 'comments' product.id%}"><i class="fa fa-comment-o" aria-hidden="true"></i></i></a>-->
+<!--            <a href="{% url 'bookmarks' product.id 'product_page'%}"><i class="fa fa-bookmark" aria-hidden="true"></i>{{product.books_amount}}</a>-->
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {{cart_product_form}}
+            {% csrf_token %}
+                <div class="amount">
+                    <a href="{% url 'bookmarks' product.id 'product_page'%}" style="display:flex; flex-direction: row; text-decoration:none;
+                        color:grey; font-size: 120%; margin-right: 5px; margin-top:2px; position:relative; top:3px;">
+                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                        {{product.books_amount}}
+                    </a>
+                    <button class="product-down" style="margin-left:auto;width:30px;height:30px;">-</button>
+                    <input type="text" value="{%quantity request product %}" name="count_products"
+                       class="input__add-to-cart-products"
+                        style="border:none; width:30px; font-weight:800px; font-size:110%; color:#666666; background:transparent;
+margin-left:15px;"/>
+                    <button class="product-up" style="width:30px;height:30px;">+</button>
+                    <button type="submit"  class="button-add-to-cart" style="width: 90px; height:30px; font-size: 90%;
+                        font-weight: 200; position: relative; top:1px; margin-bottom:5px;">Add to Cart</button>
+
+                </div>
+
+        </form>
+
+<!--            {{product.rating}}-->
+<!--            {{product.promo_code}}-->
+<!--            {{product.free_delivery}}-->
+<!--            <text>Popular: {{product.popular}}</text>-->
         </div>
 
 {% endfor %}
+    <script>
+            $(document).ready(function() {
+		        $('.product-down').click(function () {
+			    var $input = $(this).parent().find('input');
+			    var count = parseInt($input.val()) - 1;
+			    count = count < 1 ? 0 : count;
+			    $input.val(count);
+			    $input.change();
+			    return false;
+		        });
+		    $('.product-up').click(function () {
+			    var $input = $(this).parent().find('input');
+			    $input.val(parseInt($input.val()) + 1);
+			    $input.change();
+			    return false;
+		        });
+	        });
+            </script>
 </div>

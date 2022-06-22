@@ -19,7 +19,6 @@ Vegishop
     </a>
 </div>
 {% include 'inc/products_view.html' %}
-{% for recommended in result_recommended %}
-    {{recommended.name}}
-{% endfor %}
+{% include 'inc/main_page_recommended.html' %}
+
 {% endblock %}

@@ -85,3 +85,7 @@ class Cart(object):
         # очищаем корзину в сессии
         del self.session[settings.CART_SESSION_ID]
         self.save()
+
+    def total_price(self, product):
+        product_id = str(product.id)
+        return float(self.cart[product_id]['price'])*int(self.cart[product_id]['quantity'])

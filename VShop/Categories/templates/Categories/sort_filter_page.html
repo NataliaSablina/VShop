@@ -5,33 +5,92 @@
 Vegishop
 {% endblock %}
 {% block content %}
-<form method="post" action="{% url 'sort' 'sort_filter_page' %}" name="f1">
+<div style="width:73%; margin-left:auto; margin-right:auto; height: 50px; display: flex; flex-direction:row; margin-top: 30px;">
+    <h1 style="display: flex;
+  align-items: center;">Listing</h1>
+    <div class="sort_filter__filter" style="margin-left:auto; margin-right: 10px; display: flex;
+  align-items: center; width:90px; height: 40px; background: white; color: grey;border-radius:3px;">
+        <i class="fa fa-filter" aria-hidden="true" style="margin-left: 15px; margin-right: 7px;color: grey;"></i>Filter</div>
+    <div class="sort_filter__sort" style="display: flex;
+  align-items: center; width:90px; height: 40px; background: white; color: grey;border-radius:3px;">
+        <i class="fa fa-eyedropper" aria-hidden="true" style="margin-left: 15px; margin-right: 7px;color: grey;"></i>Sort</div>
+</div>
+{% include 'inc/products_view.html' %}
+<div class="menu_mobile dropdown-scrollbar" style="height: auto;">
+    <form method="post" action="{% url 'sort' 'sort_filter_page' %}" name="f1">
     {%csrf_token%}
-    <text>SORT BY</text>
-    <input type="radio" name="r1" value="TOP_RATE" onClick="document.getElementById('hidfield').value=this.value"/>Top
-    Rated
+        <div style="display:flex; flex-direction:row;border-bottom:1px solid #BBBBBB;padding-left: 15px; padding-right: 15px;">
+            <h2>Filter</h2>
+            <button class="close-menu-filter-sort"><i class="close-menu-cross"></i></button>
+        </div>
+        <div style="border-bottom:1px solid #BBBBBB;padding-left: 15px; padding-right: 15px; background:#EEFFFF;">
+            <div style="font-size: 120%; padding-top: 15px; padding-bottom:10px; height: 25px;">SORT BY</div>
+        </div>
+        <div style="border-bottom:1px solid #BBBBBB; height: 40px; position: relative; display:flex;flex-direction:row;justify-content: center;
+    align-items: center;">
+            <text style="margin-right: 250px;">Top Rated</text>
+            <input type="radio" style="margin-top:auto; margin-bottom:auto;" name="r1" value="TOP_RATE"  onClick="document.getElementById('hidfield').value=this.value"/>
+        </div>
+
     <br/>
-    <input type="radio" name="r1" value="HIGH_TO_LOW" onClick="document.getElementById('hidfield').value=this.value"/>Cost
-    High to Low
+        <div style="border-bottom:1px solid #BBBBBB;height:5px; display:flex; flex-direction:row;position: relative;padding-bottom:15px;">
+            <text style="margin-right: 235px; margin-left:20px;position:relative; bottom:8px;">High to Low</text>
+                <input type="radio" style="position:relative; bottom:8px;" name="r1" value="HIGH_TO_LOW" onClick="document.getElementById('hidfield').value=this.value"/>
+
+        </div>
     <br/>
-    <input type="radio" name="r1" value="LOW_TO_HIGH" onClick="document.getElementById('hidfield').value=this.value"/>Cost
-    Low to High
+        <div style="border-bottom:1px solid #BBBBBB;height:5px; display:flex; flex-direction:row;position: relative;padding-bottom:15px;">
+            <text style="margin-right: 235px; margin-left:20px;position:relative; bottom:8px;">Low to High</text>
+                <input type="radio" style="position:relative; bottom:8px;" name="r1" value="LOW_TO_HIGH" onClick="document.getElementById('hidfield').value=this.value"/>
+        </div>
     <br/>
-    <input type="radio" name="r1" value="MOST_POPULAR" onClick="document.getElementById('hidfield').value=this.value"/>Most
-    Popular
+        <div style="border-bottom:1px solid #BBBBBB; height:5px; display:flex; flex-direction:row;position: relative;padding-bottom:15px;">
+            <text style="margin-right: 267px; margin-left:20px;position:relative; bottom:8px;">Popular</text>
+                <input type="radio" style="position:relative; bottom:8px;" name="r1" value="MOST_POPULAR" onClick="document.getElementById('hidfield').value=this.value"/>
+        </div>
+
     <br/>
     <input type="hidden" name="sum" value="TOP_RATE" id="hidfield"/>
-    <text>FILTER</text>
-    <input type="checkbox" name="r2">Free Delivery
-    <input type="checkbox" name="r3">Have PromoCode
-    <text>ADDITIONAL FILTERS</text>
+        <div style="border-bottom:1px solid #BBBBBB;
+        padding-left: 15px;
+        padding-right: 15px;
+         background:#EEFFFF;
+         position:relative;
+         top:-18px;">
+            <div style="font-size: 120%; padding-top: 15px; padding-bottom:10px; height: 25px;">FILTER</div>
+        </div>
+        <div style="border-bottom:1px solid #BBBBBB;height:5px; display:flex; flex-direction:row;position: relative;padding-bottom:15px;">
+            <text style="margin-right: 235px; margin-left:20px;position:relative; bottom:8px;">Free Delivery</text>
+                <input type="checkbox" style="position:relative; bottom:8px;" name="r2">
+        </div>
+        <div style="border-bottom:1px solid #BBBBBB;height:25px; display:flex; flex-direction:row;position: relative;padding-bottom:5px;
+margin-top: 10px;">
+            <text style="margin-right: 210px; margin-left:20px;position:relative;">Have PromoCode</text>
+                <input type="checkbox"  name="r3">
+        </div>
+        <div style="border-bottom:1px solid #BBBBBB;
+        padding-left: 15px;
+        padding-right: 15px;
+         background:#EEFFFF;">
+            <div style="font-size: 120%; padding-top: 15px; padding-bottom:10px; height: 25px;">ADDITIONAL FILTERS</div>
+        </div>
     <div>
-        <input type="range" min="0" step="1" max="10000" value="50" name="scale" id="myRange">
-        <text>Min:</text>
-        <input type="text" value="0" id="Min" name='min' onKeyUp='document.all["scale"].min = this.value'>
-        <text>Max:</text>
-        <input type="text" value="10000" name='max' id="Max" onKeyUp='document.all["scale"].max = this.value'>
-        <p>Value: <span id="demo"></span></p>
+        <div style="border-bottom:1px solid #BBBBBB;height:80px; margin-left:15px;display:flex; flex-direction:column;position: relative;padding-bottom:15px;">
+            <div style="display:flex; flex-direction:row;">
+                <input type="range" style="width:150px;" min="0" step="1" max="100" value="50" name="scale" id="myRange">
+                <p style="margin-left: 15px;">Value: <span id="demo"></span></p>
+            </div>
+            <div style="display:flex; flex-direction:row;">
+                <text style="margin-right: 5px;">Min:</text>
+                <input type="text" style="width:100px; height: 20px; border-radius:6px;" value="0" id="Min" name='min'
+                       onfocus="this.className='focus'"
+                       onblur= "this.className='text'" onKeyUp='document.all["scale"].min = this.value'>
+                <text style="margin-left:15px; margin-right:5px;">Max:</text>
+                <input type="text" value="10000" style="width:100px; height: 20px;border-radius:6px;" onfocus="this.className='focus'"
+                       onblur= "this.className='text'"
+                       name='max' id="Max" onKeyUp='document.all["scale"].max = this.value'>
+            </div>
+        </div>
     </div>
     <script>
             var slider = document.getElementById("myRange");
@@ -43,10 +102,29 @@ Vegishop
             }
 
     </script>
-    <button type="submit">Submit</button>
+    <button type="submit" class="sort_filter__submit">Submit</button>
 </form>
+<script>
+    // тут мы вешаем на кнопку МЕНЮ событие которое при клике на кнопку
+// добавляет menu_mobile некий класс, в данном случае это active
 
-{% include 'inc/products_view.html' %}
+document.querySelector('.sort_filter__filter').addEventListener('click', () => {
+  document.querySelector('.menu_mobile').classList.add('active');
 
+
+})
+document.querySelector('.sort_filter__sort').addEventListener('click', () => {
+  document.querySelector('.menu_mobile').classList.add('active');
+
+})
+// а тут мы вешаем на кнопку close-menu событие которое пр кликена кнопку
+// удаляет menu_mobile  класс  active
+
+document.querySelector('.close-menu-filter-sort').addEventListener('click', () => {
+  document.querySelector('.menu_mobile').classList.remove('active');
+
+})
+</script>
+</div>
 {% endblock %}
 
