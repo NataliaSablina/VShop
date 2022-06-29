@@ -1,44 +1,77 @@
 {% load main_page %}
+{% load quantity %}
 <div class="main-page__recommended">
     <div style="display:flex; flex-direction:row;">
         <h1 style="margin-top:auto; margin-left;auto;">Recommended for You</h1>
         <a href="#" class="main-page__recommended__total-count">{{recommended_count}} more</a>
     </div>
-    <ul>
-        <div style="display:flex; flex-direction:row;">
+    <ul style="padding-left: 0px; list-style-type:none;">
+        <div style="display:flex; flex-direction:row; ">
         {% for recommended in result_recommended_main_page %}
             <div class="main-page__recommended__each-product">
-                {{recommended.name}}
-                <li class="ant-carousel" id="{{ forloop.counter }}">
-  <div class="ant-carousel-hider">
-    <ul class="ant-carousel-list">
+                <li class="ant-carousel" style="width: 95%; height: 140px; margin-top: 5px; background: transparent; padding-left: 0px;position: relative; left:-50px;" id="{{ forloop.counter }}" >
+  <div class="ant-carousel-hider" style="width: 100%; height: 100%; padding-left:0px; ">
+    <ul class="ant-carousel-list" style="width: 100%; height: 100%;padding-left:0px; list-style-type:none;">
 
 {% for product in recommended|product_photos %}
-            <a href="{% url 'product_page' recommended.id%}" style="height:70px;text-decoration:none;
-                background:transparent;border-radius:8px; margin-left:5px; margin-right:5px;">
-                <li class="ant-carousel-element-3"><img src="{{product.photo.url}}" width="100px" height="70px" style="margin-top:10px">
+            <a href="{% url 'product_page' recommended.id%}" style="width: 100%; height: 100%;text-decoration:none;
+                background:transparent;margin-left:5px; margin-right:5px;padding-left:0px;">
+                <li class="ant-carousel-element-3" style="height:100%; width: 100%; padding-left:0px;overflow:auto;">
+                    <img src="{{product.photo.url}}" width="200px" height="150px" style="border-radius: 8px;
+-ms-overflow-style: none;
+      scrollbar-width: none;">
                     <p style="margin-top:0px;">{{product.name}}</p>
                 </li>
             </a>
-
 {% endfor %}
       </ul>
   </div>
-  <div class="ant-carousel-arrow-left"></div>
-  <div class="ant-carousel-arrow-right"></div>
-  <!--<div class="ant-carousel-dots"></div>-->
+  <div class="ant-carousel-arrow-left" style="background: transparent; border: none; box-shadow: none;"></div>
+  <div class="ant-carousel-arrow-right" style="background: transparent; border: none; box-shadow: none;"></div>
+  <div class="ant-carousel-dots"></div>
 </li>
+                <div style="margin-top: 15px;margin-left: 15px; margin-bottom: 15px;">
+                    <text style="color: grey; font-size: 120%;">{{recommended.name}}</text>
+                <form action="{% url 'cart:cart_add' recommended.id %}" method="post" style="margin-left: 0px; padding-left: 0px;margin-top:10px; margin-bottom: 10px;">
+            {{cart_product_form}}
+            {% csrf_token %}
+                <div class="amount">
+            <a href="{% url 'product_page' recommended.pk %}" class="view_cards_refer"><text style="color: red; font-weight: 400; font-size: 17px;
+position: relative; left: -15px;">{{recommended.price}}$/kg</text></a>
+                    <button class="product-down" style="margin-left:auto;width:30px;height:30px;">-</button>
+                    <input type="text" value="{%quantity request recommended %}" name="count_products"
+                       class="input__add-to-cart-products"
+                        style="border:none; width:30px; font-weight:800px; font-size:110%; color:#666666; background:transparent;
+margin-left:15px;"/>
+                    <button class="product-up" style="width:30px;height:30px;">+</button>
+                    <button type="submit"  class="button-add-to-cart" style="width: 90px; height:30px; font-size: 90%;
+                        font-weight: 200; position: relative; top:1px; margin-bottom:5px;">Add to Cart</button>
+
+                </div>
+
+        </form>
+
+<!--            {{product.rating}}-->
+<!--            {{product.promo_code}}-->
+<!--            {{product.free_delivery}}-->
+<!--            <text>Popular: {{product.popular}}</text>-->
+                    </div>
+        </div>
+
+{% endfor %}
+
             </div>
-        {%endfor%}
+
+
+    </ul>
+    </div>
     </div>
 
         </ul>
             </div>
-
-
 </div>
 
-<script defer>
+<script >
   function Ant2(crslId) {
 
 	let id = document.getElementById(crslId);

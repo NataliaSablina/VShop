@@ -45,4 +45,12 @@
     background: transparent;
     height:70px;
     width:100px;
+    overflow: auto;
+     -ms-overflow-style: none;
+      scrollbar-width: none;
+}
+
+.ant-carousel-element-3::-webkit-scrollbar {
+  width: 0;
+      height: 0;
 }
