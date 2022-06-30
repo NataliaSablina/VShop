@@ -6,23 +6,23 @@
       <li><a href="{% url 'home_page' %}" class="nav-top__refer2">Home</a></li>
     {% endif %}
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Products</a>
-      <ul class="submenu">
+      <ul class="submenu" style="z-index: 200;">
         <li class="border-button__user-list" style="margin-top:5px;"><a href="{% url 'categories_product_listing' %}">Listing</a></li>
         <li class="border-button__user-list" style="border-bottom: 1px solid #f0f2f5; padding-bottom: 15px"><a href="{% url 'sort_filter_page' 1 %}" >Filter</a></li>
         <li class="border-button__user-list" style="padding-top: 15px;"><a href="#" >Trending</a></li>
-        <li class="border-button__user-list"><a href="">Recommended</a></li>
-        <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Most Popular</a></li>
+        <li class="border-button__user-list"><a href="{% url 'recommended' %}">Recommended</a></li>
+        <li class="border-button__user-list" style="margin-bottom:5px;"><a href="{% url 'most_popular' %}">Most Popular</a></li>
       </ul>
     </li>
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Checkout Process</a>
-      <ul class="submenu">
+      <ul class="submenu" style="z-index: 200;">
         <li class="border-button__user-list" style="margin-top:5px;"><a href="">Cart</a></li>
         <li class="border-button__user-list"><a href="">Checkout</a></li>
         <li class="border-button__user-list" style="margin-bottom:5px;"><a href="">Successful</a></li>
       </ul>
     </li>
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>My Order</a>
-      <ul class="submenu">
+      <ul class="submenu" style="z-index: 200;">
         <li class="border-button__user-list" style="margin-top:5px;"><a href="">My Order</a></li>
         <li class="border-button__user-list"><a href="">Status Complete</a></li>
         <li class="border-button__user-list"><a href="">Status on Process</a></li>
@@ -31,7 +31,7 @@
       </ul>
     </li>
     <li><a href="" class="down nav-top__refer2"><i class="top"></i>Extra Pages</a>
-      <ul class="submenu">
+      <ul class="submenu" style="z-index: 200;">
         {% if request.user.is_authenticated %}
           <li class="border-button__user-list" style="margin-top:5px;"><a href="">Verification</a></li>
           <li class="border-button__user-list"><a href="{% url 'available_promos' %}">Promos</a></li>
@@ -63,12 +63,13 @@
 
       </ul>
     </li>
-
-    <li class="nav-top__dock" style="right: -430px;"><a href="#" class="nav-top__refer2 tr">Trending</a></li>
+        <li class="nav-top__dock" style="right: -400px;"><a href="{% url 'user_bookmarks' %}" class="nav-top__refer2 tr"><i class="fa fa-bookmark" aria-hidden="true"></i></a></li>
+    <li class="nav-top__dock" style="right: -410px;"><a href="{% url 'most_popular' %}" class="nav-top__refer2 tr">Trending</a></li>
     {% if request.user.is_authenticated %}
-        <li class="nav-top__dock-10" style="right: -420px;"><a href="{% url 'available_promos' %}" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a></li>
+        <li class="nav-top__dock-10" style="right: -400px;"><a href="{% url 'available_promos' %}" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a></li>
     {% else %}
         <li class="nav-top__dock-10" style="right: -420px;"><a href="{% url 'all_promo_categories' %}" class="nav-top__refer2 pr"><i class="top2"></i>Promos</a></li>
     {% endif %}
+
   </ul>
 </nav>

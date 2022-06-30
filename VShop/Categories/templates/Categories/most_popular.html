@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<h2 style="margin-left: 200px;">Most Popular</h2>
+<div style="margin-top: 30px;">
+    {% include 'inc/products_view.html' %}
+</div>
+{% endblock %}

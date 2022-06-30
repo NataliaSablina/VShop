@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cart</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    {% load static %}
-    {% load quantity %}
-</head>
-<body>
-  <h1>Корзина покупок</h1>
+{% extends 'base.html' %}
+{% load static %}
+{% load quantity %}
+{% block title %}
+Vegishop
+{% endblock %}
+{% block content %}
+<h1>Корзина покупок</h1>
   <table class="cart">
     <thead>
       <tr>
@@ -98,5 +95,4 @@ $(document).ready(function() {
 
 </script>
 
-</body>
-</html>
+{% endblock %}

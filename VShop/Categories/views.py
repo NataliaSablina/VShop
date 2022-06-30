@@ -211,7 +211,20 @@ class RecommendedProductsView(View):
         for product in recommended_products_ready:
             if product not in result_recommended:
                 result_recommended.append(product)
-        return render(request, "Categories/none.html")
+        context = {
+            "products": result_recommended,
+        }
+        return render(request, "Categories/recommended_products.html", context)
+
+
+class MostPopularProductsView(View):
+    def get(self, request):
+        products = sorted(Product.objects.all(), key=lambda p: p.popular,
+                          reverse=True)
+        context = {
+            'products': products,
+        }
+        return render(request, "Categories/most_popular.html", context)
 
 
 class CommentsView(View):
@@ -282,7 +295,7 @@ class UserBookmarksListView(View):
         context = {
             "products": products,
         }
-        return render(request, "Categories/none.html", context)
+        return render(request, "Categories/products_in_bookmarks.html", context)
 
 
 class SortFilterPageView(View):
